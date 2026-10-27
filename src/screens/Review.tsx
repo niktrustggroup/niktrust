@@ -3,9 +3,9 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function ReviewScreen({ go, compare, toggleCompare }){
+export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }){
   const { ComponentButton, ComponentRatingBadge, ComponentTrustIndicator, ComponentBadgeStatus, ComponentAffiliateZone, ComponentProsConsItem, ComponentSpecRow, ComponentAccordionSection } = NT;
-  const inCompare = compare.includes('a');
+  const inCompare = compare.includes(id);
   const sections = [
     { t: '۴. حساب‌ها و شرایط', s: 'انواع حساب، اسپرد، کمیسیون و اهرم.', open: true, body: <div className="nt-grid">
       {[['استاندارد', '$100', '1.2 pip', 'ندارد'], ['ECN', '$500', '0.1 pip', '$7 / لات']].map(([n, d, sp, c]) => <div key={n} className="nt-md-col-6"><div className="nt-card nt-card--alt" style={{ paddingBlock: 'var(--sp-8)' }}><h4 className="nt-label" style={{ paddingBlock: 'var(--sp-8)', margin: 0, fontSize: 'var(--fs-body)' }}>{'حساب ' + n}</h4><ComponentSpecRow label="حداقل واریز" value={d}/><ComponentSpecRow label="اسپرد از" value={sp}/><ComponentSpecRow label="کمیسیون" value={c}/></div></div>)}
@@ -37,7 +37,7 @@ export function ReviewScreen({ go, compare, toggleCompare }){
             </div></div>
             <p className="nt-caption">بر اساس ۴ معیار نیک‌تراست. امتیاز بالاتر به معنای مناسب‌بودن برای همه نیست.</p>
             <div className="nt-stack" style={{ '--gap': 'var(--sp-8)' }}>
-              <ComponentButton type="primary" block iconLeading={inCompare ? 'ComponentIconCheck' : 'ComponentIconDiff'} onClick={() => inCompare ? go('compare') : toggleCompare('a')}>{inCompare ? 'مشاهدهٔ مقایسه' : 'افزودن به مقایسه'}</ComponentButton>
+              <ComponentButton type="primary" block iconLeading={inCompare ? 'ComponentIconCheck' : 'ComponentIconDiff'} onClick={() => inCompare ? go('compare') : toggleCompare(id)}>{inCompare ? 'مشاهدهٔ مقایسه' : 'افزودن به مقایسه'}</ComponentButton>
             </div>
           </div>
           <ComponentAffiliateZone/>

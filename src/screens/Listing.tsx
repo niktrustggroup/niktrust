@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function ListingScreen({ go, compare, toggleCompare }){
+export function ListingScreen({ go, compare, toggleCompare, title = 'بروکرهای فارکس', desc = 'فهرست بروکرهای بررسی‌شده بر اساس معیارهای نیک‌تراست. ترتیب فهرست از لینک‌های همکاری اثر نمی‌گیرد.', items }){
   const { ComponentButton, ComponentDataCard, ComponentFilterPanel, ComponentFilterPanelGroup, ComponentFilterPanelOption, ComponentSortControl, ComponentPaginationItem, ComponentChip } = NT;
   const D = NT_DATA;
   const [sheet, setSheet] = React.useState(false);
@@ -21,7 +21,7 @@ export function ListingScreen({ go, compare, toggleCompare }){
     <ComponentFilterPanelGroup title="پلتفرم معاملاتی" state="collapsed"/>
   </>;
   return <main>
-    <PageHead go={go} crumbs={[{ label: 'نیک‌تراست', id: 'home' }, { label: 'بازارها', id: 'home' }, 'بروکرهای فارکس']} title="بروکرهای فارکس" desc="فهرست بروکرهای بررسی‌شده بر اساس معیارهای نیک‌تراست. ترتیب فهرست از لینک‌های همکاری اثر نمی‌گیرد."/>
+    <PageHead go={go} crumbs={[{ label: 'نیک‌تراست', id: 'home' }, { label: 'بازارها', id: 'home' }, title]} title={title} desc={desc}/>
     <div className="nt-container nt-section" style={{ paddingTop: 'var(--sp-32)' }}>
       <div className="nt-grid" style={{ alignItems: 'start' }}>
         <div className="nt-lg-col-3 k-desk-only nt-sticky">
@@ -29,13 +29,13 @@ export function ListingScreen({ go, compare, toggleCompare }){
         </div>
         <div className="nt-lg-col-9 nt-stack" style={{ '--gap': 'var(--sp-16)' }}>
           <div className="nt-split" style={{ alignItems: 'center' }}>
-            <p className="nt-body-sm" style={{ color: 'var(--text-secondary)' }}><b className="nt-data">۲۴</b> نتیجه · دادهٔ تأییدشده</p>
+            <p className="nt-body-sm" style={{ color: 'var(--text-secondary)' }}><b className="nt-data">{(items || D.brokers).length.toLocaleString('fa-IR')}</b> نتیجه · دادهٔ تأییدشده</p>
             <div className="nt-cluster" style={{ '--gap': 'var(--sp-8)' }}>
               <span className="k-below-desk"><ComponentButton type="secondary" size="sm" iconLeading="ComponentIconLayers" onClick={() => setSheet(true)}>فیلترها (۲)</ComponentButton></span>
               <ComponentSortControl/>
             </div>
           </div>
-          {D.brokers.map(b => <ComponentDataCard key={b.id} {...b} commercialCTA={b.partner} onReview={() => go('review')} compared={compare.includes(b.id)} onCompare={() => toggleCompare(b.id)}/>)}
+          {(items || D.brokers).map(b => <ComponentDataCard key={b.id} {...b} commercialCTA={b.partner} onReview={() => go('review', b.id)} compared={compare.includes(b.id)} onCompare={() => toggleCompare(b.id)}/>)}
           <ComponentDataCard state="loading"/>
           <nav className="nt-pager" aria-label="صفحه‌بندی" style={{ paddingTop: 'var(--sp-16)' }}>
             <ComponentPaginationItem label="قبلی" disabled/><ComponentPaginationItem state="current"/><ComponentPaginationItem label="۲"/><ComponentPaginationItem label="۳"/><ComponentPaginationItem label="بعدی"/>

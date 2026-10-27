@@ -62,7 +62,7 @@ export function HomeScreen({ go, compare, toggleCompare }){
     <section className="nt-section nt-section--alt"><div className="nt-container">
       <SectionHead title="بررسی‌های برتر" desc="مرتب‌شده بر اساس امتیاز کلی — امتیاز بالاتر به‌معنای مناسب‌بودن برای هر کاربر نیست. تناسب در هر بررسی توضیح داده شده است." action={<ComponentButton type="tertiary" iconTrailing onClick={() => go('brokers')}>همهٔ بررسی‌ها</ComponentButton>}/>
       <div className="nt-cards" style={{ '--card-min': '340px' }}>
-        {D.topReviews.map(r => { const p = r.name ? r : findPlatform(r.id); return <ComponentDataCard key={p.id} {...p} onReview={() => go('review')} compared={compare.includes(p.id)} onCompare={() => toggleCompare(p.id)}/>; })}
+        {D.topReviews.map(r => { const p = r.name ? r : findPlatform(r.id); return <ComponentDataCard key={p.id} {...p} onReview={() => go('review', p.id)} compared={compare.includes(p.id)} onCompare={() => toggleCompare(p.id)}/>; })}
       </div>
     </div></section>
 
