@@ -10,33 +10,245 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CryptoExchangesRouteImport } from './routes/crypto-exchanges'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as DisclosureRouteImport } from './routes/disclosure'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ForexBrokersRouteImport } from './routes/forex-brokers'
+import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PropFirmsRouteImport } from './routes/prop-firms'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as ReviewIdRouteImport } from './routes/review.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CryptoExchangesRoute = CryptoExchangesRouteImport.update({
+  id: '/crypto-exchanges',
+  path: '/crypto-exchanges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclosureRoute = DisclosureRouteImport.update({
+  id: '/disclosure',
+  path: '/disclosure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForexBrokersRoute = ForexBrokersRouteImport.update({
+  id: '/forex-brokers',
+  path: '/forex-brokers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketsRoute = MarketsRouteImport.update({
+  id: '/markets',
+  path: '/markets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropFirmsRoute = PropFirmsRouteImport.update({
+  id: '/prop-firms',
+  path: '/prop-firms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewIdRoute = ReviewIdRouteImport.update({
+  id: '/review/$id',
+  path: '/review/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/crypto-exchanges': typeof CryptoExchangesRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/disclosure': typeof DisclosureRoute
+  '/faq': typeof FaqRoute
+  '/forex-brokers': typeof ForexBrokersRoute
+  '/markets': typeof MarketsRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
+  '/prop-firms': typeof PropFirmsRoute
+  '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
+  '/review/$id': typeof ReviewIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/crypto-exchanges': typeof CryptoExchangesRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/disclosure': typeof DisclosureRoute
+  '/faq': typeof FaqRoute
+  '/forex-brokers': typeof ForexBrokersRoute
+  '/markets': typeof MarketsRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
+  '/prop-firms': typeof PropFirmsRoute
+  '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
+  '/review/$id': typeof ReviewIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/crypto-exchanges': typeof CryptoExchangesRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/disclosure': typeof DisclosureRoute
+  '/faq': typeof FaqRoute
+  '/forex-brokers': typeof ForexBrokersRoute
+  '/markets': typeof MarketsRoute
+  '/methodology': typeof MethodologyRoute
+  '/privacy': typeof PrivacyRoute
+  '/prop-firms': typeof PropFirmsRoute
+  '/terms': typeof TermsRoute
+  '/tools': typeof ToolsRoute
+  '/review/$id': typeof ReviewIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/compare'
+    | '/contact'
+    | '/crypto-exchanges'
+    | '/disclaimer'
+    | '/disclosure'
+    | '/faq'
+    | '/forex-brokers'
+    | '/markets'
+    | '/methodology'
+    | '/privacy'
+    | '/prop-firms'
+    | '/terms'
+    | '/tools'
+    | '/review/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/compare'
+    | '/contact'
+    | '/crypto-exchanges'
+    | '/disclaimer'
+    | '/disclosure'
+    | '/faq'
+    | '/forex-brokers'
+    | '/markets'
+    | '/methodology'
+    | '/privacy'
+    | '/prop-firms'
+    | '/terms'
+    | '/tools'
+    | '/review/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/compare'
+    | '/contact'
+    | '/crypto-exchanges'
+    | '/disclaimer'
+    | '/disclosure'
+    | '/faq'
+    | '/forex-brokers'
+    | '/markets'
+    | '/methodology'
+    | '/privacy'
+    | '/prop-firms'
+    | '/terms'
+    | '/tools'
+    | '/review/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  CryptoExchangesRoute: typeof CryptoExchangesRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  DisclosureRoute: typeof DisclosureRoute
+  FaqRoute: typeof FaqRoute
+  ForexBrokersRoute: typeof ForexBrokersRoute
+  MarketsRoute: typeof MarketsRoute
+  MethodologyRoute: typeof MethodologyRoute
+  PrivacyRoute: typeof PrivacyRoute
+  PropFirmsRoute: typeof PropFirmsRoute
+  TermsRoute: typeof TermsRoute
+  ToolsRoute: typeof ToolsRoute
+  ReviewIdRoute: typeof ReviewIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +260,139 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crypto-exchanges': {
+      id: '/crypto-exchanges'
+      path: '/crypto-exchanges'
+      fullPath: '/crypto-exchanges'
+      preLoaderRoute: typeof CryptoExchangesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclosure': {
+      id: '/disclosure'
+      path: '/disclosure'
+      fullPath: '/disclosure'
+      preLoaderRoute: typeof DisclosureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forex-brokers': {
+      id: '/forex-brokers'
+      path: '/forex-brokers'
+      fullPath: '/forex-brokers'
+      preLoaderRoute: typeof ForexBrokersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/markets': {
+      id: '/markets'
+      path: '/markets'
+      fullPath: '/markets'
+      preLoaderRoute: typeof MarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prop-firms': {
+      id: '/prop-firms'
+      path: '/prop-firms'
+      fullPath: '/prop-firms'
+      preLoaderRoute: typeof PropFirmsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review/$id': {
+      id: '/review/$id'
+      path: '/review/$id'
+      fullPath: '/review/$id'
+      preLoaderRoute: typeof ReviewIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  CryptoExchangesRoute: CryptoExchangesRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  DisclosureRoute: DisclosureRoute,
+  FaqRoute: FaqRoute,
+  ForexBrokersRoute: ForexBrokersRoute,
+  MarketsRoute: MarketsRoute,
+  MethodologyRoute: MethodologyRoute,
+  PrivacyRoute: PrivacyRoute,
+  PropFirmsRoute: PropFirmsRoute,
+  TermsRoute: TermsRoute,
+  ToolsRoute: ToolsRoute,
+  ReviewIdRoute: ReviewIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

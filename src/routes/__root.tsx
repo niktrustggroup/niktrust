@@ -9,9 +9,15 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ComponentHeader, ComponentFooter } from "@/ds";
+import { CompareProvider, useScreenProps } from "@/lib/site";
+import logoBlue from "@/assets/logotype-blue.svg.asset.json";
+import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
+import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -78,21 +84,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { title: "نیک‌تراست — ارزیابی و مقایسهٔ مستقل پلتفرم‌های مالی" },
+      { name: "description", content: "نیک‌تراست، ارزیاب مستقل بروکرها، صرافی‌ها و پراپ‌فرم‌ها با معیارهای شفاف." },
+      { name: "author", content: "NikTrust" },
+      { property: "og:site_name", content: "نیک‌تراست" },
+      { property: "og:locale", content: "fa_IR" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      ...[fontRegular, fontBold].map((f) => ({ rel: "preload", href: f.url, as: "font", type: "font/woff2", crossOrigin: "anonymous" as const })),
     ],
   }),
   shellComponent: RootShell,
@@ -103,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <head>
         <HeadContent />
       </head>
@@ -115,13 +116,46 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const CURRENT: Record<string, string> = {
+  "/forex-brokers": "brokers",
+  "/crypto-exchanges": "exchanges",
+  "/prop-firms": "prop",
+  "/markets": "markets",
+  "/tools": "tools",
+  "/methodology": "method",
+};
+
+function Chrome() {
+  const { go, compare } = useScreenProps();
+  const path = useRouterState({ select: (s) => s.location.pathname });
+  const current = path.startsWith("/review") ? "brokers" : CURRENT[path];
+  return (
+    <>
+      <a href="#main" className="nt-skip">پرش به محتوا</a>
+      <ComponentHeader
+        logoSrc={logoBlue.url}
+        current={current}
+        compareCount={compare.length}
+        onNavigate={go}
+        onCompare={() => go("compare")}
+        onSearch={() => go("home")}
+      />
+      <div id="main">
+        <Outlet />
+      </div>
+      <ComponentFooter logoSrc={logoBlue.url} onNavigate={go} />
+    </>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <CompareProvider>
+        <Chrome />
+      </CompareProvider>
     </QueryClientProvider>
   );
 }

@@ -1,0 +1,7 @@
+.k-desk-only{display:none}.k-below-desk{display:inline}
+@media (min-width:1024px){.k-desk-only{display:block}.k-below-desk{display:none}[data-sticky]{order:2;position:sticky;top:calc(var(--header-h) + var(--sp-24))}}
+.k-dl-row{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-4);padding:var(--sp-16) var(--card-pad)}
+.k-dl-row dt{font-weight:var(--fw-semibold);color:var(--text-primary)}
+.k-dl-row dd{margin:0}
+@media (min-width:768px){.k-dl-row{grid-template-columns:200px minmax(0,1fr);gap:var(--sp-24)}}
+.k-sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-24);align-items:start}

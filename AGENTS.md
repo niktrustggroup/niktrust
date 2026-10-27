@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- NikTrust Design System lives in `src/ds/` (components ported verbatim from the uploaded DS as `@ts-nocheck` TSX, CSS tokens in `src/ds/css/`); reuse these `nt-*` components and tokens instead of shadcn/Tailwind colors — the DS is the brand source of truth.
+- Page bodies live in `src/screens/` (ported from the DS UI kit) and routes are thin wrappers that pass `useScreenProps()` (go/compare); keeps routes simple and screens faithful to the kit.
+- Navigation ids map to URLs only in `src/ds/paths.ts`; header, footer and breadcrumbs read from it so URLs change in one place.
+- Compare selection is client-only (localStorage) via `CompareProvider`; no backend exists yet.

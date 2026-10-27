@@ -1,0 +1,41 @@
+/* Layout system — 12-col grid, responsive margins/gutters, vertical rhythm.
+   Mobile <768 · Tablet 768–1023 · Desktop ≥1024. All values are spacing tokens. */
+:root{
+  --page-margin:var(--margin-mobile); /* @kind spacing */
+  --gutter:var(--gutter-mobile); /* @kind spacing */
+  --section-y:var(--section-gap-mobile); /* @kind spacing */
+  --section-head-gap:var(--sp-24); /* @kind spacing */
+  --card-pad:var(--sp-16); /* @kind spacing */
+  --card-gap:var(--sp-16); /* @kind spacing */
+  --header-h:56px; /* @kind spacing */
+}
+@media (min-width:768px){:root{--page-margin:var(--sp-24);--gutter:var(--gutter-tablet);--section-y:56px;--card-pad:var(--sp-20);--card-gap:var(--sp-20)}}
+@media (min-width:1024px){:root{--page-margin:var(--margin-desktop);--gutter:var(--gutter-desktop);--section-y:var(--section-gap-desktop);--section-head-gap:var(--sp-32);--card-pad:var(--sp-24);--card-gap:var(--sp-24);--header-h:64px}}
+@media (max-width:1023px){:root{--fs-display:40px;--fs-display-sm:34px;--fs-h1:32px;--fs-h2:26px;--fs-h3:20px}}
+@media (max-width:767px){:root{--fs-display:32px;--fs-display-sm:28px;--fs-h1:28px;--fs-h2:22px;--fs-h3:19px;--fs-score:32px}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--text-primary);background:var(--bg-page);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{display:block;max-width:100%}
+.nt-container{width:100%;max-width:calc(var(--container-max) + var(--page-margin) * 2);margin-inline:auto;padding-inline:var(--page-margin)}
+.nt-container--narrow{max-width:calc(800px + var(--page-margin) * 2)}
+.nt-section{padding-block:var(--section-y)}
+.nt-section--alt{background:var(--bg-subtle)}
+.nt-section--line{border-top:1px solid var(--border-subtle)}
+.nt-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter)}
+.nt-grid>*{grid-column:span 12;min-width:0}
+.nt-col-1{grid-column:span 1}.nt-col-2{grid-column:span 2}.nt-col-3{grid-column:span 3}.nt-col-4{grid-column:span 4}.nt-col-5{grid-column:span 5}.nt-col-6{grid-column:span 6}.nt-col-7{grid-column:span 7}.nt-col-8{grid-column:span 8}.nt-col-9{grid-column:span 9}.nt-col-10{grid-column:span 10}.nt-col-11{grid-column:span 11}.nt-col-12{grid-column:span 12}
+@media (min-width:768px){.nt-md-col-1{grid-column:span 1}.nt-md-col-2{grid-column:span 2}.nt-md-col-3{grid-column:span 3}.nt-md-col-4{grid-column:span 4}.nt-md-col-5{grid-column:span 5}.nt-md-col-6{grid-column:span 6}.nt-md-col-7{grid-column:span 7}.nt-md-col-8{grid-column:span 8}.nt-md-col-9{grid-column:span 9}.nt-md-col-10{grid-column:span 10}.nt-md-col-11{grid-column:span 11}.nt-md-col-12{grid-column:span 12}}
+@media (min-width:1024px){.nt-lg-col-1{grid-column:span 1}.nt-lg-col-2{grid-column:span 2}.nt-lg-col-3{grid-column:span 3}.nt-lg-col-4{grid-column:span 4}.nt-lg-col-5{grid-column:span 5}.nt-lg-col-6{grid-column:span 6}.nt-lg-col-7{grid-column:span 7}.nt-lg-col-8{grid-column:span 8}.nt-lg-col-9{grid-column:span 9}.nt-lg-col-10{grid-column:span 10}.nt-lg-col-11{grid-column:span 11}.nt-lg-col-12{grid-column:span 12}}
+.nt-cards{display:grid;gap:var(--card-gap);grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-min,280px)),1fr))}
+.nt-cards>*{min-width:0}
+.nt-stack{display:flex;flex-direction:column;gap:var(--gap,var(--sp-16))}
+.nt-stack>*{min-width:0}
+.nt-cluster{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap,var(--sp-8))}
+.nt-split{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--sp-16)}
+.nt-section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--sp-12) var(--sp-24);margin-bottom:var(--section-head-gap)}
+.nt-section-head>div{display:flex;flex-direction:column;gap:var(--sp-8);max-width:var(--measure)}
+.nt-divider{height:1px;background:var(--border-subtle);border:0;margin:0}
+.nt-sticky{position:sticky;top:calc(var(--header-h) + var(--sp-24))}
+.nt-hide-mobile{display:none}
+@media (min-width:768px){.nt-hide-mobile{display:revert}.nt-only-mobile{display:none}}
+.nt-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
