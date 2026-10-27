@@ -1,0 +1,17 @@
+/* Type roles. Persian-first: generous line-height, no letter-spacing on Arabic script. */
+.nt-display{font-size:var(--fs-display);line-height:var(--lh-display);font-weight:var(--fw-extrabold);margin:0;text-wrap:balance}
+.nt-h1{font-size:var(--fs-h1);line-height:var(--lh-h1);font-weight:var(--fw-extrabold);margin:0;text-wrap:balance}
+.nt-h2{font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:var(--fw-bold);margin:0;text-wrap:balance}
+.nt-h3{font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:var(--fw-bold);margin:0}
+.nt-h4{font-size:var(--fs-h4);line-height:var(--lh-h4);font-weight:var(--fw-bold);margin:0}
+.nt-body-lg{font-size:var(--fs-body-lg);line-height:var(--lh-body-lg);color:var(--text-secondary);margin:0;text-wrap:pretty}
+.nt-body{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--text-secondary);margin:0;text-wrap:pretty}
+.nt-body-sm{font-size:var(--fs-body-sm);line-height:var(--lh-body-sm);color:var(--text-secondary);margin:0;text-wrap:pretty}
+.nt-caption{font-size:var(--fs-caption);line-height:var(--lh-caption);color:var(--text-muted);margin:0}
+.nt-label{font-size:var(--fs-label);line-height:1.4;font-weight:var(--fw-semibold);color:var(--text-primary)}
+.nt-overline{font-size:var(--fs-overline);line-height:1.4;font-weight:var(--fw-bold);color:var(--brand-primary)}
+.nt-data{font-size:var(--fs-data);font-weight:var(--fw-semibold);font-variant-numeric:tabular-nums;color:var(--text-primary)}
+.nt-ltr{direction:ltr;unicode-bidi:isolate}
+.nt-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;direction:ltr;unicode-bidi:isolate;color:var(--text-muted)}
+.nt-text-primary{color:var(--text-primary)}.nt-text-secondary{color:var(--text-secondary)}.nt-text-muted{color:var(--text-muted)}
+.nt-measure{max-width:var(--measure)}
