@@ -5,6 +5,7 @@ import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
 export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }){
   const { ComponentButton, ComponentRatingBadge, ComponentTrustIndicator, ComponentBadgeStatus, ComponentAffiliateZone, ComponentProsConsItem, ComponentSpecRow, ComponentAccordionSection } = NT;
+  const P = findPlatform(id) || findPlatform('a');
   const inCompare = compare.includes(id);
   const sections = [
     { t: '۴. حساب‌ها و شرایط', s: 'انواع حساب، اسپرد، کمیسیون و اهرم.', open: true, body: <div className="nt-grid">
@@ -18,8 +19,8 @@ export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }){
   ];
   const faqs = ['آیا این بروکر برای کاربران ایرانی حساب باز می‌کند؟', 'حداقل واریز برای شروع چقدر است؟', 'امتیاز نیک‌تراست چگونه محاسبه می‌شود؟'];
   return <main>
-    <PageHead go={go} crumbs={[{ label: 'نیک‌تراست', id: 'home' }, { label: 'بروکرهای فارکس', id: 'brokers' }, 'بروکر نمونهٔ الف']}
-      title="بروکر نمونهٔ الف (ساختگی) — بررسی بروکر"
+    <PageHead go={go} crumbs={[{ label: 'نیک‌تراست', id: 'home' }, { label: 'بروکرهای فارکس', id: 'brokers' }, P.name]}
+      title={P.name + ' — بررسی'}
       desc="ارزیابی بر اساس معیارهای نیک‌تراست · امتیاز ۰ تا ۱۰"
       meta={<div className="nt-cluster" style={{ '--gap': 'var(--sp-8) var(--sp-16)', marginTop: 'var(--sp-8)' }}><ComponentBadgeStatus tone="positive" label="رگولاتوری تأییدشده"/><ComponentBadgeStatus tone="info" icon={false} label="واریز ریالی"/><ComponentTrustIndicator/></div>}/>
     <div className="nt-container nt-section" style={{ paddingTop: 'var(--sp-32)' }}>
@@ -28,7 +29,7 @@ export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }){
         <aside className="nt-lg-col-4 nt-stack" style={{ '--gap': 'var(--sp-16)' }} data-sticky>
           <div className="nt-card nt-stack" style={{ '--gap': 'var(--sp-20)' }}>
             <div className="nt-split" style={{ alignItems: 'center' }}><span className="nt-h4">خلاصهٔ ارزیابی</span><a href="#" className="nt-caption" onClick={e => { e.preventDefault(); go('method'); }}>روش ارزیابی</a></div>
-            <div className="k-sum-grid"><ComponentRatingBadge score="۷٫۱" style={{ border: 0, padding: 0 }}/>
+            <div className="k-sum-grid"><ComponentRatingBadge score={P.score} state={P.score ? 'default' : 'empty'} style={{ border: 0, padding: 0 }}/>
             <div className="nt-stack" style={{ '--gap': 'var(--sp-12)' }}>
               <ComponentRatingBadge kind="dimension" label="اعتماد" score="۷٫۸"/>
               <ComponentRatingBadge kind="dimension" label="شفافیت" score="۶٫۸"/>
