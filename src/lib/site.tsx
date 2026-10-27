@@ -38,14 +38,17 @@ export function CompareProvider({ children }: { children: ReactNode }) {
       /* ignore */
     }
   }, []);
-  const toggleCompare = useCallback(
-    (id: string) => setCompare(toggleInList(compareRef(), id)),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [compare],
-  );
-  function compareRef() {
-    return compare;
-  }
+  const toggleCompare = useCallback((id: string) => {
+    setCompareState((prev) => {
+      const next = toggleInList(prev, id);
+      try {
+        localStorage.setItem(KEY, JSON.stringify(next));
+      } catch {
+        /* ignore */
+      }
+      return next;
+    });
+  }, []);
   return <Ctx.Provider value={{ compare, setCompare, toggleCompare }}>{children}</Ctx.Provider>;
 }
 
