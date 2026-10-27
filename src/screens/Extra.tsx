@@ -4,7 +4,7 @@ import { ComponentBadgeStatus } from "@/ds";
 import { IconTile } from "./Shared";
 import NT_DATA from "./data";
 
-export function MarketsHub({ go }) {
+export function MarketsHub({ go }: any) {
   return (
     <div className="nt-cards" style={{ "--card-min": "300px" }}>
       {NT_DATA.markets.map((m) => {

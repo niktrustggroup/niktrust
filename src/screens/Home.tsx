@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function HomeScreen({ go, compare, toggleCompare }){
+export function HomeScreen({ go, compare, toggleCompare }: any){
   const { ComponentButton, ComponentChip, ComponentDataCard, ComponentBadgeStatus } = NT;
   const D = NT_DATA;
   return <main>

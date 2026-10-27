@@ -7,7 +7,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Compare column header — platform identity + remove; empty slot invites adding (max 4). */
-export function ComponentCompareColumnHeader(p={}){
+export function ComponentCompareColumnHeader(p: any = {}){
   const {state='filled',onRemove,onAdd,score,scoreState='empty',className,style}=p;
   if(state==='empty') return <div className={cx('nt-colhead','nt-colhead--empty',className)} style={style}><ComponentButton type="tertiary" size="sm" onClick={onAdd}>{pick(p.addLabel,'+ افزودن پلتفرم')}</ComponentButton></div>;
   return <div className={cx('nt-colhead',state==='focus'&&'is-focus',className)} style={{borderRadius:8,...style}}>

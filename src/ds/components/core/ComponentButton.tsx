@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Button — primary (one dominant action per view), secondary (supporting), tertiary (low-emphasis/inline). */
-export function ComponentButton(p={}){
+export function ComponentButton(p: any = {}){
   const {type='primary',state='default',size='md',block,iconLeading,iconTrailing,href,onClick,children,className,style,disabled,ariaLabel}=p;
   const text=pick(children,p.label,p.text1,'مشاهده بررسی');
   const isDis=disabled||state==='disabled', isLoad=state==='loading';

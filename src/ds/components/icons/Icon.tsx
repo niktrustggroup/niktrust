@@ -1,7 +1,7 @@
 // @ts-nocheck
 import icons from './icon-data';
 
-export function Icon({ name, size, ...rest }) {
+export function Icon({ name, size, ...rest }: any) {
   const d = icons[name];
   if (!d) return null;
   return (

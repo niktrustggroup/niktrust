@@ -6,7 +6,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 const TAG={lowest:['ComponentIconCheck','کمترین'],highest:['ComponentIconCaretUp','بیشترین'],different:['ComponentIconDiff','متفاوت']};
 /** Comparison cell — value + optional difference tag. Highlights are subtle and always labelled. */
-export function ComponentComparisonTableCell(p={}){
+export function ComponentComparisonTableCell(p: any = {}){
   const {state='value',className,style}=p;
   if(state==='blank') return null;
   const v=pick(p.value,p.text1,'$111');

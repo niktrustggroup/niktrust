@@ -6,7 +6,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Filter group — collapsible titled set of options. */
-export function ComponentFilterPanelGroup(p={}){
+export function ComponentFilterPanelGroup(p: any = {}){
   const {state='expanded',children,className,style}=p;
   const [open,setOpen]=React.useState(state!=='collapsed');
   React.useEffect(()=>setOpen(state!=='collapsed'),[state]);

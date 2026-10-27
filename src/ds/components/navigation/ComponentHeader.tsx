@@ -8,7 +8,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 const NAV=[{id:'brokers',label:'بروکرها'},{id:'exchanges',label:'صرافی‌ها'},{id:'prop',label:'پراپ‌فرم‌ها'},{id:'markets',label:'بازارها'},{id:'tools',label:'ابزارها'},{id:'method',label:'روش ارزیابی'}];
 /** Site header — logo, primary nav, search, Compare. Collapses to menu under 900px (container query) or device="mobile". */
-export function ComponentHeader(p={}){
+export function ComponentHeader(p: any = {}){
   const {device='desktop',logoSrc,nav=NAV,current,onNavigate,onSearch,onCompare,compareCount=0,className,style}=p;
   const [open,setOpen]=React.useState(false);
   const go=(e,id)=>{if(onNavigate){e.preventDefault();onNavigate(id);setOpen(false)}};

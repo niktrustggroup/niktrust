@@ -6,7 +6,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 const ST={verified:['ComponentIconCheck','آخرین بررسی'],stale:['ComponentIconWarning','نیازمند به‌روزرسانی'],inreview:['ComponentIconClock','در حال بررسی'],notdeclared:['ComponentIconDash','اعلام نشده']};
 /** Trust indicator — verification date + source for a piece of data. */
-export function ComponentTrustIndicator(p={}){
+export function ComponentTrustIndicator(p: any = {}){
   const {state='verified',source=true,sourceHref='#',className,style}=p;
   const [ic,lbl]=ST[state]||ST.verified;
   const date=pick(p.date,p.text2,'۱۴۰۵/۰۶/۲۹');

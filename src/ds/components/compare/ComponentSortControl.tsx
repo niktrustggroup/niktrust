@@ -6,7 +6,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 const DEF=['امتیاز کلی (نزولی)','امتیاز کلی (صعودی)','حداقل واریز (کم به زیاد)','تاریخ بازبینی (جدیدترین)'];
 /** Sort control — labelled native select. */
-export function ComponentSortControl(p={}){
+export function ComponentSortControl(p: any = {}){
   const {state='default',options=DEF,onChange,className,style,id='nt-sort'}=p;
   const value=pick(p.value,p.text1,options[0]);
   return <label className={cx('nt-sort',className)} style={style} htmlFor={id}>

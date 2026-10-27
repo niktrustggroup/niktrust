@@ -4,7 +4,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Methodology weight row — criterion, data field, weight. Pending weights are shown as pending, never invented. */
-export function ComponentWeightRow(p={}){
+export function ComponentWeightRow(p: any = {}){
   const {state='pending',className,style}=p;
   const crit=pick(p.criterion,p.text2,'Trust'), field=pick(p.field,p.text3,'score_trust'), val=pick(p.value,'۲۵٪');
   const pct=parseFloat(String(val).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))||0;

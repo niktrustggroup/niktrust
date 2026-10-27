@@ -4,7 +4,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Filter option — real checkbox/radio with label and result count. */
-export function ComponentFilterPanelOption(p={}){
+export function ComponentFilterPanelOption(p: any = {}){
   const {control='checkbox',state='default',count=true,checked,onChange,name='nt-filter',className,style}=p;
   const [own,setOwn]=React.useState(state==='selected');
   const sel=checked??own, dis=state==='disabled';

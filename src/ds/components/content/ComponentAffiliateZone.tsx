@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Affiliate zone — the ONLY place a commercial link may appear on a review. Dashed, labelled, separate from editorial. */
-export function ComponentAffiliateZone(p={}){
+export function ComponentAffiliateZone(p: any = {}){
   const {device='desktop',href='#',className,style}=p;
   return <aside className={cx('nt-aff',className)} style={{...(device==='mobile'?{padding:'16px'}:null),...style}} aria-label="همکاری تجاری">
     <div className="nt-aff__inner">

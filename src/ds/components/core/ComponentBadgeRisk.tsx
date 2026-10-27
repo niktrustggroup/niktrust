@@ -13,7 +13,7 @@ const SIGNALS={
   staledata:{tone:'neutral',label:'دادهٔ قدیمی'}
 };
 /** Risk badge — a named risk signal. Outlined so it reads as a warning, not a promotion. */
-export function ComponentBadgeRisk(p={}){
+export function ComponentBadgeRisk(p: any = {}){
   const {signal='platformwarning',className,style}=p;
   const s=SIGNALS[signal]||SIGNALS.platformwarning;
   const text=pick(p.children,p.label,signal==='platformwarning'?p.text1:undefined,s.label);

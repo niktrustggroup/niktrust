@@ -8,7 +8,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Filter panel — sidebar on desktop, bottom sheet on mobile (device="mobile"). */
-export function ComponentFilterPanel(p={}){
+export function ComponentFilterPanel(p: any = {}){
   const {device='desktop',state='default',active=['رگوله‌شده','حداقل واریز زیر $100'],resultCount='۲۴',onClear,onClose,onApply,children,className,style}=p;
   const filtered=state==='filtered'&&active.length>0, mob=device==='mobile';
   return <aside className={cx('nt-filter',mob&&'nt-filter--mobile',className)} style={style} aria-label="فیلترها">

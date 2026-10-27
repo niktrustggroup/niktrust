@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Site footer — brand, link columns, affiliate disclosure + risk warning on every page. */
-export function ComponentFooter(p={}){
+export function ComponentFooter(p: any = {}){
   const {device='desktop',logoSrc,onNavigate,className,style}=p;
   const cols=[
     {t:pick(p.text1,'بازارها'),l:[[pick(p.text2,'فارکس'),'brokers'],[pick(p.text3,'کریپتو'),'exchanges'],[pick(p.text4,'پراپ‌فرم'),'prop'],['سایر بازارها','markets']]},

@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function ListingScreen({ go, compare, toggleCompare, title = 'بروکرهای فارکس', desc = 'فهرست بروکرهای بررسی‌شده بر اساس معیارهای نیک‌تراست. ترتیب فهرست از لینک‌های همکاری اثر نمی‌گیرد.', items }){
+export function ListingScreen({ go, compare, toggleCompare, title = 'بروکرهای فارکس', desc = 'فهرست بروکرهای بررسی‌شده بر اساس معیارهای نیک‌تراست. ترتیب فهرست از لینک‌های همکاری اثر نمی‌گیرد.', items }: any){
   const { ComponentButton, ComponentDataCard, ComponentFilterPanel, ComponentFilterPanelGroup, ComponentFilterPanelOption, ComponentSortControl, ComponentPaginationItem, ComponentChip } = NT;
   const D = NT_DATA;
   const [sheet, setSheet] = React.useState(false);

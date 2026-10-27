@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Pros / cons line — check or cross marker + factual statement. */
-export function ComponentProsConsItem(p={}){
+export function ComponentProsConsItem(p: any = {}){
   const {tone='pro',className,style}=p;
   return <li className={cx('nt-pc','nt-pc--'+tone,className)} style={{listStyle:'none',...style}}>
     <span className="nt-pc__mark">{p.icon1||<Icon name={tone==='pro'?'ComponentIconCheck':'ComponentIconClose'} size={14} aria-hidden="true"/>}</span>

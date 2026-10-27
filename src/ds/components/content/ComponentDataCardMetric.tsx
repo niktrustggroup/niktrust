@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Metric — one key figure on a card. Missing data shows its state, never 0. */
-export function ComponentDataCardMetric(p={}){
+export function ComponentDataCardMetric(p: any = {}){
   const {state='value',basis=true,className,style}=p;
   const label=pick(p.label,p.text1,'حداقل واریز'), value=pick(p.value,p.text2,'$111');
   const empty=state!=='value';

@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Breadcrumb — full trail on desktop; single "back to parent" link on mobile. */
-export function ComponentBreadcrumb(p={}){
+export function ComponentBreadcrumb(p: any = {}){
   const {device='desktop',deepLevel=false,items,className,style}=p;
   const list=items||[pick(p.item1,p.text4,'نیک‌تراست'),pick(p.item2,p.text3,'بازارها'),pick(p.item3,p.text2,'فارکس'),...(deepLevel?[pick(p.item4,p.text1,'بروکر نمونه')]:[])];
   const L=list.map(x=>typeof x==='string'?{label:x,href:'#'}:x);

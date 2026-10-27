@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Spec row — label / value pair with data-state. */
-export function ComponentSpecRow(p={}){
+export function ComponentSpecRow(p: any = {}){
   const {state='verified',className,style}=p;
   const label=pick(p.label,p.text2,'حداقل واریز'), value=pick(p.value,p.text1,'$111');
   const empty=state==='notdeclared'||state==='inreview';

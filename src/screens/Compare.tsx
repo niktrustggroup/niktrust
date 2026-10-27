@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function CompareScreen({ go, compare, setCompare }){
+export function CompareScreen({ go, compare, setCompare }: any){
   const { ComponentButton, ComponentCompareColumnHeader, ComponentComparisonTableRow, ComponentBadgeStatus } = NT;
   const cols = compare.map(findPlatform).filter(Boolean);
   const slots = cols.length < 4 ? 1 : 0;

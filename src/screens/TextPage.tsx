@@ -4,7 +4,7 @@ import { PageHead, SectionHead } from "./Shared";
 import { ComponentBadgeStatus } from "@/ds";
 
 /** Generic editorial page built on the DS page header + measured body copy. */
-export function TextPage({ go, crumb, title, desc, sections = [], status }) {
+export function TextPage({ go, crumb, title, desc, sections = [], status }: any) {
   return (
     <main>
       <PageHead
@@ -31,7 +31,7 @@ export function TextPage({ go, crumb, title, desc, sections = [], status }) {
 }
 
 /** Honest "coming soon" grid for staged sections. */
-export function StagedGrid({ items }) {
+export function StagedGrid({ items }: any) {
   return (
     <div className="nt-cards" style={{ "--card-min": "280px" }}>
       {items.map((t) => (

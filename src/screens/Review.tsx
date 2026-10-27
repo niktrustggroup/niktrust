@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }){
+export function ReviewScreen({ go, compare, toggleCompare, id = 'a' }: any){
   const { ComponentButton, ComponentRatingBadge, ComponentTrustIndicator, ComponentBadgeStatus, ComponentAffiliateZone, ComponentProsConsItem, ComponentSpecRow, ComponentAccordionSection } = NT;
   const P = findPlatform(id) || findPlatform('a');
   const inCompare = compare.includes(id);

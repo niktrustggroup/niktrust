@@ -5,7 +5,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 const toNum=(s)=>{const n=parseFloat(String(s??'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٫,]/g,'.'));return isNaN(n)?null:n};
 /** Rating — methodology-based score. kind=overall (headline) | dimension (breakdown row). Empty = not yet scored, never 0. */
-export function ComponentRatingBadge(p={}){
+export function ComponentRatingBadge(p: any = {}){
   const {kind='overall',size='lg',state='default',className,style}=p;
   const score=pick(p.score,p.text3,'۷٫۱'), scale=pick(p.scale,p.text2,'از ۱۰'), label=pick(p.label,p.text1,kind==='overall'?'امتیاز کلی':'اعتماد');
   const max=toNum(scale)||10, n=toNum(score), pct=n==null?0:Math.max(0,Math.min(100,n/max*100));

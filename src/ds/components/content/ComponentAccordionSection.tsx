@@ -5,7 +5,7 @@ const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
 /** Accordion section — progressive disclosure for long review sections. */
-export function ComponentAccordionSection(p={}){
+export function ComponentAccordionSection(p: any = {}){
   const {device='desktop',state='collapsed',children,className,style,id}=p;
   const [open,setOpen]=React.useState(state==='expanded');
   React.useEffect(()=>setOpen(state==='expanded'),[state]);

@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function MethodologyScreen({ go }){
+export function MethodologyScreen({ go }: any){
   const { ComponentWeightRow, ComponentBadgeStatus, ComponentBadgeRisk } = NT;
   const toc = [['criteria', 'معیارهای ارزیابی'], ['weights', 'وزن‌دهی معیارها'], ['sources', 'منابع داده'], ['freq', 'دورهٔ به‌روزرسانی'], ['affiliate', 'سیاست همکاری تجاری'], ['states', 'وضعیت‌های داده'], ['publish', 'شرط انتشار امتیاز']];
   const [active, setActive] = React.useState('criteria');

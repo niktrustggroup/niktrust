@@ -3,7 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { KIcon, SectionHead, PageHead, IconTile, findPlatform } from './Shared';
 import NT_DATA from './data';
-export function AboutScreen({ go }){
+export function AboutScreen({ go }: any){
   const { ComponentButton, ComponentBadgeStatus } = NT;
   const List = ({ items, tone }) => <ul className="nt-stack" style={{ '--gap': 'var(--sp-12)', margin: 0, padding: 0, listStyle: 'none' }}>{items.map(t => <li key={t} className="nt-pc" style={{ fontSize: 'var(--fs-body)' }}><span className="nt-pc__mark" style={{ background: tone === 'pro' ? 'var(--status-success-subtle)' : 'var(--neutral-100)', color: tone === 'pro' ? 'var(--status-success)' : 'var(--text-secondary)' }}><KIcon name={tone === 'pro' ? 'Check' : 'Close'} size={14}/></span><span>{t}</span></li>)}</ul>;
   return <main>
