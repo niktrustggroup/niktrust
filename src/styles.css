@@ -1,7 +1,19 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./ds/css/fig-tokens.css";
+@import "./ds/css/semantic.css";
+@import "./ds/css/layout.css";
+@import "./ds/css/type.css";
+@import "./ds/css/nt.css";
+@import "./ds/css/kit.css";
 
+/* Vazirmatn (bundled with the NikTrust Design System) */
+@font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/ffa8ce60-bcf4-42ea-8e84-cd46a9b8e401/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/a57fbe1b-58b5-4116-83b6-b8f4eada9777/Vazirmatn-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/d9100f54-dccd-46c1-89b4-1cff199e9726/Vazirmatn-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/4c8502f4-1073-45e2-b06b-b4ff788724ba/Vazirmatn-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/cea15c2d-6b10-4a62-9e3c-c2affae4c3f2/Vazirmatn-ExtraBold.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
 @custom-variant dark (&:is(.dark *));
 
 /*
