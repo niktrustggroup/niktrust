@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import * as NT from '@/ds';
+import { PATHS } from '@/ds/paths';
 import NT_DATA from './data';
 // Shared kit helpers: section header, page header, icon shorthand.
 export function KIcon(p){ const { Icon } = NT; return <Icon className="nt-icon" aria-hidden="true" {...p} name={'ComponentIcon' + p.name} size={p.size || 20}/>; }
@@ -15,7 +16,7 @@ export function PageHead({ crumbs, title, desc, meta, aside, go }){
   return <section className="nt-section--line" style={{ background: 'var(--bg-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
     <div className="nt-container" style={{ paddingBlock: 'var(--sp-32) var(--sp-40)' }}>
       <div className="nt-stack" style={{ '--gap': 'var(--sp-16)' }}>
-        {crumbs && <ComponentBreadcrumb items={crumbs.map(c => typeof c === 'string' ? c : { ...c, onClick: e => { e.preventDefault(); go(c.id); } })}/>}
+        {crumbs && <ComponentBreadcrumb items={crumbs.map(c => typeof c === 'string' ? c : { ...c, href: PATHS[c.id] || '/', onClick: e => { e.preventDefault(); go(c.id); } })}/>}
         <div className="nt-split" style={{ alignItems: 'flex-end' }}>
           <div className="nt-stack" style={{ '--gap': 'var(--sp-8)', maxWidth: 'var(--measure)' }}>
             <h1 className="nt-h1">{title}</h1>

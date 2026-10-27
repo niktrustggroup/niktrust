@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { PATHS } from '../../paths';
 import { Icon } from '../icons/Icon';
 import { ComponentButton } from '../core/ComponentButton';
 const cx=(...a)=>a.filter(Boolean).join(' ');
@@ -11,11 +12,11 @@ export function ComponentHeader(p={}){
   const {device='desktop',logoSrc,nav=NAV,current,onNavigate,onSearch,onCompare,compareCount=0,className,style}=p;
   const [open,setOpen]=React.useState(false);
   const go=(e,id)=>{if(onNavigate){e.preventDefault();onNavigate(id);setOpen(false)}};
-  const links=nav.map(n=><a key={n.id} href={'#'+n.id} className="nt-nav__link" aria-current={current===n.id?'page':undefined} onClick={e=>go(e,n.id)}>{n.label}</a>);
+  const links=nav.map(n=><a key={n.id} href={PATHS[n.id]||'/'} className="nt-nav__link" aria-current={current===n.id?'page':undefined} onClick={e=>go(e,n.id)}>{n.label}</a>);
   return <header className={cx('nt-header',device==='mobile'&&'nt-header--mobile',className)} style={style}>
     <div className="nt-container">
       <div className="nt-header__bar">
-        <a href="#home" className="nt-header__brand" onClick={e=>go(e,'home')} aria-label="نیک‌تراست — صفحهٔ اصلی">{logoSrc?<img src={logoSrc} alt="NikTrust"/>:<span className="nt-wordmark">{pick(p.text2,'نیک‌تراست')}</span>}</a>
+        <a href="/" className="nt-header__brand" onClick={e=>go(e,'home')} aria-label="نیک‌تراست — صفحهٔ اصلی">{logoSrc?<img src={logoSrc} alt="NikTrust"/>:<span className="nt-wordmark">{pick(p.text2,'نیک‌تراست')}</span>}</a>
         <nav className="nt-nav" aria-label="ناوبری اصلی">{links}</nav>
         <div className="nt-header__actions">
           <button type="button" className="nt-iconbtn" aria-label="جستجو" onClick={onSearch}><Icon name="ComponentIconSearch" size={18}/></button>
