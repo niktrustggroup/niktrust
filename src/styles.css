@@ -154,3 +154,6 @@
     color: var(--color-foreground);
   }
 }
+
+.nt-skip{position:absolute;inset-inline-start:var(--sp-16);top:-100px;z-index:100;padding:var(--sp-8) var(--sp-16);background:var(--brand-primary);color:var(--text-on-brand);border-radius:var(--r-md)}
+.nt-skip:focus{top:var(--sp-8)}
