@@ -8,4 +8,6 @@ export const PATHS: Record<string, string> = {
   team: '/about/team', revenue: '/how-we-make-money', editorial: '/editorial-policy', corrections: '/corrections',
   account: '/account', login: '/account/login', signup: '/account/signup', recover: '/account/recover',
   partners: '/partners', membership: '/membership',
+  news: '/news', iranian:'/crypto-exchanges/iranian', international:'/crypto-exchanges/international',
+  profitLoss:'/tools/profit-loss', margin:'/tools/margin', swap:'/tools/swap', watchlist:'/account/watchlist',
 };
