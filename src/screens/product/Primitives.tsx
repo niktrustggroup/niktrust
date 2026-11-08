@@ -17,7 +17,7 @@ export function Attribute({ attribute }: { attribute: AttributeValueView }) {
 }
 export function PlatformCard({ platform, compare, toggleCompare, go }: { platform: PlatformDetail; compare: string[]; toggleCompare: (id: string) => void; go: (id: string, arg?: string) => void }) {
   const p = platform;
-  return <ComponentDataCard name={p.name_fa} category={p.category_fa} icon1={p.name_fa.slice(0,1)} score={visibleScore(p.score)} scoreState="empty" trustState={p.key_attributes.some(a => a.evidence.is_stale) ? 'stale' : 'inreview'} date={persianDate(p.updated_at)} commercialCTA={false}
+  return <ComponentDataCard name={p.name_fa} category={p.category_fa} icon1={p.name_fa.slice(0,1)} score={visibleScore(p.score)} scoreState={visibleScore(p.score) === null ? 'empty' : 'default'} trustState={p.key_attributes.some(a => a.evidence.is_stale) ? 'stale' : 'inreview'} date={persianDate(p.updated_at)} commercialCTA={false}
     badges={[{ tone: 'neutral', label: 'نمونهٔ ساختگی' }, { tone: 'unknown', label: 'دسترسی ایران: نامشخص · اطمینان نامشخص' }]}
     metrics={p.key_attributes.map(a => ({ label: a.label, value: a.value ? persianValue(a.value) : undefined, state: a.value_status === 'known' ? 'default' : 'notdeclared' }))}
     href={`/${p.category === 'brokers' ? 'forex-brokers' : p.category === 'exchanges' ? 'crypto-exchanges' : 'prop-firms'}/${p.slug}`}
