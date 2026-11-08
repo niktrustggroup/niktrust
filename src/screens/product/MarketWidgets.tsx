@@ -35,7 +35,7 @@ function MarketEmbed({ kind }: { kind: 'chart' | 'ticker' }) {
         { proName: 'BITSTAMP:BTCUSD', title: 'بیت‌کوین / دلار' },
         { proName: 'BITSTAMP:ETHUSD', title: 'اتریوم / دلار' },
         { proName: 'OANDA:XAUUSD', title: 'طلا / دلار' },
-      ], showSymbolLogo: true, isTransparent: true, displayMode: 'regular', colorTheme: theme, locale: 'en',
+      ], showSymbolLogo: true, isTransparent: false, displayMode: 'regular', colorTheme: theme, locale: 'en',
     });
     script.onerror = () => { if (!disposed) setState('error'); };
     const observer = new MutationObserver(() => {

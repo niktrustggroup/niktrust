@@ -1,9 +1,9 @@
 # NikTrust MVP
 
 ## Header, markets and night mode update
-- [ ] Add official symbol and logotype; simplify the homepage hero.
-- [ ] Replace comparison picks with a real market widget and add a moving price strip above the header.
-- [ ] Add site-wide night mode and verify desktop/mobile navigation and layouts.
+- [x] Add official symbol and logotype; simplify the homepage hero.
+- [x] Replace comparison picks with a real market widget and add a moving price strip above the header.
+- [x] Add site-wide night mode and verify desktop/mobile navigation and layouts (320–1920 widths; 12 tests passed).
 
 ## Reference-led structural redesign
 - [x] Inspect both reference sites, supplied screenshots and existing routes (BrokerChooser direct-browser interactions remain challenged).
@@ -20,5 +20,5 @@
 - [x] Record remaining external dependencies without simulating production services.
 - [ ] Validate exact API conformance — blocked by missing Day04 OpenAPI and sample JSON companion files.
 - [ ] Activate real accounts, submissions and partner dashboards — blocked by the missing service contract and approved account strategy; current screens are presentation-only.
-- [ ] Activate market prices, authoritative calculators, membership payments and commissions — blocked by provider/licensing, approved formulas, pricing, contracts and payment service decisions.
+- [ ] Activate authoritative calculators, membership payments and commissions — blocked by approved formulas, pricing, contracts and payment service decisions. Public market charts and prices are available through attributed TradingView embeds, with provider-dependent delays.
 - [ ] Publish real reviews, team profiles, articles and final legal content — blocked by approved editorial/business source data.
