@@ -11,6 +11,9 @@ function MarketEmbed({ kind }: { kind: 'chart' | 'ticker' }) {
   useEffect(() => {
     const element = host.current;
     if (!element) return;
+    let disposed = false;
+    const markReady = () => { if (!disposed) setState('ready'); };
+    const frames = new WeakSet<HTMLIFrameElement>();
     setState('loading');
     element.replaceChildren();
     const widget = document.createElement('div');
@@ -32,20 +35,21 @@ function MarketEmbed({ kind }: { kind: 'chart' | 'ticker' }) {
         { proName: 'BITSTAMP:BTCUSD', title: 'بیت‌کوین / دلار' },
         { proName: 'BITSTAMP:ETHUSD', title: 'اتریوم / دلار' },
         { proName: 'OANDA:XAUUSD', title: 'طلا / دلار' },
-      ], showSymbolLogo: true, isTransparent: true, displayMode: 'regular', colorTheme: theme, locale: 'en',
+      ], showSymbolLogo: true, isTransparent: false, displayMode: 'regular', colorTheme: theme, locale: 'en',
     });
-    script.onerror = () => setState('error');
+    script.onerror = () => { if (!disposed) setState('error'); };
     const observer = new MutationObserver(() => {
       const iframe = element.querySelector('iframe');
-      if (iframe) {
+      if (iframe && !frames.has(iframe)) {
+        frames.add(iframe);
         iframe.title = kind === 'chart' ? 'نمودار بازار TradingView' : 'نوار قیمت بازار TradingView';
-        iframe.addEventListener('load', () => setState('ready'), { once: true });
+        iframe.addEventListener('load', markReady, { once: true });
       }
     });
     observer.observe(element, { childList: true, subtree: true });
     element.append(script);
     const timeout = window.setTimeout(() => setState(s => s === 'loading' ? 'error' : s), 20000);
-    return () => { observer.disconnect(); window.clearTimeout(timeout); script.onerror = null; element.replaceChildren(); };
+    return () => { disposed = true; observer.disconnect(); window.clearTimeout(timeout); script.onerror = null; element.replaceChildren(); };
   }, [kind, theme, attempt]);
   return <div className={`nt-market-embed nt-market-embed--${kind}`}>
     <div className="tradingview-widget-container" ref={host} />
