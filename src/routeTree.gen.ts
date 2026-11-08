@@ -37,6 +37,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PropFirmsRouteImport } from './routes/prop-firms'
 import { Route as RiskWarningRouteImport } from './routes/risk-warning'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TerminalRouteImport } from './routes/terminal'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ToolsRouteImport } from './routes/tools'
@@ -220,6 +221,11 @@ const RiskWarningRoute = RiskWarningRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TerminalRoute = TerminalRouteImport.update({
@@ -475,6 +481,7 @@ export interface FileRoutesByFullPath {
   '/prop-firms': typeof PropFirmsRoute
   '/risk-warning': typeof RiskWarningRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -549,6 +556,7 @@ export interface FileRoutesByTo {
   '/prop-firms': typeof PropFirmsRoute
   '/risk-warning': typeof RiskWarningRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -624,6 +632,7 @@ export interface FileRoutesById {
   '/prop-firms': typeof PropFirmsRoute
   '/risk-warning': typeof RiskWarningRoute
   '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -700,6 +709,7 @@ export interface FileRouteTypes {
     | '/prop-firms'
     | '/risk-warning'
     | '/search'
+    | '/sitemap.xml'
     | '/terminal'
     | '/terms'
     | '/tools'
@@ -774,6 +784,7 @@ export interface FileRouteTypes {
     | '/prop-firms'
     | '/risk-warning'
     | '/search'
+    | '/sitemap.xml'
     | '/terminal'
     | '/terms'
     | '/tools'
@@ -848,6 +859,7 @@ export interface FileRouteTypes {
     | '/prop-firms'
     | '/risk-warning'
     | '/search'
+    | '/sitemap.xml'
     | '/terminal'
     | '/terms'
     | '/tools'
@@ -923,6 +935,7 @@ export interface RootRouteChildren {
   PropFirmsRoute: typeof PropFirmsRoute
   RiskWarningRoute: typeof RiskWarningRoute
   SearchRoute: typeof SearchRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TerminalRoute: typeof TerminalRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
@@ -1164,6 +1177,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terminal': {
@@ -1518,6 +1538,7 @@ const rootRouteChildren: RootRouteChildren = {
   PropFirmsRoute: PropFirmsRoute,
   RiskWarningRoute: RiskWarningRoute,
   SearchRoute: SearchRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TerminalRoute: TerminalRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,
