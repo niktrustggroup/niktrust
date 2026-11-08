@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { PATHS } from '../../paths';
 import { RESEARCH_NAV } from '../../navigation';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { Icon } from '../icons/Icon';
 import { ComponentButton } from '../core/ComponentButton';
 const cx=(...a)=>a.filter(Boolean).join(' ');
@@ -13,6 +13,7 @@ export function ComponentHeader(p: any = {}){
   const {device='desktop',logoSrc,current,onNavigate,onCompare,compareCount=0,className,style}=p;
   const [open,setOpen]=useState(false),[active,setActive]=useState(null),[q,setQ]=useState('');
   const ref=useRef(null), trigger=useRef(null);
+  const navigate=useNavigate();
   const close=()=>{setActive(null);setOpen(false)};
   useEffect(()=>{
     const outside=e=>{if(ref.current&&!ref.current.contains(e.target))close()};
@@ -22,7 +23,7 @@ export function ComponentHeader(p: any = {}){
   },[]);
   const link=(label,id,cls='')=><Link key={id} to={PATHS[id]} className={cls} onClick={close}>{label}<Icon name="ComponentIconArrowStart" size={14}/></Link>;
   const selected=RESEARCH_NAV.find(n=>n.id===active);
-  const search=<form className="nt-mast-search" onSubmit={e=>{e.preventDefault();close();onNavigate?.('search')}}><Icon name="ComponentIconSearch" size={20}/><label className="nt-visually-hidden" htmlFor="mast-search">جستجو در نیک‌تراست</label><input id="mast-search" value={q} onChange={e=>setQ(e.target.value)} placeholder="جستجوی پلتفرم، ابزار یا راهنما…"/><Link to="/search" search={{q:q||undefined}} onClick={close} aria-label="جستجو" className="nt-mast-search-go"><Icon name="ComponentIconArrowStart" size={18}/></Link></form>;
+  const search=<form className="nt-mast-search" onSubmit={e=>{e.preventDefault();close();void navigate({to:'/search',search:q.trim()?{q:q.trim()}:{}})}}><Icon name="ComponentIconSearch" size={20}/><label className="nt-visually-hidden" htmlFor="mast-search">جستجو در نیک‌تراست</label><input id="mast-search" value={q} onChange={e=>setQ(e.target.value)} placeholder="جستجوی پلتفرم، ابزار یا راهنما…"/><Link to="/search" search={q.trim()?{q:q.trim()}:{}} onClick={close} aria-label="جستجو" className="nt-mast-search-go"><Icon name="ComponentIconArrowStart" size={18}/></Link></form>;
   return <header ref={ref} className={cx('nt-header nt-research-header',device==='mobile'&&'nt-header--mobile',className)} style={style} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setActive(null)}}>
     <div className="nt-utility"><div className="nt-container"><span>پژوهش مستقل؛ انتخاب آگاهانه</span><nav aria-label="دسترسی سریع"><Link to="/methodology">روش ارزیابی</Link><Link to="/how-we-make-money">شفافیت مالی</Link><Link to="/alerts">مرکز هشدارها</Link></nav><span>فارسی <bdi>FA</bdi></span></div></div>
     <div className="nt-container nt-masthead"><Link to="/" onClick={close} className="nt-mast-brand" aria-label="نیک‌تراست — صفحهٔ اصلی">{logoSrc?<img src={logoSrc} width="150" height="34" alt="نیک‌تراست"/>:<span className="nt-wordmark">نیک‌تراست</span>}<span>ارزیابی و مقایسهٔ پلتفرم‌های مالی</span></Link>{search}

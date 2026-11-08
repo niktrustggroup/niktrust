@@ -11,7 +11,7 @@ export function ComponentFooter(p: any = {}){
   const cols=[
     {t:pick(p.text1,'پلتفرم‌ها و بازارها'),l:[['بروکرهای فارکس','brokers'],['صرافی‌های رمزارز','exchanges'],['پراپ‌فرم‌ها','prop'],['بازارهای مالی','markets'],['مقایسهٔ پلتفرم‌ها','compare']]},
     {t:'پژوهش و آموزش',l:[['مرکز آموزش','learn'],['واژه‌نامهٔ مالی','glossary'],['اخبار و تحلیل','news'],['مجلهٔ نیک‌تراست','blog'],['ابزارها و ماشین‌حساب‌ها','tools']]},
-    {t:'شفافیت',l:[['مدل درآمد','revenue'],['سیاست تحریریه','editorial'],['هشدارها','alerts'],['استعلام پلتفرم','check']]},
+    {t:'شفافیت',l:[['روش ارزیابی','method'],['مدل درآمد','revenue'],['سیاست تحریریه','editorial'],['هشدارها','alerts'],['استعلام پلتفرم','check']]},
     {t:'نیک‌تراست',l:[['دربارهٔ ما','about'],['تیم و بررسی‌کنندگان','team'],['تماس با ما','contact'],['سوالات متداول','faq'],['برنامهٔ همکاری','partners'],['عضویت','membership']]}];
   const go=(e,id)=>{if(onNavigate&&id){e.preventDefault();onNavigate(id)}};
   return <footer className={cx('nt-footer nt-research-footer',device==='mobile'&&'nt-footer--mobile',className)} style={style}>

@@ -8,10 +8,11 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 export function ComponentAccordionSection(p: any = {}){
   const {device='desktop',state='collapsed',children,className,style,id}=p;
   const [open,setOpen]=React.useState(state==='expanded');
+  const generatedId=React.useId();
   React.useEffect(()=>setOpen(state==='expanded'),[state]);
   const post=state==='postmvp';
-  const title=pick(p.title,p.text1,'۴. حساب‌ها و شرایط'), summary=pick(p.summary,p.text2,'انواع حساب، اسپرد، کمیسیون و اهرم.');
-  const bid=(id||'acc')+'-body';
+  const title=pick(p.title,p.text1,'اطلاعات تکمیلی'), summary=pick(p.summary,p.text2);
+  const bid=(id||generatedId)+'-body';
   return <section id={id} className={cx('nt-acc',open&&!post&&'is-open',post&&'is-postmvp',device==='mobile'&&'nt-acc--mobile',className)} style={style}>
     <button type="button" className={cx('nt-acc__head',state==='focus'&&'is-focus')} aria-expanded={open&&!post} aria-controls={bid} disabled={post} onClick={()=>!post&&setOpen(o=>!o)}>
       {p.icon1}
