@@ -14,3 +14,5 @@
 - Page bodies live in `src/screens/` (ported from the DS UI kit) and routes are thin wrappers that pass `useScreenProps()` (go/compare); keeps routes simple and screens faithful to the kit.
 - Navigation ids map to URLs only in `src/ds/paths.ts`; header, footer and breadcrumbs read from it so URLs change in one place.
 - Compare selection is client-only (localStorage) via `CompareProvider`; no backend exists yet.
+- Data-driven screens read the shared query/client envelope in `src/api/`; provisional view models must be replaced from the missing Day04 OpenAPI companion rather than claiming contract conformance.
+- Product service/account presentation screens expose unavailable states until real authenticated services exist; never substitute local mock success for a production operation.
