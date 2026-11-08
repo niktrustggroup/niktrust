@@ -1,10 +1,10 @@
-import { ComponentBadgeStatus, ComponentButton, ComponentDataCard } from '@/ds';
+import { ComponentBadgeStatus, ComponentButton, ComponentDataCard, Icon } from '@/ds';
 import { useCatalog } from '@/api/client';
 import { persianDate, persianValue } from '@/api/format';
 import { visibleScore } from '@/api/rules';
 import type { PlatformDetail, AttributeValueView } from '@/api/types';
 import { Link } from '@tanstack/react-router';
-export function SampleNotice() { return <div className="nt-note nt-note--caution"><span>داده‌های این نسخه ساختگی‌اند؛ هیچ امتیاز یا تأیید واقعی منتشر نشده است.</span></div>; }
+export function SampleNotice() { return <div className="nt-sample-notice"><Icon name="ComponentIconInfo" size={16}/><span>پروفایل‌های این نسخه ساختگی‌اند؛ مشخصات صرفاً نمایشی است و هیچ امتیاز یا تأیید واقعی منتشر نشده است.</span></div>; }
 export function EmptyState({ title = 'اطلاعاتی ثبت نشده است', text, action }: { title?: string; text?: string; action?: React.ReactNode }) {
   return <div className="nt-empty" role="status"><h2 className="nt-h4">{title}</h2>{text && <p className="nt-body-sm">{text}</p>}{action}</div>;
 }

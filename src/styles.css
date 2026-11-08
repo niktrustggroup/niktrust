@@ -7,6 +7,7 @@
 @import "./ds/css/type.css";
 @import "./ds/css/nt.css";
 @import "./ds/css/kit.css";
+@import "./ds/css/research.css";
 
 /* Vazirmatn (bundled with the NikTrust Design System) */
 @font-face{font-family:"Vazirmatn";src:url("/__l5e/assets-v1/ffa8ce60-bcf4-42ea-8e84-cd46a9b8e401/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
