@@ -5,7 +5,7 @@ import { RESEARCH_NAV } from '@/ds/navigation';
 import { PATHS } from '@/ds/paths';
 import type { PlatformDetail } from '@/api/types';
 export function CategoryDirectory() {
-  return <nav className="nt-category-directory" aria-label="دسته‌های نیک‌تراست">{RESEARCH_NAV.map(n=><Link key={n.id} to={PATHS[n.id]}><KIcon name={n.icon} size={25}/><span>{n.label}</span></Link>)}</nav>;
+  return <nav className="nt-category-directory" aria-label="دسته‌های نیک‌تراست">{RESEARCH_NAV.map(n=><Link key={n.id} to={PATHS[n.id] ?? "/"}><KIcon name={n.icon} size={25}/><span>{n.label}</span></Link>)}</nav>;
 }
 export function ResearchAside() {
   return <aside className="nt-research-aside"><h3>پیش از تصمیم، بررسی کنید</h3>{[
