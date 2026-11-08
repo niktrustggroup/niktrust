@@ -188,5 +188,9 @@ body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-pri
 .nt-score--compact .nt-score__pill{font-size:var(--fs-caption);min-width:60px}
 .nt-section,.nt-container,.nt-grid>*,.nt-card{min-width:0}
 .nt-pcard__name,.nt-btn span{overflow-wrap:anywhere}
+.nt-pcard__head{display:grid;grid-template-columns:48px minmax(0,1fr)}
+.nt-pcard__head>.nt-score{grid-column:1 / -1;justify-self:start}
+.nt-pcard__title{width:100%}
+.nt-pcard__name{overflow-wrap:normal;word-break:normal}
 @media(max-width:767px){.nt-paths{grid-template-columns:1fr}.nt-path{border-inline-end:0;border-bottom:1px solid var(--border-subtle)}.nt-research-hero{padding-block:var(--sp-32)}.nt-specification{grid-template-columns:1fr}.nt-header__actions{gap:var(--sp-4)}.nt-pcard__head{flex-wrap:wrap}.nt-pcard__title{flex-basis:calc(100% - 72px)}.nt-score--compact{margin-inline-start:auto}.nt-comparison{min-width:760px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
