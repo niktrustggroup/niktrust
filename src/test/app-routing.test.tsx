@@ -27,6 +27,7 @@ describe("App routing", () => {
     expect(RESEARCH_NAV.map(n=>n.id)).toEqual(['brokers','exchanges','prop','markets','tools','learn','news']);
     const ids=RESEARCH_NAV.flatMap(n=>[n.id,...n.groups.flatMap(g=>g.links.map(([,id])=>id))]);
     for(const id of ids){
+      if(!id)throw new Error('Navigation destination is missing');
       const path=PATHS[id];
       expect(path,id).toBeDefined();
       if(!path)continue;

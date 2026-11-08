@@ -18,4 +18,12 @@
 
 ## Validation
 
+## Reference-led redesign (November 2026)
+
+- BrokerChooser homepage, directory, best-broker lists, review, comparison, finder and methodology were read through the website gateway. Desktop screenshots show a compact grouped header, selection journeys, structured reviews and metric-based comparison. Direct browser access was challenged (403); hover/mobile behavior is not independently verified.
+- Almurakib homepage, licensed-company directory, crypto directory, tools and XS review were read. Desktop browser hover verified the wide grouped overlay with category introduction, review links and warnings. Its dense news modules and utility ecosystem inform NikTrust's publication hierarchy, not its promotional banners, unsupported rankings or prices.
+- All ten supplied mobile screenshots were inspected: grouped mobile navigation, large category targets, due-diligence steps and the matching journey are relevant patterns.
+- NikTrust preserves all existing URLs and its working discovery/comparison flows. Seven category groups share desktop mega menus and mobile accordions; homepage, listings, reviews, comparisons and empty editorial templates share the NT research styling layer.
+- No popularity rankings, recommendations, live prices, authors, testimonials or ratings were invented. Existing fictional records remain labelled; editorial templates stay unpublished until approved content arrives.
+
 Behavior tests cover four-item cap, same-category comparisons, unpublished scores, sanitized restoration, working coverage filtering, report length and exact rial/toman conversion. Browser checks cover search, filtering, pagination, comparison persistence, category reviews, phone menu and viewport widths 320–1920. Detailed production integration and authenticated end-to-end verification remain blocked by the absent services.
