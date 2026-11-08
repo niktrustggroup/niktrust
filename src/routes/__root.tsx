@@ -15,6 +15,10 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ComponentHeader, ComponentFooter } from "@/ds";
 import { CompareProvider, useScreenProps } from "@/lib/site";
+import { ThemeProvider, useTheme } from "@/lib/theme";
+import { MarketTicker } from "@/screens/product/MarketWidgets";
+import logoSymbol from "@/assets/logo.svg.asset.json";
+import logoWhite from "@/assets/logotype-white.svg.asset.json";
 import logoBlue from "@/assets/logotype-blue.svg.asset.json";
 import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
 import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
@@ -131,14 +135,18 @@ const CURRENT: Record<string, string> = {
 };
 
 function Chrome() {
+  const { theme } = useTheme();
   const { go, compare } = useScreenProps();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const current = path.startsWith("/review") ? "brokers" : Object.entries(CURRENT).find(([url])=>path===url||path.startsWith(url+'/'))?.[1];
   return (
     <>
       <a href="#main" className="nt-skip">پرش به محتوا</a>
+      <MarketTicker />
       <ComponentHeader
         logoSrc={logoBlue.url}
+        logoSymbolSrc={logoSymbol.url}
+        logoDarkSrc={logoWhite.url}
         current={current}
         compareCount={compare.length}
         onNavigate={go}
@@ -148,7 +156,7 @@ function Chrome() {
       <div id="main">
         <Outlet />
       </div>
-      <ComponentFooter logoSrc={logoBlue.url} onNavigate={go} />
+      <ComponentFooter logoSrc={theme === "dark" ? logoWhite.url : logoBlue.url} onNavigate={go} />
     </>
   );
 }
@@ -158,9 +166,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CompareProvider>
+      <ThemeProvider><CompareProvider>
         <Chrome />
-      </CompareProvider>
+      </CompareProvider></ThemeProvider>
     </QueryClientProvider>
   );
 }

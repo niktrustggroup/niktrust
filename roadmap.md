@@ -1,5 +1,10 @@
 # NikTrust MVP
 
+## Header, markets and night mode update
+- [ ] Add official symbol and logotype; simplify the homepage hero.
+- [ ] Replace comparison picks with a real market widget and add a moving price strip above the header.
+- [ ] Add site-wide night mode and verify desktop/mobile navigation and layouts.
+
 ## Reference-led structural redesign
 - [x] Inspect both reference sites, supplied screenshots and existing routes (BrokerChooser direct-browser interactions remain challenged).
 - [x] Refine global editorial design and build rich desktop/mobile navigation.
