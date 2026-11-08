@@ -1,6 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { PATHS } from "@/ds/paths";
+import { mockCatalog } from '@/api/mockClient';
+import { sanitizeSelection } from '@/api/rules';
 
 export const MAX_COMPARE = 4;
 
@@ -25,15 +27,16 @@ export function CompareProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setCompareState(JSON.parse(raw));
+      if (raw) setCompareState(sanitizeSelection(JSON.parse(raw), mockCatalog.platforms));
     } catch {
       /* ignore */
     }
   }, []);
   const setCompare = useCallback((ids: string[]) => {
-    setCompareState(ids);
+    const safe = sanitizeSelection(ids, mockCatalog.platforms);
+    setCompareState(safe);
     try {
-      localStorage.setItem(KEY, JSON.stringify(ids));
+      localStorage.setItem(KEY, JSON.stringify(safe));
     } catch {
       /* ignore */
     }
@@ -63,7 +66,9 @@ export function useGo() {
   const navigate = useNavigate();
   return useCallback(
     (id: string, arg?: string) => {
-      const to = id === "review" ? `/review/${arg ?? "a"}` : (PATHS[id] ?? "/");
+      const platform = mockCatalog.platforms.find(p => p.id === arg);
+      const categoryPath = platform ? PATHS[platform.category] : undefined;
+      const to = id === "review" ? (platform && categoryPath ? `${categoryPath}/${platform.slug}` : `/review/${arg ?? "a"}`) : (PATHS[id] ?? "/");
       void navigate({ to });
       if (typeof window !== "undefined") window.scrollTo(0, 0);
     },

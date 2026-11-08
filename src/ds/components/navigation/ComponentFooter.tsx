@@ -10,8 +10,8 @@ export function ComponentFooter(p: any = {}){
   const cols=[
     {t:pick(p.text1,'بازارها'),l:[[pick(p.text2,'فارکس'),'brokers'],[pick(p.text3,'کریپتو'),'exchanges'],[pick(p.text4,'پراپ‌فرم'),'prop'],['سایر بازارها','markets']]},
     {t:'درباره نیک‌تراست',l:[['درباره ما','about'],['روش ارزیابی','method'],['تماس با ما','contact'],['سوالات متداول','faq']]},
-    {t:'شفافیت',l:[['افشای همکاری تجاری','disclosure'],['بیانیه بی‌طرفی','about'],['مجله','blog'],['سلب مسئولیت','disclaimer']]},
-    {t:'قانونی',l:[['شرایط استفاده','terms'],['سیاست حریم خصوصی','privacy']]}];
+    {t:'شفافیت',l:[['مدل درآمد','revenue'],['سیاست تحریریه','editorial'],['هشدارها','alerts'],['استعلام پلتفرم','check']]},
+    {t:'خدمات و قوانین',l:[['ترمینال تحلیلی','terminal'],['برنامهٔ همکاری','partners'],['عضویت','membership'],['شرایط استفاده','terms'],['سیاست حریم خصوصی','privacy'],['سلب مسئولیت','disclaimer']]}];
   const go=(e,id)=>{if(onNavigate&&id){e.preventDefault();onNavigate(id)}};
   return <footer className={cx('nt-footer',device==='mobile'&&'nt-footer--mobile',className)} style={style}>
     <div className="nt-container">

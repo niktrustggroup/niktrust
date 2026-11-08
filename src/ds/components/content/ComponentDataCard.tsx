@@ -14,7 +14,7 @@ const DEF_METRICS=[{label:'حداقل واریز',value:'$111'},{label:'اسپر
 const DEF_BADGES=[{tone:'positive',label:'رگولاتوری تأییدشده'}];
 /** Platform data card — Title → key data → metadata → action. Used on listing, home and search. */
 export function ComponentDataCard(p: any = {}){
-  const {device='desktop',commercialCTA=false,state='default',category='بروکر',score='۷٫۱',scoreState,metrics=DEF_METRICS,badges=DEF_BADGES,date='۱۴۰۵/۰۶/۲۹',trustState='verified',href='#',onReview,onCompare,compared=false,logoSrc,className,style}=p;
+  const {device='desktop',commercialCTA=false,state='default',category='بروکر',score,scoreState='empty',metrics=[],badges=[],date='تاریخ اعلام نشده',trustState='inreview',href='#',onReview,onCompare,compared=false,logoSrc,className,style}=p;
   const name=pick(p.name,p.text2,'بروکر نمونهٔ الف (ساختگی)');
   if(state==='loading') return <div className={cx('nt-pcard',className)} style={style} aria-busy="true">
     <div className="nt-pcard__body">

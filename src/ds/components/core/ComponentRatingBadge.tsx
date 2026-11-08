@@ -16,7 +16,7 @@ export function ComponentRatingBadge(p: any = {}){
     <div className="nt-score__bar"><span className="nt-score__fill" style={{width:pct+'%'}}></span></div>
   </div>;
   if(size==='compact') return <div className={cx('nt-score','nt-score--compact',empty&&'nt-score--empty',className)} style={style} aria-label={aria}>
-    <span className="nt-score__pill">{empty?'—':score}</span>
+    <span className="nt-score__pill">{empty?'نامشخص':score}</span>
     <span className="nt-score__meta"><b>{label}</b><span>{empty?'در دست بررسی':scale}</span></span>
   </div>;
   return <div className={cx('nt-score','nt-score--lg',empty&&'nt-score--empty',className)} style={style} aria-label={aria}>
