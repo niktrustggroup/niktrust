@@ -2,7 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { PageHead } from '../Shared';
 import { EmptyState } from './Primitives';
 import { ComponentButton } from '@/ds';
+import { PublicationScreen } from './Publication';
 export function EditorialScreen({ go, title, kind }: { go: (id: string) => void; title: string; kind: string }) {
+  if(['learn','glossary','news','article','topic','term','blog'].includes(kind))return <PublicationScreen go={go} title={title} kind={kind}/>;
   const sections: Record<string,{ title: string; body: string }[]> = {
     revenue:[{title:'منابع درآمد و استقلال',body:'همکاری IB، لینک‌های همکاری و عضویت در دامنهٔ محصول قرار دارند؛ نرخ، قرارداد و قیمت تأییدشده‌ای برای این نسخه ارائه نشده است.'},{title:'افشای لینک همکاری',body:'هر لینک همکاری باید کنار اقدام خروجی برچسب «لینک همکاری» داشته باشد. رابطهٔ تجاری وارد امتیاز یا ترتیب فهرست نمی‌شود.'},{title:'اطلاعات اعتماد عمومی',body:'مجوز، امتیاز منتشرشده، هشدار و وضعیت دسترسی ایران پشت قفل عضویت قرار نمی‌گیرند.'}],
     editorial:[{title:'استقلال تحریریه',body:'معیارهای بررسی از روابط تجاری مستقل‌اند. ادعای پلتفرم، تجربهٔ کاربر و تأیید مستقل جدا نمایش داده می‌شوند.'},{title:'منبع، تاریخ و عدم قطعیت',body:'دادهٔ ناموجود «اعلام نشده» و دادهٔ قدیمی «نیازمند بازبینی» نمایش داده می‌شود. امتیاز بدون روش منتشرشده نشان داده نمی‌شود.'}],

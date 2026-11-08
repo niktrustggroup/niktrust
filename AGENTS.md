@@ -16,3 +16,5 @@
 - Compare selection is client-only (localStorage) via `CompareProvider`; no backend exists yet.
 - Data-driven screens read the shared query/client envelope in `src/api/`; provisional view models must be replaced from the missing Day04 OpenAPI companion rather than claiming contract conformance.
 - Product service/account presentation screens expose unavailable states until real authenticated services exist; never substitute local mock success for a production operation.
+- Shared research navigation groups live in `src/ds/navigation.ts`, resolve through PATHS, and serve both desktop mega menus and mobile accordions to prevent hierarchy drift.
+- The research publication styling layer lives in `src/ds/css/research.css` and inherits NT semantic tokens; shared discovery and publication screens keep category/review/editorial journeys consistent.
