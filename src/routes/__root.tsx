@@ -127,12 +127,13 @@ const CURRENT: Record<string, string> = {
   "/markets": "markets",
   "/tools": "tools",
   "/methodology": "method",
+  "/learn":"learn", "/glossary":"learn", "/blog":"learn", "/news":"news", "/terminal":"markets",
 };
 
 function Chrome() {
   const { go, compare } = useScreenProps();
   const path = useRouterState({ select: (s) => s.location.pathname });
-  const current = path.startsWith("/review") ? "brokers" : CURRENT[path];
+  const current = path.startsWith("/review") ? "brokers" : Object.entries(CURRENT).find(([url])=>path===url||path.startsWith(url+'/'))?.[1];
   return (
     <>
       <a href="#main" className="nt-skip">پرش به محتوا</a>

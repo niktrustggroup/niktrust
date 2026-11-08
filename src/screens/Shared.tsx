@@ -14,9 +14,9 @@ export function SectionHead({ title, desc, action, overline, as = 'h2' }: any){
 
 export function PageHead({ crumbs, title, desc, meta, aside, go }: any){
   const { ComponentBreadcrumb } = NT;
-  return <section className="nt-section--line" style={{ background: 'var(--bg-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
-    <div className="nt-container" style={{ paddingBlock: 'var(--sp-32) var(--sp-40)' }}>
-      <div className="nt-stack" style={{ '--gap': 'var(--sp-16)' }}>
+  return <section className="nt-page-heading">
+    <div className="nt-container">
+      <div className="nt-stack">
         {crumbs && <ComponentBreadcrumb items={crumbs.map(c => typeof c === 'string' ? c : { ...c, href: PATHS[c.id] || '/', onClick: e => { e.preventDefault(); go(c.id); } })}/>}
         <div className="nt-split" style={{ alignItems: 'flex-end' }}>
           <div className="nt-stack" style={{ '--gap': 'var(--sp-8)', maxWidth: 'var(--measure)' }}>
