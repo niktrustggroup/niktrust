@@ -14,6 +14,8 @@ export const Route = createFileRoute("/compare")({
 function Page() {
   const p = useScreenProps();
   const { items } = Route.useSearch();
+  const navigate = Route.useNavigate();
   const selected = items ? sanitizeSelection(items.split(','), mockCatalog.platforms) : p.compare;
-  return <CompareScreen {...p} compare={selected} />;
+  const setCompare = (ids: string[]) => { p.setCompare(ids); if (items !== undefined) void navigate({ search: { items: ids.join(',') }, replace: true }); };
+  return <CompareScreen {...p} compare={selected} setCompare={setCompare} />;
 }
