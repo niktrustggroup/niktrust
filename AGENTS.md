@@ -18,3 +18,6 @@
 - Product service/account presentation screens expose unavailable states until real authenticated services exist; never substitute local mock success for a production operation.
 - Shared research navigation groups live in `src/ds/navigation.ts`, resolve through PATHS, and serve both desktop mega menus and mobile accordions to prevent hierarchy drift.
 - The research publication styling layer lives in `src/ds/css/research.css` and inherits NT semantic tokens; shared discovery and publication screens keep category/review/editorial journeys consistent.
+
+- ThemeProvider owns appearance preference; appearance.css overrides NT semantic roles globally so all screens share night mode.
+- Public market displays use client-mounted TradingView embeds with provider attribution and failure states; never substitute fabricated prices.
