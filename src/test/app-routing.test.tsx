@@ -14,4 +14,10 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  it('matches the new public, research, account and partner addresses', () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    for (const path of ['/search','/check','/alerts','/alerts/report','/forex-brokers/a','/crypto-exchanges/e','/prop-firms/f','/compare/a-vs-b','/about/team','/terminal','/tools/margin','/account/login','/partners/dashboard']) {
+      expect(router.matchRoutes(path).at(-1)?.routeId, path).not.toBe(rootRouteId);
+    }
+  });
 });

@@ -3,6 +3,7 @@ import React from 'react';
 import * as NT from '@/ds';
 import { PATHS } from '@/ds/paths';
 import NT_DATA from './data';
+import { mockCatalog } from '@/api/mockClient';
 // Shared kit helpers: section header, page header, icon shorthand.
 export function KIcon(p: any){ const { Icon } = NT; return <Icon className="nt-icon" aria-hidden="true" {...p} name={'ComponentIcon' + p.name} size={p.size || 20}/>; }
 
@@ -36,5 +37,5 @@ export function IconTile({ name, tone = 'brand' }: any){
   return <span style={{ display: 'grid', placeItems: 'center', width: 44, height: 44, borderRadius: 'var(--r-md)', background: bg, color: fg, flexShrink: 0 }}><KIcon name={name} size={22}/></span>;
 }
 
-export function findPlatform(id){ const d = NT_DATA; return d.brokers.find(b => b.id === id) || d.topReviews.find(b => b.id === id && b.name); }
+export function findPlatform(id){ const p = mockCatalog.platforms.find(p => p.id === id || p.slug === id); return p ? { ...p, name:p.name_fa } : undefined; }
 

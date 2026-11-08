@@ -11,21 +11,77 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CheckRouteImport } from './routes/check'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CorrectionsRouteImport } from './routes/corrections'
 import { Route as CryptoExchangesRouteImport } from './routes/crypto-exchanges'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as DisclosureRouteImport } from './routes/disclosure'
+import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FinderRouteImport } from './routes/finder'
 import { Route as ForexBrokersRouteImport } from './routes/forex-brokers'
+import { Route as GlossaryRouteImport } from './routes/glossary'
+import { Route as HowWeMakeMoneyRouteImport } from './routes/how-we-make-money'
+import { Route as LearnRouteImport } from './routes/learn'
 import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PropFirmsRouteImport } from './routes/prop-firms'
+import { Route as RiskWarningRouteImport } from './routes/risk-warning'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TerminalRouteImport } from './routes/terminal'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as AboutTeamRouteImport } from './routes/about_.team'
+import { Route as AccountLoginRouteImport } from './routes/account_.login'
+import { Route as AccountMembershipRouteImport } from './routes/account_.membership'
+import { Route as AccountNotificationsRouteImport } from './routes/account_.notifications'
+import { Route as AccountProfileRouteImport } from './routes/account_.profile'
+import { Route as AccountRebatesRouteImport } from './routes/account_.rebates'
+import { Route as AccountRecoverRouteImport } from './routes/account_.recover'
+import { Route as AccountReviewsRouteImport } from './routes/account_.reviews'
+import { Route as AccountSavedRouteImport } from './routes/account_.saved'
+import { Route as AccountSettingsRouteImport } from './routes/account_.settings'
+import { Route as AccountSignupRouteImport } from './routes/account_.signup'
+import { Route as AccountWatchlistRouteImport } from './routes/account_.watchlist'
+import { Route as AlertsSlugRouteImport } from './routes/alerts_.$slug'
+import { Route as AlertsReportRouteImport } from './routes/alerts_.report'
+import { Route as ComparePairRouteImport } from './routes/compare_.$pair'
+import { Route as CryptoExchangesSlugRouteImport } from './routes/crypto-exchanges_.$slug'
+import { Route as CryptoExchangesBestForFeatureRouteImport } from './routes/crypto-exchanges_.best-for-$feature'
+import { Route as CryptoExchangesInternationalRouteImport } from './routes/crypto-exchanges_.international'
+import { Route as CryptoExchangesIranianRouteImport } from './routes/crypto-exchanges_.iranian'
+import { Route as ForexBrokersSlugRouteImport } from './routes/forex-brokers_.$slug'
+import { Route as ForexBrokersBestForFeatureRouteImport } from './routes/forex-brokers_.best-for-$feature'
+import { Route as GlossaryTermRouteImport } from './routes/glossary_.$term'
+import { Route as LearnTopicRouteImport } from './routes/learn_.$topic'
+import { Route as MarketsSymbolRouteImport } from './routes/markets_.$symbol'
+import { Route as MembershipCheckoutRouteImport } from './routes/membership_.checkout'
+import { Route as MembershipResultRouteImport } from './routes/membership_.result'
+import { Route as MembershipTermsRouteImport } from './routes/membership_.terms'
+import { Route as MethodologyCategoryRouteImport } from './routes/methodology_.$category'
+import { Route as PartnersApplyRouteImport } from './routes/partners_.apply'
+import { Route as PartnersDashboardRouteImport } from './routes/partners_.dashboard'
+import { Route as PartnersGuideRouteImport } from './routes/partners_.guide'
+import { Route as PartnersLeadsRouteImport } from './routes/partners_.leads'
+import { Route as PartnersLedgerRouteImport } from './routes/partners_.ledger'
+import { Route as PartnersLinksRouteImport } from './routes/partners_.links'
+import { Route as PartnersPayoutsRouteImport } from './routes/partners_.payouts'
+import { Route as PartnersRulesRouteImport } from './routes/partners_.rules'
+import { Route as PropFirmsSlugRouteImport } from './routes/prop-firms_.$slug'
+import { Route as PropFirmsBestForFeatureRouteImport } from './routes/prop-firms_.best-for-$feature'
 import { Route as ReviewIdRouteImport } from './routes/review.$id'
+import { Route as ToolsCalculatorRouteImport } from './routes/tools_.$calculator'
+import { Route as LearnTopicSlugRouteImport } from './routes/learn_.$topic.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,9 +93,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckRoute = CheckRouteImport.update({
+  id: '/check',
+  path: '/check',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -50,6 +121,11 @@ const CompareRoute = CompareRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorrectionsRoute = CorrectionsRouteImport.update({
+  id: '/corrections',
+  path: '/corrections',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CryptoExchangesRoute = CryptoExchangesRouteImport.update({
@@ -67,9 +143,19 @@ const DisclosureRoute = DisclosureRouteImport.update({
   path: '/disclosure',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
+  id: '/editorial-policy',
+  path: '/editorial-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinderRoute = FinderRouteImport.update({
+  id: '/finder',
+  path: '/finder',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForexBrokersRoute = ForexBrokersRouteImport.update({
@@ -77,14 +163,44 @@ const ForexBrokersRoute = ForexBrokersRouteImport.update({
   path: '/forex-brokers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GlossaryRoute = GlossaryRouteImport.update({
+  id: '/glossary',
+  path: '/glossary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeMakeMoneyRoute = HowWeMakeMoneyRouteImport.update({
+  id: '/how-we-make-money',
+  path: '/how-we-make-money',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketsRoute = MarketsRouteImport.update({
   id: '/markets',
   path: '/markets',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MembershipRoute = MembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MethodologyRoute = MethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -97,6 +213,26 @@ const PropFirmsRoute = PropFirmsRouteImport.update({
   path: '/prop-firms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RiskWarningRoute = RiskWarningRouteImport.update({
+  id: '/risk-warning',
+  path: '/risk-warning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminalRoute = TerminalRouteImport.update({
+  id: '/terminal',
+  path: '/terminal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -107,148 +243,742 @@ const ToolsRoute = ToolsRouteImport.update({
   path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutTeamRoute = AboutTeamRouteImport.update({
+  id: '/about_/team',
+  path: '/about/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountLoginRoute = AccountLoginRouteImport.update({
+  id: '/account_/login',
+  path: '/account/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountMembershipRoute = AccountMembershipRouteImport.update({
+  id: '/account_/membership',
+  path: '/account/membership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountNotificationsRoute = AccountNotificationsRouteImport.update({
+  id: '/account_/notifications',
+  path: '/account/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountProfileRoute = AccountProfileRouteImport.update({
+  id: '/account_/profile',
+  path: '/account/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRebatesRoute = AccountRebatesRouteImport.update({
+  id: '/account_/rebates',
+  path: '/account/rebates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRecoverRoute = AccountRecoverRouteImport.update({
+  id: '/account_/recover',
+  path: '/account/recover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountReviewsRoute = AccountReviewsRouteImport.update({
+  id: '/account_/reviews',
+  path: '/account/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountSavedRoute = AccountSavedRouteImport.update({
+  id: '/account_/saved',
+  path: '/account/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountSettingsRoute = AccountSettingsRouteImport.update({
+  id: '/account_/settings',
+  path: '/account/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountSignupRoute = AccountSignupRouteImport.update({
+  id: '/account_/signup',
+  path: '/account/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountWatchlistRoute = AccountWatchlistRouteImport.update({
+  id: '/account_/watchlist',
+  path: '/account/watchlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsSlugRoute = AlertsSlugRouteImport.update({
+  id: '/alerts_/$slug',
+  path: '/alerts/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsReportRoute = AlertsReportRouteImport.update({
+  id: '/alerts_/report',
+  path: '/alerts/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComparePairRoute = ComparePairRouteImport.update({
+  id: '/compare_/$pair',
+  path: '/compare/$pair',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CryptoExchangesSlugRoute = CryptoExchangesSlugRouteImport.update({
+  id: '/crypto-exchanges_/$slug',
+  path: '/crypto-exchanges/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CryptoExchangesBestForFeatureRoute =
+  CryptoExchangesBestForFeatureRouteImport.update({
+    id: '/crypto-exchanges_/best-for-$feature',
+    path: '/crypto-exchanges/best-for-$feature',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CryptoExchangesInternationalRoute =
+  CryptoExchangesInternationalRouteImport.update({
+    id: '/crypto-exchanges_/international',
+    path: '/crypto-exchanges/international',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CryptoExchangesIranianRoute = CryptoExchangesIranianRouteImport.update({
+  id: '/crypto-exchanges_/iranian',
+  path: '/crypto-exchanges/iranian',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForexBrokersSlugRoute = ForexBrokersSlugRouteImport.update({
+  id: '/forex-brokers_/$slug',
+  path: '/forex-brokers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForexBrokersBestForFeatureRoute =
+  ForexBrokersBestForFeatureRouteImport.update({
+    id: '/forex-brokers_/best-for-$feature',
+    path: '/forex-brokers/best-for-$feature',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GlossaryTermRoute = GlossaryTermRouteImport.update({
+  id: '/glossary_/$term',
+  path: '/glossary/$term',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnTopicRoute = LearnTopicRouteImport.update({
+  id: '/learn_/$topic',
+  path: '/learn/$topic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketsSymbolRoute = MarketsSymbolRouteImport.update({
+  id: '/markets_/$symbol',
+  path: '/markets/$symbol',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipCheckoutRoute = MembershipCheckoutRouteImport.update({
+  id: '/membership_/checkout',
+  path: '/membership/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipResultRoute = MembershipResultRouteImport.update({
+  id: '/membership_/result',
+  path: '/membership/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipTermsRoute = MembershipTermsRouteImport.update({
+  id: '/membership_/terms',
+  path: '/membership/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodologyCategoryRoute = MethodologyCategoryRouteImport.update({
+  id: '/methodology_/$category',
+  path: '/methodology/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersApplyRoute = PartnersApplyRouteImport.update({
+  id: '/partners_/apply',
+  path: '/partners/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersDashboardRoute = PartnersDashboardRouteImport.update({
+  id: '/partners_/dashboard',
+  path: '/partners/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersGuideRoute = PartnersGuideRouteImport.update({
+  id: '/partners_/guide',
+  path: '/partners/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersLeadsRoute = PartnersLeadsRouteImport.update({
+  id: '/partners_/leads',
+  path: '/partners/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersLedgerRoute = PartnersLedgerRouteImport.update({
+  id: '/partners_/ledger',
+  path: '/partners/ledger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersLinksRoute = PartnersLinksRouteImport.update({
+  id: '/partners_/links',
+  path: '/partners/links',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersPayoutsRoute = PartnersPayoutsRouteImport.update({
+  id: '/partners_/payouts',
+  path: '/partners/payouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRulesRoute = PartnersRulesRouteImport.update({
+  id: '/partners_/rules',
+  path: '/partners/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropFirmsSlugRoute = PropFirmsSlugRouteImport.update({
+  id: '/prop-firms_/$slug',
+  path: '/prop-firms/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropFirmsBestForFeatureRoute = PropFirmsBestForFeatureRouteImport.update({
+  id: '/prop-firms_/best-for-$feature',
+  path: '/prop-firms/best-for-$feature',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewIdRoute = ReviewIdRouteImport.update({
   id: '/review/$id',
   path: '/review/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsCalculatorRoute = ToolsCalculatorRouteImport.update({
+  id: '/tools_/$calculator',
+  path: '/tools/$calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnTopicSlugRoute = LearnTopicSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LearnTopicRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/alerts': typeof AlertsRoute
   '/blog': typeof BlogRoute
+  '/check': typeof CheckRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/crypto-exchanges': typeof CryptoExchangesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/disclosure': typeof DisclosureRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/faq': typeof FaqRoute
+  '/finder': typeof FinderRoute
   '/forex-brokers': typeof ForexBrokersRoute
+  '/glossary': typeof GlossaryRoute
+  '/how-we-make-money': typeof HowWeMakeMoneyRoute
+  '/learn': typeof LearnRoute
   '/markets': typeof MarketsRoute
+  '/membership': typeof MembershipRoute
   '/methodology': typeof MethodologyRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/prop-firms': typeof PropFirmsRoute
+  '/risk-warning': typeof RiskWarningRoute
+  '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
+  '/about/team': typeof AboutTeamRoute
+  '/account/login': typeof AccountLoginRoute
+  '/account/membership': typeof AccountMembershipRoute
+  '/account/notifications': typeof AccountNotificationsRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/rebates': typeof AccountRebatesRoute
+  '/account/recover': typeof AccountRecoverRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/saved': typeof AccountSavedRoute
+  '/account/settings': typeof AccountSettingsRoute
+  '/account/signup': typeof AccountSignupRoute
+  '/account/watchlist': typeof AccountWatchlistRoute
+  '/alerts/$slug': typeof AlertsSlugRoute
+  '/alerts/report': typeof AlertsReportRoute
+  '/compare/$pair': typeof ComparePairRoute
+  '/crypto-exchanges/$slug': typeof CryptoExchangesSlugRoute
+  '/crypto-exchanges/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
+  '/crypto-exchanges/international': typeof CryptoExchangesInternationalRoute
+  '/crypto-exchanges/iranian': typeof CryptoExchangesIranianRoute
+  '/forex-brokers/$slug': typeof ForexBrokersSlugRoute
+  '/forex-brokers/best-for-$feature': typeof ForexBrokersBestForFeatureRoute
+  '/glossary/$term': typeof GlossaryTermRoute
+  '/learn/$topic': typeof LearnTopicRouteWithChildren
+  '/markets/$symbol': typeof MarketsSymbolRoute
+  '/membership/checkout': typeof MembershipCheckoutRoute
+  '/membership/result': typeof MembershipResultRoute
+  '/membership/terms': typeof MembershipTermsRoute
+  '/methodology/$category': typeof MethodologyCategoryRoute
+  '/partners/apply': typeof PartnersApplyRoute
+  '/partners/dashboard': typeof PartnersDashboardRoute
+  '/partners/guide': typeof PartnersGuideRoute
+  '/partners/leads': typeof PartnersLeadsRoute
+  '/partners/ledger': typeof PartnersLedgerRoute
+  '/partners/links': typeof PartnersLinksRoute
+  '/partners/payouts': typeof PartnersPayoutsRoute
+  '/partners/rules': typeof PartnersRulesRoute
+  '/prop-firms/$slug': typeof PropFirmsSlugRoute
+  '/prop-firms/best-for-$feature': typeof PropFirmsBestForFeatureRoute
   '/review/$id': typeof ReviewIdRoute
+  '/tools/$calculator': typeof ToolsCalculatorRoute
+  '/learn/$topic/$slug': typeof LearnTopicSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/alerts': typeof AlertsRoute
   '/blog': typeof BlogRoute
+  '/check': typeof CheckRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/crypto-exchanges': typeof CryptoExchangesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/disclosure': typeof DisclosureRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/faq': typeof FaqRoute
+  '/finder': typeof FinderRoute
   '/forex-brokers': typeof ForexBrokersRoute
+  '/glossary': typeof GlossaryRoute
+  '/how-we-make-money': typeof HowWeMakeMoneyRoute
+  '/learn': typeof LearnRoute
   '/markets': typeof MarketsRoute
+  '/membership': typeof MembershipRoute
   '/methodology': typeof MethodologyRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/prop-firms': typeof PropFirmsRoute
+  '/risk-warning': typeof RiskWarningRoute
+  '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
+  '/about/team': typeof AboutTeamRoute
+  '/account/login': typeof AccountLoginRoute
+  '/account/membership': typeof AccountMembershipRoute
+  '/account/notifications': typeof AccountNotificationsRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/rebates': typeof AccountRebatesRoute
+  '/account/recover': typeof AccountRecoverRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/saved': typeof AccountSavedRoute
+  '/account/settings': typeof AccountSettingsRoute
+  '/account/signup': typeof AccountSignupRoute
+  '/account/watchlist': typeof AccountWatchlistRoute
+  '/alerts/$slug': typeof AlertsSlugRoute
+  '/alerts/report': typeof AlertsReportRoute
+  '/compare/$pair': typeof ComparePairRoute
+  '/crypto-exchanges/$slug': typeof CryptoExchangesSlugRoute
+  '/crypto-exchanges/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
+  '/crypto-exchanges/international': typeof CryptoExchangesInternationalRoute
+  '/crypto-exchanges/iranian': typeof CryptoExchangesIranianRoute
+  '/forex-brokers/$slug': typeof ForexBrokersSlugRoute
+  '/forex-brokers/best-for-$feature': typeof ForexBrokersBestForFeatureRoute
+  '/glossary/$term': typeof GlossaryTermRoute
+  '/learn/$topic': typeof LearnTopicRouteWithChildren
+  '/markets/$symbol': typeof MarketsSymbolRoute
+  '/membership/checkout': typeof MembershipCheckoutRoute
+  '/membership/result': typeof MembershipResultRoute
+  '/membership/terms': typeof MembershipTermsRoute
+  '/methodology/$category': typeof MethodologyCategoryRoute
+  '/partners/apply': typeof PartnersApplyRoute
+  '/partners/dashboard': typeof PartnersDashboardRoute
+  '/partners/guide': typeof PartnersGuideRoute
+  '/partners/leads': typeof PartnersLeadsRoute
+  '/partners/ledger': typeof PartnersLedgerRoute
+  '/partners/links': typeof PartnersLinksRoute
+  '/partners/payouts': typeof PartnersPayoutsRoute
+  '/partners/rules': typeof PartnersRulesRoute
+  '/prop-firms/$slug': typeof PropFirmsSlugRoute
+  '/prop-firms/best-for-$feature': typeof PropFirmsBestForFeatureRoute
   '/review/$id': typeof ReviewIdRoute
+  '/tools/$calculator': typeof ToolsCalculatorRoute
+  '/learn/$topic/$slug': typeof LearnTopicSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/alerts': typeof AlertsRoute
   '/blog': typeof BlogRoute
+  '/check': typeof CheckRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/crypto-exchanges': typeof CryptoExchangesRoute
   '/disclaimer': typeof DisclaimerRoute
   '/disclosure': typeof DisclosureRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
   '/faq': typeof FaqRoute
+  '/finder': typeof FinderRoute
   '/forex-brokers': typeof ForexBrokersRoute
+  '/glossary': typeof GlossaryRoute
+  '/how-we-make-money': typeof HowWeMakeMoneyRoute
+  '/learn': typeof LearnRoute
   '/markets': typeof MarketsRoute
+  '/membership': typeof MembershipRoute
   '/methodology': typeof MethodologyRoute
+  '/news': typeof NewsRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/prop-firms': typeof PropFirmsRoute
+  '/risk-warning': typeof RiskWarningRoute
+  '/search': typeof SearchRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terminal': typeof TerminalRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
+  '/about_/team': typeof AboutTeamRoute
+  '/account_/login': typeof AccountLoginRoute
+  '/account_/membership': typeof AccountMembershipRoute
+  '/account_/notifications': typeof AccountNotificationsRoute
+  '/account_/profile': typeof AccountProfileRoute
+  '/account_/rebates': typeof AccountRebatesRoute
+  '/account_/recover': typeof AccountRecoverRoute
+  '/account_/reviews': typeof AccountReviewsRoute
+  '/account_/saved': typeof AccountSavedRoute
+  '/account_/settings': typeof AccountSettingsRoute
+  '/account_/signup': typeof AccountSignupRoute
+  '/account_/watchlist': typeof AccountWatchlistRoute
+  '/alerts_/$slug': typeof AlertsSlugRoute
+  '/alerts_/report': typeof AlertsReportRoute
+  '/compare_/$pair': typeof ComparePairRoute
+  '/crypto-exchanges_/$slug': typeof CryptoExchangesSlugRoute
+  '/crypto-exchanges_/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
+  '/crypto-exchanges_/international': typeof CryptoExchangesInternationalRoute
+  '/crypto-exchanges_/iranian': typeof CryptoExchangesIranianRoute
+  '/forex-brokers_/$slug': typeof ForexBrokersSlugRoute
+  '/forex-brokers_/best-for-$feature': typeof ForexBrokersBestForFeatureRoute
+  '/glossary_/$term': typeof GlossaryTermRoute
+  '/learn_/$topic': typeof LearnTopicRouteWithChildren
+  '/markets_/$symbol': typeof MarketsSymbolRoute
+  '/membership_/checkout': typeof MembershipCheckoutRoute
+  '/membership_/result': typeof MembershipResultRoute
+  '/membership_/terms': typeof MembershipTermsRoute
+  '/methodology_/$category': typeof MethodologyCategoryRoute
+  '/partners_/apply': typeof PartnersApplyRoute
+  '/partners_/dashboard': typeof PartnersDashboardRoute
+  '/partners_/guide': typeof PartnersGuideRoute
+  '/partners_/leads': typeof PartnersLeadsRoute
+  '/partners_/ledger': typeof PartnersLedgerRoute
+  '/partners_/links': typeof PartnersLinksRoute
+  '/partners_/payouts': typeof PartnersPayoutsRoute
+  '/partners_/rules': typeof PartnersRulesRoute
+  '/prop-firms_/$slug': typeof PropFirmsSlugRoute
+  '/prop-firms_/best-for-$feature': typeof PropFirmsBestForFeatureRoute
   '/review/$id': typeof ReviewIdRoute
+  '/tools_/$calculator': typeof ToolsCalculatorRoute
+  '/learn_/$topic/$slug': typeof LearnTopicSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/account'
+    | '/alerts'
     | '/blog'
+    | '/check'
     | '/compare'
     | '/contact'
+    | '/corrections'
     | '/crypto-exchanges'
     | '/disclaimer'
     | '/disclosure'
+    | '/editorial-policy'
     | '/faq'
+    | '/finder'
     | '/forex-brokers'
+    | '/glossary'
+    | '/how-we-make-money'
+    | '/learn'
     | '/markets'
+    | '/membership'
     | '/methodology'
+    | '/news'
+    | '/partners'
     | '/privacy'
     | '/prop-firms'
+    | '/risk-warning'
+    | '/search'
+    | '/sitemap.xml'
+    | '/terminal'
     | '/terms'
     | '/tools'
+    | '/about/team'
+    | '/account/login'
+    | '/account/membership'
+    | '/account/notifications'
+    | '/account/profile'
+    | '/account/rebates'
+    | '/account/recover'
+    | '/account/reviews'
+    | '/account/saved'
+    | '/account/settings'
+    | '/account/signup'
+    | '/account/watchlist'
+    | '/alerts/$slug'
+    | '/alerts/report'
+    | '/compare/$pair'
+    | '/crypto-exchanges/$slug'
+    | '/crypto-exchanges/best-for-$feature'
+    | '/crypto-exchanges/international'
+    | '/crypto-exchanges/iranian'
+    | '/forex-brokers/$slug'
+    | '/forex-brokers/best-for-$feature'
+    | '/glossary/$term'
+    | '/learn/$topic'
+    | '/markets/$symbol'
+    | '/membership/checkout'
+    | '/membership/result'
+    | '/membership/terms'
+    | '/methodology/$category'
+    | '/partners/apply'
+    | '/partners/dashboard'
+    | '/partners/guide'
+    | '/partners/leads'
+    | '/partners/ledger'
+    | '/partners/links'
+    | '/partners/payouts'
+    | '/partners/rules'
+    | '/prop-firms/$slug'
+    | '/prop-firms/best-for-$feature'
     | '/review/$id'
+    | '/tools/$calculator'
+    | '/learn/$topic/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/account'
+    | '/alerts'
     | '/blog'
+    | '/check'
     | '/compare'
     | '/contact'
+    | '/corrections'
     | '/crypto-exchanges'
     | '/disclaimer'
     | '/disclosure'
+    | '/editorial-policy'
     | '/faq'
+    | '/finder'
     | '/forex-brokers'
+    | '/glossary'
+    | '/how-we-make-money'
+    | '/learn'
     | '/markets'
+    | '/membership'
     | '/methodology'
+    | '/news'
+    | '/partners'
     | '/privacy'
     | '/prop-firms'
+    | '/risk-warning'
+    | '/search'
+    | '/sitemap.xml'
+    | '/terminal'
     | '/terms'
     | '/tools'
+    | '/about/team'
+    | '/account/login'
+    | '/account/membership'
+    | '/account/notifications'
+    | '/account/profile'
+    | '/account/rebates'
+    | '/account/recover'
+    | '/account/reviews'
+    | '/account/saved'
+    | '/account/settings'
+    | '/account/signup'
+    | '/account/watchlist'
+    | '/alerts/$slug'
+    | '/alerts/report'
+    | '/compare/$pair'
+    | '/crypto-exchanges/$slug'
+    | '/crypto-exchanges/best-for-$feature'
+    | '/crypto-exchanges/international'
+    | '/crypto-exchanges/iranian'
+    | '/forex-brokers/$slug'
+    | '/forex-brokers/best-for-$feature'
+    | '/glossary/$term'
+    | '/learn/$topic'
+    | '/markets/$symbol'
+    | '/membership/checkout'
+    | '/membership/result'
+    | '/membership/terms'
+    | '/methodology/$category'
+    | '/partners/apply'
+    | '/partners/dashboard'
+    | '/partners/guide'
+    | '/partners/leads'
+    | '/partners/ledger'
+    | '/partners/links'
+    | '/partners/payouts'
+    | '/partners/rules'
+    | '/prop-firms/$slug'
+    | '/prop-firms/best-for-$feature'
     | '/review/$id'
+    | '/tools/$calculator'
+    | '/learn/$topic/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/account'
+    | '/alerts'
     | '/blog'
+    | '/check'
     | '/compare'
     | '/contact'
+    | '/corrections'
     | '/crypto-exchanges'
     | '/disclaimer'
     | '/disclosure'
+    | '/editorial-policy'
     | '/faq'
+    | '/finder'
     | '/forex-brokers'
+    | '/glossary'
+    | '/how-we-make-money'
+    | '/learn'
     | '/markets'
+    | '/membership'
     | '/methodology'
+    | '/news'
+    | '/partners'
     | '/privacy'
     | '/prop-firms'
+    | '/risk-warning'
+    | '/search'
+    | '/sitemap.xml'
+    | '/terminal'
     | '/terms'
     | '/tools'
+    | '/about_/team'
+    | '/account_/login'
+    | '/account_/membership'
+    | '/account_/notifications'
+    | '/account_/profile'
+    | '/account_/rebates'
+    | '/account_/recover'
+    | '/account_/reviews'
+    | '/account_/saved'
+    | '/account_/settings'
+    | '/account_/signup'
+    | '/account_/watchlist'
+    | '/alerts_/$slug'
+    | '/alerts_/report'
+    | '/compare_/$pair'
+    | '/crypto-exchanges_/$slug'
+    | '/crypto-exchanges_/best-for-$feature'
+    | '/crypto-exchanges_/international'
+    | '/crypto-exchanges_/iranian'
+    | '/forex-brokers_/$slug'
+    | '/forex-brokers_/best-for-$feature'
+    | '/glossary_/$term'
+    | '/learn_/$topic'
+    | '/markets_/$symbol'
+    | '/membership_/checkout'
+    | '/membership_/result'
+    | '/membership_/terms'
+    | '/methodology_/$category'
+    | '/partners_/apply'
+    | '/partners_/dashboard'
+    | '/partners_/guide'
+    | '/partners_/leads'
+    | '/partners_/ledger'
+    | '/partners_/links'
+    | '/partners_/payouts'
+    | '/partners_/rules'
+    | '/prop-firms_/$slug'
+    | '/prop-firms_/best-for-$feature'
     | '/review/$id'
+    | '/tools_/$calculator'
+    | '/learn_/$topic/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRoute
+  AlertsRoute: typeof AlertsRoute
   BlogRoute: typeof BlogRoute
+  CheckRoute: typeof CheckRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
+  CorrectionsRoute: typeof CorrectionsRoute
   CryptoExchangesRoute: typeof CryptoExchangesRoute
   DisclaimerRoute: typeof DisclaimerRoute
   DisclosureRoute: typeof DisclosureRoute
+  EditorialPolicyRoute: typeof EditorialPolicyRoute
   FaqRoute: typeof FaqRoute
+  FinderRoute: typeof FinderRoute
   ForexBrokersRoute: typeof ForexBrokersRoute
+  GlossaryRoute: typeof GlossaryRoute
+  HowWeMakeMoneyRoute: typeof HowWeMakeMoneyRoute
+  LearnRoute: typeof LearnRoute
   MarketsRoute: typeof MarketsRoute
+  MembershipRoute: typeof MembershipRoute
   MethodologyRoute: typeof MethodologyRoute
+  NewsRoute: typeof NewsRoute
+  PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   PropFirmsRoute: typeof PropFirmsRoute
+  RiskWarningRoute: typeof RiskWarningRoute
+  SearchRoute: typeof SearchRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TerminalRoute: typeof TerminalRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
+  AboutTeamRoute: typeof AboutTeamRoute
+  AccountLoginRoute: typeof AccountLoginRoute
+  AccountMembershipRoute: typeof AccountMembershipRoute
+  AccountNotificationsRoute: typeof AccountNotificationsRoute
+  AccountProfileRoute: typeof AccountProfileRoute
+  AccountRebatesRoute: typeof AccountRebatesRoute
+  AccountRecoverRoute: typeof AccountRecoverRoute
+  AccountReviewsRoute: typeof AccountReviewsRoute
+  AccountSavedRoute: typeof AccountSavedRoute
+  AccountSettingsRoute: typeof AccountSettingsRoute
+  AccountSignupRoute: typeof AccountSignupRoute
+  AccountWatchlistRoute: typeof AccountWatchlistRoute
+  AlertsSlugRoute: typeof AlertsSlugRoute
+  AlertsReportRoute: typeof AlertsReportRoute
+  ComparePairRoute: typeof ComparePairRoute
+  CryptoExchangesSlugRoute: typeof CryptoExchangesSlugRoute
+  CryptoExchangesBestForFeatureRoute: typeof CryptoExchangesBestForFeatureRoute
+  CryptoExchangesInternationalRoute: typeof CryptoExchangesInternationalRoute
+  CryptoExchangesIranianRoute: typeof CryptoExchangesIranianRoute
+  ForexBrokersSlugRoute: typeof ForexBrokersSlugRoute
+  ForexBrokersBestForFeatureRoute: typeof ForexBrokersBestForFeatureRoute
+  GlossaryTermRoute: typeof GlossaryTermRoute
+  LearnTopicRoute: typeof LearnTopicRouteWithChildren
+  MarketsSymbolRoute: typeof MarketsSymbolRoute
+  MembershipCheckoutRoute: typeof MembershipCheckoutRoute
+  MembershipResultRoute: typeof MembershipResultRoute
+  MembershipTermsRoute: typeof MembershipTermsRoute
+  MethodologyCategoryRoute: typeof MethodologyCategoryRoute
+  PartnersApplyRoute: typeof PartnersApplyRoute
+  PartnersDashboardRoute: typeof PartnersDashboardRoute
+  PartnersGuideRoute: typeof PartnersGuideRoute
+  PartnersLeadsRoute: typeof PartnersLeadsRoute
+  PartnersLedgerRoute: typeof PartnersLedgerRoute
+  PartnersLinksRoute: typeof PartnersLinksRoute
+  PartnersPayoutsRoute: typeof PartnersPayoutsRoute
+  PartnersRulesRoute: typeof PartnersRulesRoute
+  PropFirmsSlugRoute: typeof PropFirmsSlugRoute
+  PropFirmsBestForFeatureRoute: typeof PropFirmsBestForFeatureRoute
   ReviewIdRoute: typeof ReviewIdRoute
+  ToolsCalculatorRoute: typeof ToolsCalculatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -267,11 +997,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/check': {
+      id: '/check'
+      path: '/check'
+      fullPath: '/check'
+      preLoaderRoute: typeof CheckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -286,6 +1037,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corrections': {
+      id: '/corrections'
+      path: '/corrections'
+      fullPath: '/corrections'
+      preLoaderRoute: typeof CorrectionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crypto-exchanges': {
@@ -309,11 +1067,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DisclosureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/editorial-policy': {
+      id: '/editorial-policy'
+      path: '/editorial-policy'
+      fullPath: '/editorial-policy'
+      preLoaderRoute: typeof EditorialPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finder': {
+      id: '/finder'
+      path: '/finder'
+      fullPath: '/finder'
+      preLoaderRoute: typeof FinderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forex-brokers': {
@@ -323,6 +1095,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForexBrokersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/glossary': {
+      id: '/glossary'
+      path: '/glossary'
+      fullPath: '/glossary'
+      preLoaderRoute: typeof GlossaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-make-money': {
+      id: '/how-we-make-money'
+      path: '/how-we-make-money'
+      fullPath: '/how-we-make-money'
+      preLoaderRoute: typeof HowWeMakeMoneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/markets': {
       id: '/markets'
       path: '/markets'
@@ -330,11 +1123,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/membership': {
+      id: '/membership'
+      path: '/membership'
+      fullPath: '/membership'
+      preLoaderRoute: typeof MembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/methodology': {
       id: '/methodology'
       path: '/methodology'
       fullPath: '/methodology'
       preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -351,6 +1165,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropFirmsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/risk-warning': {
+      id: '/risk-warning'
+      path: '/risk-warning'
+      fullPath: '/risk-warning'
+      preLoaderRoute: typeof RiskWarningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminal': {
+      id: '/terminal'
+      path: '/terminal'
+      fullPath: '/terminal'
+      preLoaderRoute: typeof TerminalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -365,6 +1207,272 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about_/team': {
+      id: '/about_/team'
+      path: '/about/team'
+      fullPath: '/about/team'
+      preLoaderRoute: typeof AboutTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/login': {
+      id: '/account_/login'
+      path: '/account/login'
+      fullPath: '/account/login'
+      preLoaderRoute: typeof AccountLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/membership': {
+      id: '/account_/membership'
+      path: '/account/membership'
+      fullPath: '/account/membership'
+      preLoaderRoute: typeof AccountMembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/notifications': {
+      id: '/account_/notifications'
+      path: '/account/notifications'
+      fullPath: '/account/notifications'
+      preLoaderRoute: typeof AccountNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/profile': {
+      id: '/account_/profile'
+      path: '/account/profile'
+      fullPath: '/account/profile'
+      preLoaderRoute: typeof AccountProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/rebates': {
+      id: '/account_/rebates'
+      path: '/account/rebates'
+      fullPath: '/account/rebates'
+      preLoaderRoute: typeof AccountRebatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/recover': {
+      id: '/account_/recover'
+      path: '/account/recover'
+      fullPath: '/account/recover'
+      preLoaderRoute: typeof AccountRecoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/reviews': {
+      id: '/account_/reviews'
+      path: '/account/reviews'
+      fullPath: '/account/reviews'
+      preLoaderRoute: typeof AccountReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/saved': {
+      id: '/account_/saved'
+      path: '/account/saved'
+      fullPath: '/account/saved'
+      preLoaderRoute: typeof AccountSavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/settings': {
+      id: '/account_/settings'
+      path: '/account/settings'
+      fullPath: '/account/settings'
+      preLoaderRoute: typeof AccountSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/signup': {
+      id: '/account_/signup'
+      path: '/account/signup'
+      fullPath: '/account/signup'
+      preLoaderRoute: typeof AccountSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account_/watchlist': {
+      id: '/account_/watchlist'
+      path: '/account/watchlist'
+      fullPath: '/account/watchlist'
+      preLoaderRoute: typeof AccountWatchlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts_/$slug': {
+      id: '/alerts_/$slug'
+      path: '/alerts/$slug'
+      fullPath: '/alerts/$slug'
+      preLoaderRoute: typeof AlertsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts_/report': {
+      id: '/alerts_/report'
+      path: '/alerts/report'
+      fullPath: '/alerts/report'
+      preLoaderRoute: typeof AlertsReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare_/$pair': {
+      id: '/compare_/$pair'
+      path: '/compare/$pair'
+      fullPath: '/compare/$pair'
+      preLoaderRoute: typeof ComparePairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crypto-exchanges_/$slug': {
+      id: '/crypto-exchanges_/$slug'
+      path: '/crypto-exchanges/$slug'
+      fullPath: '/crypto-exchanges/$slug'
+      preLoaderRoute: typeof CryptoExchangesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crypto-exchanges_/best-for-$feature': {
+      id: '/crypto-exchanges_/best-for-$feature'
+      path: '/crypto-exchanges/best-for-$feature'
+      fullPath: '/crypto-exchanges/best-for-$feature'
+      preLoaderRoute: typeof CryptoExchangesBestForFeatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crypto-exchanges_/international': {
+      id: '/crypto-exchanges_/international'
+      path: '/crypto-exchanges/international'
+      fullPath: '/crypto-exchanges/international'
+      preLoaderRoute: typeof CryptoExchangesInternationalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crypto-exchanges_/iranian': {
+      id: '/crypto-exchanges_/iranian'
+      path: '/crypto-exchanges/iranian'
+      fullPath: '/crypto-exchanges/iranian'
+      preLoaderRoute: typeof CryptoExchangesIranianRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forex-brokers_/$slug': {
+      id: '/forex-brokers_/$slug'
+      path: '/forex-brokers/$slug'
+      fullPath: '/forex-brokers/$slug'
+      preLoaderRoute: typeof ForexBrokersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forex-brokers_/best-for-$feature': {
+      id: '/forex-brokers_/best-for-$feature'
+      path: '/forex-brokers/best-for-$feature'
+      fullPath: '/forex-brokers/best-for-$feature'
+      preLoaderRoute: typeof ForexBrokersBestForFeatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/glossary_/$term': {
+      id: '/glossary_/$term'
+      path: '/glossary/$term'
+      fullPath: '/glossary/$term'
+      preLoaderRoute: typeof GlossaryTermRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn_/$topic': {
+      id: '/learn_/$topic'
+      path: '/learn/$topic'
+      fullPath: '/learn/$topic'
+      preLoaderRoute: typeof LearnTopicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/markets_/$symbol': {
+      id: '/markets_/$symbol'
+      path: '/markets/$symbol'
+      fullPath: '/markets/$symbol'
+      preLoaderRoute: typeof MarketsSymbolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership_/checkout': {
+      id: '/membership_/checkout'
+      path: '/membership/checkout'
+      fullPath: '/membership/checkout'
+      preLoaderRoute: typeof MembershipCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership_/result': {
+      id: '/membership_/result'
+      path: '/membership/result'
+      fullPath: '/membership/result'
+      preLoaderRoute: typeof MembershipResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership_/terms': {
+      id: '/membership_/terms'
+      path: '/membership/terms'
+      fullPath: '/membership/terms'
+      preLoaderRoute: typeof MembershipTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology_/$category': {
+      id: '/methodology_/$category'
+      path: '/methodology/$category'
+      fullPath: '/methodology/$category'
+      preLoaderRoute: typeof MethodologyCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/apply': {
+      id: '/partners_/apply'
+      path: '/partners/apply'
+      fullPath: '/partners/apply'
+      preLoaderRoute: typeof PartnersApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/dashboard': {
+      id: '/partners_/dashboard'
+      path: '/partners/dashboard'
+      fullPath: '/partners/dashboard'
+      preLoaderRoute: typeof PartnersDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/guide': {
+      id: '/partners_/guide'
+      path: '/partners/guide'
+      fullPath: '/partners/guide'
+      preLoaderRoute: typeof PartnersGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/leads': {
+      id: '/partners_/leads'
+      path: '/partners/leads'
+      fullPath: '/partners/leads'
+      preLoaderRoute: typeof PartnersLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/ledger': {
+      id: '/partners_/ledger'
+      path: '/partners/ledger'
+      fullPath: '/partners/ledger'
+      preLoaderRoute: typeof PartnersLedgerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/links': {
+      id: '/partners_/links'
+      path: '/partners/links'
+      fullPath: '/partners/links'
+      preLoaderRoute: typeof PartnersLinksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/payouts': {
+      id: '/partners_/payouts'
+      path: '/partners/payouts'
+      fullPath: '/partners/payouts'
+      preLoaderRoute: typeof PartnersPayoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners_/rules': {
+      id: '/partners_/rules'
+      path: '/partners/rules'
+      fullPath: '/partners/rules'
+      preLoaderRoute: typeof PartnersRulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prop-firms_/$slug': {
+      id: '/prop-firms_/$slug'
+      path: '/prop-firms/$slug'
+      fullPath: '/prop-firms/$slug'
+      preLoaderRoute: typeof PropFirmsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prop-firms_/best-for-$feature': {
+      id: '/prop-firms_/best-for-$feature'
+      path: '/prop-firms/best-for-$feature'
+      fullPath: '/prop-firms/best-for-$feature'
+      preLoaderRoute: typeof PropFirmsBestForFeatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/review/$id': {
       id: '/review/$id'
       path: '/review/$id'
@@ -372,27 +1480,108 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools_/$calculator': {
+      id: '/tools_/$calculator'
+      path: '/tools/$calculator'
+      fullPath: '/tools/$calculator'
+      preLoaderRoute: typeof ToolsCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn_/$topic/$slug': {
+      id: '/learn_/$topic/$slug'
+      path: '/$slug'
+      fullPath: '/learn/$topic/$slug'
+      preLoaderRoute: typeof LearnTopicSlugRouteImport
+      parentRoute: typeof LearnTopicRoute
+    }
   }
 }
+
+interface LearnTopicRouteChildren {
+  LearnTopicSlugRoute: typeof LearnTopicSlugRoute
+}
+
+const LearnTopicRouteChildren: LearnTopicRouteChildren = {
+  LearnTopicSlugRoute: LearnTopicSlugRoute,
+}
+
+const LearnTopicRouteWithChildren = LearnTopicRoute._addFileChildren(
+  LearnTopicRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRoute,
+  AlertsRoute: AlertsRoute,
   BlogRoute: BlogRoute,
+  CheckRoute: CheckRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
+  CorrectionsRoute: CorrectionsRoute,
   CryptoExchangesRoute: CryptoExchangesRoute,
   DisclaimerRoute: DisclaimerRoute,
   DisclosureRoute: DisclosureRoute,
+  EditorialPolicyRoute: EditorialPolicyRoute,
   FaqRoute: FaqRoute,
+  FinderRoute: FinderRoute,
   ForexBrokersRoute: ForexBrokersRoute,
+  GlossaryRoute: GlossaryRoute,
+  HowWeMakeMoneyRoute: HowWeMakeMoneyRoute,
+  LearnRoute: LearnRoute,
   MarketsRoute: MarketsRoute,
+  MembershipRoute: MembershipRoute,
   MethodologyRoute: MethodologyRoute,
+  NewsRoute: NewsRoute,
+  PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   PropFirmsRoute: PropFirmsRoute,
+  RiskWarningRoute: RiskWarningRoute,
+  SearchRoute: SearchRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TerminalRoute: TerminalRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,
+  AboutTeamRoute: AboutTeamRoute,
+  AccountLoginRoute: AccountLoginRoute,
+  AccountMembershipRoute: AccountMembershipRoute,
+  AccountNotificationsRoute: AccountNotificationsRoute,
+  AccountProfileRoute: AccountProfileRoute,
+  AccountRebatesRoute: AccountRebatesRoute,
+  AccountRecoverRoute: AccountRecoverRoute,
+  AccountReviewsRoute: AccountReviewsRoute,
+  AccountSavedRoute: AccountSavedRoute,
+  AccountSettingsRoute: AccountSettingsRoute,
+  AccountSignupRoute: AccountSignupRoute,
+  AccountWatchlistRoute: AccountWatchlistRoute,
+  AlertsSlugRoute: AlertsSlugRoute,
+  AlertsReportRoute: AlertsReportRoute,
+  ComparePairRoute: ComparePairRoute,
+  CryptoExchangesSlugRoute: CryptoExchangesSlugRoute,
+  CryptoExchangesBestForFeatureRoute: CryptoExchangesBestForFeatureRoute,
+  CryptoExchangesInternationalRoute: CryptoExchangesInternationalRoute,
+  CryptoExchangesIranianRoute: CryptoExchangesIranianRoute,
+  ForexBrokersSlugRoute: ForexBrokersSlugRoute,
+  ForexBrokersBestForFeatureRoute: ForexBrokersBestForFeatureRoute,
+  GlossaryTermRoute: GlossaryTermRoute,
+  LearnTopicRoute: LearnTopicRouteWithChildren,
+  MarketsSymbolRoute: MarketsSymbolRoute,
+  MembershipCheckoutRoute: MembershipCheckoutRoute,
+  MembershipResultRoute: MembershipResultRoute,
+  MembershipTermsRoute: MembershipTermsRoute,
+  MethodologyCategoryRoute: MethodologyCategoryRoute,
+  PartnersApplyRoute: PartnersApplyRoute,
+  PartnersDashboardRoute: PartnersDashboardRoute,
+  PartnersGuideRoute: PartnersGuideRoute,
+  PartnersLeadsRoute: PartnersLeadsRoute,
+  PartnersLedgerRoute: PartnersLedgerRoute,
+  PartnersLinksRoute: PartnersLinksRoute,
+  PartnersPayoutsRoute: PartnersPayoutsRoute,
+  PartnersRulesRoute: PartnersRulesRoute,
+  PropFirmsSlugRoute: PropFirmsSlugRoute,
+  PropFirmsBestForFeatureRoute: PropFirmsBestForFeatureRoute,
   ReviewIdRoute: ReviewIdRoute,
+  ToolsCalculatorRoute: ToolsCalculatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

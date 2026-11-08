@@ -18,22 +18,24 @@ import { CompareProvider, useScreenProps } from "@/lib/site";
 import logoBlue from "@/assets/logotype-blue.svg.asset.json";
 import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
 import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
+import { catalogQuery } from '@/api/client';
+import { ComponentButton, ComponentDataCard } from '@/ds';
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">صفحه پیدا نشد</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          صفحهٔ موردنظر وجود ندارد یا جابه‌جا شده است.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            بازگشت به نیک‌تراست
           </Link>
         </div>
       </div>
@@ -52,10 +54,10 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          دریافت این صفحه ممکن نشد
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          اطلاعات دریافت نشد؛ دوباره تلاش کنید یا به صفحهٔ اصلی برگردید.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -65,13 +67,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            تلاش دوباره
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            بازگشت به نیک‌تراست
           </a>
         </div>
       </div>
@@ -80,6 +82,8 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: ({ context }) => context.queryClient.ensureQueryData(catalogQuery),
+  pendingComponent: () => <div className="nt-container nt-section"><ComponentDataCard state="loading"/></div>,
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -138,7 +142,7 @@ function Chrome() {
         compareCount={compare.length}
         onNavigate={go}
         onCompare={() => go("compare")}
-        onSearch={() => go("home")}
+        onSearch={() => go("search")}
       />
       <div id="main">
         <Outlet />

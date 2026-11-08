@@ -6,7 +6,7 @@ import { ComponentButton } from '../core/ComponentButton';
 const cx=(...a)=>a.filter(Boolean).join(' ');
 const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 
-const NAV=[{id:'brokers',label:'بروکرها'},{id:'exchanges',label:'صرافی‌ها'},{id:'prop',label:'پراپ‌فرم‌ها'},{id:'markets',label:'بازارها'},{id:'tools',label:'ابزارها'},{id:'method',label:'روش ارزیابی'}];
+const NAV=[{id:'brokers',label:'پلتفرم‌ها'},{id:'markets',label:'بازارها'},{id:'tools',label:'ابزارها'},{id:'learn',label:'آموزش'},{id:'method',label:'روش ارزیابی'}];
 /** Site header — logo, primary nav, search, Compare. Collapses to menu under 900px (container query) or device="mobile". */
 export function ComponentHeader(p: any = {}){
   const {device='desktop',logoSrc,nav=NAV,current,onNavigate,onSearch,onCompare,compareCount=0,className,style}=p;
@@ -21,6 +21,7 @@ export function ComponentHeader(p: any = {}){
         <div className="nt-header__actions">
           <button type="button" className="nt-iconbtn" aria-label="جستجو" onClick={onSearch}><Icon name="ComponentIconSearch" size={18}/></button>
           <span className="nt-header__cta"><ComponentButton type="secondary" size="sm" iconLeading="ComponentIconDiff" onClick={onCompare}>{compareCount>0?'مقایسه ('+compareCount.toLocaleString('fa-IR')+')':'مقایسه'}</ComponentButton></span>
+          <ComponentButton type="tertiary" size="sm" href={PATHS.account} onClick={e=>go(e,'account')}>حساب</ComponentButton>
           <button type="button" className="nt-iconbtn nt-header__menu" aria-label="منو" aria-expanded={open} onClick={()=>setOpen(o=>!o)}><Icon name={open?'ComponentIconClose':'ComponentIconMenu'} size={20}/></button>
         </div>
       </div>
