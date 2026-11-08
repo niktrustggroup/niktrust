@@ -1,11 +1,11 @@
 # NikTrust MVP
 
 ## Reference-led structural redesign
-- [ ] Inspect both reference sites, supplied screenshots and existing routes.
-- [ ] Refine global editorial design and build rich desktop/mobile navigation.
-- [ ] Rebuild homepage discovery and shared category/review/comparison templates.
-- [ ] Unify education/news templates without invented published content.
-- [ ] Verify navigation, search, filtering, comparisons and mobile layouts.
+- [x] Inspect both reference sites, supplied screenshots and existing routes (BrokerChooser direct-browser interactions remain challenged).
+- [x] Refine global editorial design and build rich desktop/mobile navigation.
+- [x] Rebuild homepage discovery and shared category/review/comparison templates.
+- [x] Unify education/news templates without invented published content.
+- [x] Verify navigation, search, filtering, comparisons and mobile layouts (12 tests; browser widths 320–1920).
 
 - [x] Complete source audit and record missing contract/mock companions.
 - [x] Introduce replaceable, envelope-based mock/http clients and trust-safe platform data.
