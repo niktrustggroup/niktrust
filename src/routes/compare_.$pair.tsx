@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 import { useScreenProps } from '@/lib/site';
 import { CompareScreen } from '@/screens/Compare';
 export const Route = createFileRoute('/compare_/$pair')({
-  head: () => seo("مقایسهٔ یک‌به‌یک", "مقایسهٔ یک‌به‌یک — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: ({ params }) => seo(`مقایسهٔ یک‌به‌یک ${params.pair}`, `مقایسهٔ ${params.pair} با معیارهای همدسته و منابع مشخص؛ ترتیب مستقل از روابط تجاری.`),
   
   component: Page,
 });

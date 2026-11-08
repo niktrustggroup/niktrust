@@ -27,7 +27,7 @@ export function AboutScreen({ go }: any){
         <div className="nt-lg-col-6 nt-stack" style={{ '--gap': 'var(--sp-12)' }}>
           <h2 className="nt-h3">استقلال ویرایشی و درآمد</h2>
           <p className="nt-body">نیک‌تراست ممکن است از همکاری تجاری با برخی پلتفرم‌ها درآمد داشته باشد. این همکاری هیچ‌گاه رتبهٔ ویرایشی را تعیین نمی‌کند. معیارها، وزن‌ها، منابع داده و سیاست همکاری در صفحهٔ روش ارزیابی منتشر می‌شوند.</p>
-          <div><ComponentButton type="secondary" onClick={() => go('method')}>مشاهدهٔ روش ارزیابی</ComponentButton></div>
+          <div className="nt-cluster"><ComponentButton type="secondary" onClick={() => go('method')}>مشاهدهٔ روش ارزیابی</ComponentButton><ComponentButton type="tertiary" onClick={() => go('revenue')}>مدل درآمد</ComponentButton><ComponentButton type="tertiary" onClick={() => go('team')}>تیم و بررسی‌کنندگان</ComponentButton></div>
         </div>
         <div className="nt-lg-col-6">
           <div className="nt-card nt-stack" style={{ '--gap': 'var(--sp-12)', borderStyle: 'dashed', borderColor: 'var(--neutral-300)', background: 'var(--surface-subtle-alt)', height: '100%' }}>

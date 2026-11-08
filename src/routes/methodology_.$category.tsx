@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 import { useScreenProps } from '@/lib/site';
 import { MethodologyScreen } from '@/screens/Methodology';
 export const Route = createFileRoute('/methodology_/$category')({
-  head: () => seo("روش‌شناسی دسته", "روش‌شناسی دسته — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: ({ params }) => seo(`روش‌شناسی ${params.category}`, `معیارهای ارزیابی دستهٔ ${params.category}، وضعیت انتشار روش و منابع نیک‌تراست.`),
   
   component: Page,
 });
