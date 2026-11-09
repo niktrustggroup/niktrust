@@ -92,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: ({ matches }) => {
     const leaf = matches.at(-1);
     const path = leaf?.pathname ?? '/';
-    const hidden = isPrivatePath(path) || matches.some(m => m.status === 'notFound' || m.globalNotFound);
+    const hidden = isPrivatePath(path) || matches.some(m => m.status === 'notFound' || m.globalNotFound) || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
     return {
     meta: [
       ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : [{ property: "og:url", content: canonicalUrl(path) }]),
