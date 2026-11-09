@@ -20,4 +20,5 @@
 - The research publication styling layer lives in `src/ds/css/research.css` and inherits NT semantic tokens; shared discovery and publication screens keep category/review/editorial journeys consistent.
 
 - ThemeProvider owns appearance preference; appearance.css overrides NT semantic roles globally so all screens share night mode.
+- Header brand assets render as CSS masks with a dedicated semantic logo token so original SVG fills cannot override the shared appearance role.
 - Public market displays use client-mounted TradingView embeds with provider attribution and failure states; never substitute fabricated prices.
