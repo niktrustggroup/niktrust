@@ -83,12 +83,12 @@ const SNAP_TABS: readonly (readonly [SnapKey, string])[] = [['crypto', 'رمزا
 export function MarketSnapshotCard({ symbol, title }: { symbol: string; title: string }) {
   return <div className="nt-snap-card"><h3>{title}</h3><MarketEmbed kind="mini" widget="mini-symbol-overview" label={`نمای ${title} از TradingView`} config={{ symbol, width: '100%', height: 170, locale: 'en', dateRange: '1D', isTransparent: true, autosize: false, largeChartUrl: '' }}/></div>;
 }
-export function MarketOverview() {
+export function MarketOverview({ full = false }: { full?: boolean } = {}) {
   const [tab, setTab] = useState<SnapKey>('crypto');
   const [chart, setChart] = useState('BITSTAMP:BTCUSD');
   const all = Object.values(SNAP).flat();
-  return <section id="markets" aria-labelledby="markets-t" className="nt-home-sec nt-home-sec--alt"><div className="nt-container">
-    <header className="nt-home-head"><div><h2 id="markets-t">نبض بازار</h2><p>نمایی از وضعیت بازارهای مالی، رمزارزها، ارزها و طلا.</p></div><Link className="nt-home-more" to="/markets">نمای کامل بازار ←</Link></header>
+  return <section id="markets" aria-labelledby="markets-t" className={`nt-home-sec${full ? '' : ' nt-home-sec--alt'}`}><div className="nt-container">
+    <header className="nt-home-head"><div><h2 id="markets-t">{full ? 'نمادهای پشتیبانی‌شده' : 'نبض بازار'}</h2><p>نمایی از وضعیت بازارهای مالی، رمزارزها، ارزها و طلا.</p></div>{!full && <Link className="nt-home-more" to="/markets">نمای کامل بازار ←</Link>}</header>
     <div className="nt-home-tabs" role="tablist" aria-label="دستهٔ بازار">{SNAP_TABS.map(([id, t]) => <button key={id} type="button" role="tab" aria-selected={tab === id} className={tab === id ? 'is-on' : ''} onClick={() => setTab(id)}>{t}</button>)}</div>
     <div className="nt-snap-grid">{SNAP[tab].map(([s, t]) => <MarketSnapshotCard key={s} symbol={s} title={t}/>)}</div>
     <div className="nt-chart-box"><div className="nt-chart-bar"><label>نماد نمودار <select className="nt-input" value={chart} onChange={e => setChart(e.target.value)}>{all.map(([s, t]) => <option key={s} value={s}>{t}</option>)}</select></label></div>

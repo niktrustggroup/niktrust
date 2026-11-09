@@ -20,3 +20,12 @@ describe('public data rules', () => {
     expect(none).toEqual([]);
   });
 });
+
+import { profitLoss, effectiveLeverage, swapCost } from '@/lib/calculators';
+describe('day06 calculators', () => {
+  it('profit/loss: buy 1 lot EURUSD 1.1000→1.1050 = 500', () => { const r = profitLoss(1, 1.1, 1.105, 1, 100000, 1); expect(r.ok && Math.round(r.value)).toBe(500); });
+  it('profit/loss: sell loses when price rises', () => { const r = profitLoss(-1, 1.1, 1.105, 1, 100000, 1); expect(r.ok && Math.round(r.value)).toBe(-500); });
+  it('leverage: 1 lot at 1.1 on 11,000 equity = 10x', () => { const r = effectiveLeverage(1, 100000, 1.1, 1, 11000); expect(r.ok && Math.round(r.value)).toBe(10); });
+  it('swap: negative rate allowed, 2 lots × -3 × 3 nights = -18', () => { const r = swapCost(2, -3, 3); expect(r.ok && r.value).toBe(-18); });
+  it('swap: fractional nights rejected', () => { expect(swapCost(1, 1, 1.5).ok).toBe(false); });
+});

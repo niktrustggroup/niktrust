@@ -13,7 +13,7 @@ export const isPrivatePath = (pathname: string) => PRIVATE.some(r => r.test(norm
 export const canonicalUrl = (pathname: string) => SITE_URL + normalizePath(pathname);
 
 /** Public, parameter-free pages that exist as routes and contain published page content. */
-export const STATIC_PUBLIC_PATHS = ['/', '/forex-brokers', '/crypto-exchanges', '/crypto-exchanges/iranian', '/crypto-exchanges/international', '/prop-firms', '/compare', '/finder', '/check', '/alerts', '/alerts/report', '/methodology', '/about', '/about/team', '/how-we-make-money', '/disclosure', '/editorial-policy', '/corrections', '/contact', '/faq', '/privacy', '/terms', '/disclaimer', '/risk-warning', '/learn', '/glossary', '/blog', '/news', '/markets', '/tools', '/terminal', '/partners', '/partners/apply', '/partners/guide', '/partners/rules', '/membership', '/membership/terms'];
+export const STATIC_PUBLIC_PATHS = ['/', '/forex-brokers', '/crypto-exchanges', '/crypto-exchanges/iranian', '/crypto-exchanges/international', '/prop-firms', '/compare', '/finder', '/check', '/alerts', '/alerts/report', '/methodology', '/about', '/about/team', '/how-we-make-money', '/disclosure', '/editorial-policy', '/corrections', '/contact', '/faq', '/privacy', '/terms', '/disclaimer', '/risk-warning', '/learn', '/glossary', '/blog', '/news', '/markets', '/tools', '/tools/position-size', '/tools/pip-value', '/tools/margin', '/tools/profit-loss', '/tools/leverage', '/tools/swap', '/terminal', '/partners', '/partners/apply', '/partners/guide', '/partners/rules', '/membership', '/membership/terms'];
 
 export const CATEGORY_BASE = { brokers: '/forex-brokers', exchanges: '/crypto-exchanges', prop: '/prop-firms' } as const;
 
