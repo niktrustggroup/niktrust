@@ -11,6 +11,6 @@ export type PlatformDetail = {
   key_attributes: AttributeValueView[]; summary_fa: string; updated_at: string;
   disclosure: { is_affiliate: boolean; url: string | null };
 };
-export type Envelope<T> = { data: T; meta: { data_mode: 'demonstration' | 'unavailable'; total: number }; request_id: string };
+export type Envelope<T> = { data: T; meta: { data_mode: 'production' | 'demonstration' | 'unavailable'; total: number }; request_id: string };
 export type Catalog = { platforms: PlatformDetail[] };
 export interface DataClient { getCatalog(): Promise<Envelope<Catalog>> }
