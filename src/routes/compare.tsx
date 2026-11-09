@@ -3,7 +3,7 @@ import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
 import { CompareScreen } from "@/screens/Compare";
 import { sanitizeSelection } from '@/api/rules';
-import { mockCatalog } from '@/api/mockClient';
+import { usePublicPlatforms } from '@/api/client';
 
 export const Route = createFileRoute("/compare")({
   head: () => seo("مقایسهٔ پلتفرم‌ها", "مقایسهٔ ۲ تا ۴ پلتفرم مالی در هزینه‌ها، شرایط معاملاتی، رگولاتوری و واریز و برداشت — با نمایش صریح دادهٔ اعلام‌نشده."),
@@ -13,9 +13,10 @@ export const Route = createFileRoute("/compare")({
 
 function Page() {
   const p = useScreenProps();
+  const {platforms} = usePublicPlatforms();
   const { items } = Route.useSearch();
   const navigate = Route.useNavigate();
-  const selected = items ? sanitizeSelection(items.split(','), mockCatalog.platforms) : p.compare;
+  const selected = items ? sanitizeSelection(items.split(','), platforms) : p.compare;
   const setCompare = (ids: string[]) => { p.setCompare(ids); if (items !== undefined) void navigate({ search: { items: ids.join(',') }, replace: true }); };
   return <CompareScreen {...p} compare={selected} setCompare={setCompare} />;
 }

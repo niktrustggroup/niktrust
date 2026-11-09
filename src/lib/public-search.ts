@@ -3,7 +3,7 @@ export type PublicSearch = { q?: string; coverage?: string; sort?: string; filte
 export function validatePublicSearch(raw: Record<string, unknown>): PublicSearch {
   const result: PublicSearch = {};
   for (const key of ['q','coverage','sort','filters','region','topic','letter','type'] as const) if (typeof raw[key] === 'string') result[key] = raw[key];
-  if (typeof raw.page === 'number' && Number.isFinite(raw.page)) result.page = raw.page;
+  if (typeof raw['page'] === 'number' && Number.isFinite(raw['page'])) result.page = raw['page'];
   return result;
 }
 export function usePublicSearch() {
