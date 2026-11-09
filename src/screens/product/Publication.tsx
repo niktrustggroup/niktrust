@@ -1,19 +1,25 @@
-import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { ComponentButton } from '@/ds';
+import { ComponentButton, ComponentPaginationItem } from '@/ds';
 import { PageHead, KIcon } from '../Shared';
 import { EmptyState } from './Primitives';
 import { ResearchAside } from './Discovery';
-import researchDesk from '@/assets/research-desk.jpg';
+import { articles, terms, LEARN_TOPICS, topicTitle } from '@/api/public-content';
+import { usePublicSearch } from '@/lib/public-search';
+import { ArticleLink } from './ContentParts';
 export function PublicationScreen({go,title,kind,topic}:{go:(id:string)=>void;title:string;kind:string;topic?:string}) {
-  const [filter,setFilter]=useState('همه'),[q,setQ]=useState('');
-  const news=kind==='news'; const article=kind==='article'||kind==='term';
-  const topics=news?['همه','فارکس','رمزارز','پراپ‌فرم','رگولاتوری']:['همه','انتخاب پلتفرم','هزینه و ریسک','مجوز و امنیت','مفاهیم مالی'];
-  return <main><PageHead go={go} crumbs={[{label:'نیک‌تراست',id:'home'},title]} title={title} desc={news?'خبر، تحلیل و هشدار؛ با منبع روشن و تاریخ انتشار.':'شناخت مفاهیم، هزینه‌ها و شواهد پیش از انتخاب پلتفرم.'}/><div className="nt-container nt-section">
-    {article?<div className="nt-article-layout"><article><p className="nt-overline">{kind==='term'?'واژه‌نامهٔ مالی':'مرکز آموزش'}</p><div className="nt-article-meta">وضعیت: منتشر نشده · نویسنده، بازبین و تاریخ: اعلام نشده</div><EmptyState title="محتوای تأییدشدهٔ این صفحه در دسترس نیست" text="مقاله یا تعریف نهایی هنوز منتشر نشده است؛ داده، نقل‌قول یا نویسنده‌ای فرض نمی‌شود."/><p><Link to="/learn">بازگشت به مرکز آموزش</Link></p><h2>معیارهای انتشار</h2><p>منبع، تاریخ و مرز میان ادعا و تأیید مستقل باید در محتوای منتشرشده روشن باشد.</p><Link to="/editorial-policy">سیاست تحریریهٔ نیک‌تراست</Link></article><ResearchAside/></div>:
-    <div className="nt-publication-layout"><div><div className="nt-publication-topics" role="group" aria-label={news?'دستهٔ اخبار':'موضوع آموزش'}>{topics.map(t=><ComponentButton key={t} type="tertiary" aria-pressed={filter===t} onClick={()=>setFilter(t)}>{t}</ComponentButton>)}</div>
-      <div className="nt-publication-feature"><img src={researchDesk} width={1200} height={768} alt="میز پژوهش با دفتر یادداشت و گزارش‌های مقایسه"/><div><span className="nt-overline">چارچوب پژوهش مستقل</span><h2>از اطلاعات تا تصمیم آگاهانه</h2><p>منبع هر ادعا، تاریخ بازبینی و محدودیت‌های داده را بررسی کنید. شناخت روش، بخشی از شناخت نتیجه است.</p><Link to="/methodology" className="nt-btn nt-btn--secondary">مطالعهٔ روش ارزیابی <KIcon name="ArrowStart" size={16}/></Link></div></div>
-      <div className="nt-publication-heading"><h2>{topic?'مطالب این موضوع':news?'آخرین اخبار و تحلیل‌ها':'مطالب و راهنماها'}</h2><span className="nt-caption">{filter}</span></div><label className="nt-listing-search"><KIcon name="Search" size={20}/><span className="nt-visually-hidden">جستجو در {title}</span><input value={q} onChange={e=>setQ(e.target.value)} placeholder={news?'جستجو در اخبار…':'جستجوی موضوع یا مفهوم…'}/></label><div className="nt-section"><EmptyState title={q.trim()?`مطلبی برای «${q.trim()}» یافت نشد`:news?'خبر یا تحلیل تأییدشده‌ای منتشر نشده است':'محتوای آموزشی تأییدشده هنوز منتشر نشده است'} text="منبع، نویسنده و تاریخ ساختگی به‌عنوان محتوای واقعی نمایش داده نمی‌شود."/></div>
-      <nav className="nt-page-category-links" aria-label="مطالعهٔ بیشتر"><Link to="/learn">مرکز آموزش</Link><Link to="/glossary">واژه‌نامه</Link><Link to="/news">اخبار و تحلیل</Link><Link to="/editorial-policy">سیاست تحریریه</Link></nav></div><ResearchAside/></div>}
-  </div></main>;
+  const {search,update}=usePublicSearch(); const q=search.q??'', filter=topic??search.topic??'';
+  const glossary=kind==='glossary';
+  const found=articles.filter(a=>(kind==='topic'||kind==='learn'?a.kind==='learn':a.kind===kind)&&(!filter||a.topic===filter)&&(!q||`${a.title} ${a.summary}`.includes(q))).sort((a,b)=>b.published_at.localeCompare(a.published_at));
+  const glossaryResults=terms.filter(t=>(!q||`${t.title} ${t.definition}`.includes(q))&&(!search.letter||t.title.startsWith(search.letter))).sort((a,b)=>a.title.localeCompare(b.title,'fa'));
+  const count=glossary?glossaryResults.length:found.length,pages=Math.max(1,Math.ceil(count/6)),page=Math.max(1,Math.min(pages,Math.floor(search.page??1)));
+  const feature=found[0];
+  return <main><PageHead go={go} crumbs={[{label:'نیک‌تراست',id:'home'},...(topic?[{label:'مرکز آموزش',id:'learn'}]:[]),title]} title={title} desc={kind==='news'?'رویدادهای مرتبط با پلتفرم‌ها؛ با منبع اصلی، تاریخ انتشار و وضعیت به‌روزرسانی.':glossary?'تعریف‌های مالی منتشرشده، موضوعات مرتبط و منابع آموزشی.':'آموزش و پژوهش مالی، مستقل از روابط تجاری و با منابع روشن.'}/><div className="nt-container nt-section nt-publication-layout"><div className="nt-stack">
+    {!glossary&&<nav className="nt-publication-topics" aria-label="موضوعات آموزش">{LEARN_TOPICS.map(([slug,label])=><Link to="/learn/$topic" params={{topic:slug}} key={slug} aria-current={topic===slug?'page':undefined}>{label}</Link>)}</nav>}
+    <div className="nt-listing-toolbar"><label className="nt-listing-search"><KIcon name="Search" size={20}/><span className="nt-visually-hidden">جستجو در {title}</span><input value={q} onChange={e=>update({q:e.target.value,page:1})} placeholder={glossary?'جستجوی واژه یا تعریف…':'عنوان یا موضوع مطلب…'}/></label>{!glossary&&!topic&&<label className="nt-label">موضوع<select className="nt-input" value={filter} onChange={e=>update({topic:e.target.value,page:1})}><option value="">همه</option>{LEARN_TOPICS.map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label>}</div>
+    {glossary&&<div className="nt-alphabet" role="group" aria-label="حروف واژه‌نامه"><ComponentButton type="tertiary" onClick={()=>update({letter:'',page:1})} aria-pressed={!search.letter}>همه</ComponentButton>{'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی'.split('').map(letter=><ComponentButton key={letter} type="tertiary" onClick={()=>update({letter,page:1})} aria-pressed={search.letter===letter}>{letter}</ComponentButton>)}</div>}
+    {feature&&!q&&!filter&&page===1&&<section><h2 className="nt-h3">مطلب منتخب</h2><ArticleLink article={feature}/></section>}
+    <div className="nt-split"><h2 className="nt-h3">{glossary?'واژه‌ها':topic?topicTitle(topic):kind==='news'?'آخرین خبرها':'آخرین مطالب'}</h2><p role="status" className="nt-caption">{count.toLocaleString('fa-IR')} {glossary?'واژه':'مطلب'} منتشرشده</p></div>
+    {count?glossary?glossaryResults.slice((page-1)*6,page*6).map(t=><article className="nt-content-item" key={t.slug}><Link to="/glossary/$term" params={{term:t.slug}}><h3>{t.title}</h3><p>{t.definition}</p></Link></article>):found.slice((page-1)*6,page*6).map(a=><ArticleLink article={a} key={a.slug}/>):<EmptyState title={q||filter||search.letter?'نتیجه‌ای با این شرایط پیدا نشد':glossary?'تعریف تأییدشده منتشر نشده است':kind==='news'?'خبر تأییدشده منتشر نشده است':'مطلب تأییدشده منتشر نشده است'} text="نویسنده، منبع و تاریخ انتشار ساختگی نمایش داده نمی‌شود."/>}
+    {pages>1&&<nav className="nt-pager" aria-label="صفحه‌بندی مطالب"><ComponentPaginationItem label="قبلی" disabled={page===1} onClick={()=>update({page:page-1})}/><span>{page.toLocaleString('fa-IR')} از {pages.toLocaleString('fa-IR')}</span><ComponentPaginationItem label="بعدی" disabled={page===pages} onClick={()=>update({page:page+1})}/></nav>}
+    <nav className="nt-page-category-links" aria-label="مطالعهٔ بیشتر"><Link to="/learn">مرکز آموزش</Link><Link to="/glossary">واژه‌نامه</Link><Link to="/blog">مجله</Link><Link to="/news">اخبار</Link><Link to="/editorial-policy">سیاست تحریریه</Link></nav></div><ResearchAside/></div></main>;
 }
