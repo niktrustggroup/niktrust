@@ -4,7 +4,7 @@ import { ComponentButton } from '@/ds';
 import { useTheme } from '@/lib/theme';
 import { SectionHead } from '../Shared';
 /** Public provider embeds: no invented prices or private credentials. */
-function MarketEmbed({ kind, widget, config, label }: { kind: 'chart' | 'ticker' | 'mini'; widget?: string; config?: Record<string, unknown>; label?: string }) {
+function MarketEmbed({ kind, widget: widgetName, config, label }: { kind: 'chart' | 'ticker' | 'mini'; widget?: string; config?: Record<string, unknown>; label?: string }) {
   const host = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -21,7 +21,7 @@ function MarketEmbed({ kind, widget, config, label }: { kind: 'chart' | 'ticker'
     widget.className = 'tradingview-widget-container__widget';
     element.append(widget);
     const script = document.createElement('script');
-    script.src = `https://s3.tradingview.com/external-embedding/embed-widget-${widget ?? (kind === 'chart' ? 'advanced-chart' : 'ticker-tape')}.js`;
+    script.src = `https://s3.tradingview.com/external-embedding/embed-widget-${widgetName ?? (kind === 'chart' ? 'advanced-chart' : 'ticker-tape')}.js`;
     script.async = true;
     script.type = 'text/javascript';
     script.textContent = JSON.stringify(config ? { ...config, colorTheme: theme, theme } : kind === 'chart' ? {
@@ -51,7 +51,7 @@ function MarketEmbed({ kind, widget, config, label }: { kind: 'chart' | 'ticker'
     element.append(script);
     const timeout = window.setTimeout(() => setState(s => s === 'loading' ? 'error' : s), 20000);
     return () => { disposed = true; observer.disconnect(); window.clearTimeout(timeout); script.onerror = null; element.replaceChildren(); };
-  }, [kind, theme, attempt, widget, JSON.stringify(config)]);
+  }, [kind, theme, attempt, widgetName, JSON.stringify(config)]);
   return <div className={`nt-market-embed nt-market-embed--${kind}`}>
     <div className="tradingview-widget-container" ref={host} />
     {state !== 'ready' && <div className="nt-market-state" role="status">
