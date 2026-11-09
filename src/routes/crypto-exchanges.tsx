@@ -10,5 +10,5 @@ export const Route = createFileRoute("/crypto-exchanges")({
 
 function Page() {
   const p = useScreenProps();
-  return <><nav className="nt-container nt-app-nav" aria-label="نوع صرافی"><Link to="/crypto-exchanges/iranian">صرافی‌های داخلی</Link><Link to="/crypto-exchanges/international">صرافی‌های خارجی</Link></nav><ListingScreen {...p} category="exchanges" title="صرافی‌های ارز دیجیتال" desc="کارمزد، دسترسی از ایران و سطح پوشش اطلاعات." /></>;
+  return <ListingScreen {...p} category="exchanges" title="صرافی‌های ارز دیجیتال" desc="کارمزد، دسترسی از ایران و سطح پوشش اطلاعات." />;
 }
