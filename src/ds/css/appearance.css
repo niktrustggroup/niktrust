@@ -11,7 +11,6 @@
 .nt-btn--primary{background:var(--brand-button);border-color:var(--brand-button)}.nt-btn--primary:hover{background:var(--brand-button-hover);border-color:var(--brand-button-hover)}.nt-btn--primary:active{background:var(--brand-button-active);border-color:var(--brand-button-active)}
 .nt-utility{background:var(--masthead-band)}
 .nt-brand-lockup{display:flex;align-items:center;gap:10px}.nt-brand-lockup img.nt-brand-symbol{width:36px;height:40px;object-fit:contain}.nt-brand-lockup img.nt-brand-wordmark{width:142px;height:34px;object-fit:contain}
-.dark .nt-brand-lockup img,.dark .nt-footer__brand img{filter:brightness(0) invert(1)}
 .nt-theme-toggle.nt-btn{width:40px;height:40px;min-width:40px;padding:0}.nt-theme-toggle.nt-btn>span{display:flex;align-items:center;justify-content:center}
 .nt-discovery-hero{background:none;min-height:310px}.nt-discovery-hero::before{display:none}.nt-discovery-copy{max-width:850px}.nt-discovery-copy h1{font-size:34px;max-width:28ch;margin-block:0 14px}.nt-discovery-copy>p{font-size:16px}
 .nt-market-ticker{height:48px;background:var(--surface-card);border-bottom:1px solid var(--border-subtle);overflow:hidden}.nt-market-embed{position:relative;min-width:0;direction:ltr}.nt-market-embed--ticker{height:48px}.nt-market-embed--chart{height:480px;border:1px solid var(--border-subtle);background:var(--surface-card);overflow:hidden}.nt-market-embed .tradingview-widget-container{width:100%;height:100%}.nt-market-embed iframe{max-width:100%;border:0}
