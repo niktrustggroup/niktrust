@@ -1,6 +1,6 @@
 /* Research publication layer: all visual roles inherit the NikTrust tokens. */
 :root{--research-ink:var(--text-primary);--research-soft:var(--surface-subtle-alt);--research-accent:var(--status-success);--research-accent-bg:var(--status-success-subtle);--research-rule:var(--border-subtle);--section-y:48px;--header-h:154px;--r-lg:8px;--r-xl:8px;--container-max:1200px;--research-hero-wash:color-mix(in srgb,var(--bg-page) 94%,transparent);--research-hero-shade:color-mix(in srgb,var(--bg-page) 86%,transparent)}
-.nt-research-header{container-type:normal;z-index:60;position:sticky;top:-34px;letter-spacing:0}
+.nt-research-header{container-type:normal;z-index:60;position:sticky;top:0;letter-spacing:0}
 .nt-utility{background:var(--research-ink);color:var(--text-on-brand);font-size:11px;height:34px}
 .nt-utility>.nt-container{display:flex;align-items:center;justify-content:space-between;height:100%;gap:16px}
 .nt-utility nav{display:flex;gap:24px}.nt-utility a{color:inherit}.nt-utility bdi{margin-inline-start:8px;font-weight:700}
