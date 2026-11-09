@@ -20,3 +20,22 @@ export function requiredMargin(lots: number, contractSize: number, price: number
   const notional = lots * contractSize * price * quoteToAccount;
   return { ok: true, value: notional / leverage, details: { notional } };
 }
+const finite = (...v: number[]) => v.every(Number.isFinite);
+/** Profit/loss in account currency = (close − open) × direction × lots × contract size × (quote→account rate). Excludes commission, spread and swap. */
+export function profitLoss(direction: 1 | -1, open: number, close: number, lots: number, contractSize: number, quoteToAccount: number): CalcResult {
+  if (bad(open, close, lots, contractSize, quoteToAccount)) return { ok: false, error: 'همهٔ مقادیر باید عدد مثبت باشند.' };
+  const priceMove = (close - open) * direction;
+  return { ok: true, value: priceMove * lots * contractSize * quoteToAccount, details: { priceMove } };
+}
+/** Effective leverage = notional exposure ÷ account equity; notional = lots × contract size × price × (quote→account rate). */
+export function effectiveLeverage(lots: number, contractSize: number, price: number, quoteToAccount: number, equity: number): CalcResult {
+  if (bad(lots, contractSize, price, quoteToAccount, equity)) return { ok: false, error: 'همهٔ مقادیر باید عدد مثبت باشند.' };
+  const notional = lots * contractSize * price * quoteToAccount;
+  return { ok: true, value: notional / equity, details: { notional } };
+}
+/** Swap in account currency = lots × broker swap rate (account currency per lot per night, may be negative) × nights. Triple-swap days are counted by the user in nights. */
+export function swapCost(lots: number, swapPerLotPerNight: number, nights: number): CalcResult {
+  if (!finite(swapPerLotPerNight) || bad(lots, nights)) return { ok: false, error: 'حجم و تعداد شب باید عدد مثبت و نرخ سواپ عدد معتبر باشد.' };
+  if (!Number.isInteger(nights)) return { ok: false, error: 'تعداد شب باید عدد صحیح باشد.' };
+  return { ok: true, value: lots * swapPerLotPerNight * nights, details: {} };
+}
