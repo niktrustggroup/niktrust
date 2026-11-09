@@ -26,6 +26,13 @@ const Ctx = (g.__ntCompareCtx ??= createContext<CompareCtx | null>(null));
 const KEY = "nt-compare";
 
 export function CompareProvider({ children }: { children: ReactNode }) {
+  return <CompareStateProvider>{children}</CompareStateProvider>;
+}
+
+// Keep the hook-owning component separate from the public provider boundary.
+// A changed catalog hook must mount fresh instead of inheriting the previous
+// provider's hook queue during Fast Refresh.
+function CompareStateProvider({ children }: { children: ReactNode }) {
   const { platforms } = usePublicPlatforms();
   const [compare, setCompareState] = useState<string[]>([]);
   useEffect(() => {
