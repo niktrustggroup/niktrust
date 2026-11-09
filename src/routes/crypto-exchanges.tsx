@@ -1,9 +1,11 @@
+import { validatePublicSearch } from '@/lib/public-search';
 import { createFileRoute } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
 import { ListingScreen } from "@/screens/Listing";
 
 export const Route = createFileRoute("/crypto-exchanges")({
+  validateSearch: validatePublicSearch,
   head: () => seo("صرافی‌های ارز دیجیتال", "فهرست صرافی‌های ارز دیجیتال بررسی‌شده با کارمزد، تعداد رمزارز و وضعیت ثبت نزد نهاد ناظر."),
   component: Page,
 });

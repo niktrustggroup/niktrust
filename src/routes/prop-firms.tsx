@@ -1,9 +1,11 @@
+import { validatePublicSearch } from '@/lib/public-search';
 import { createFileRoute } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
 import { ListingScreen } from "@/screens/Listing";
 
 export const Route = createFileRoute("/prop-firms")({
+  validateSearch: validatePublicSearch,
   head: () => seo("پراپ‌فرم‌ها", "فهرست پراپ‌فرم‌های بررسی‌شده با هزینهٔ چالش، تقسیم سود و شواهد پرداخت."),
   component: Page,
 });
