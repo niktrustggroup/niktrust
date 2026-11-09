@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ComponentButton, ComponentFilterPanel, ComponentFilterPanelGroup, ComponentFilterPanelOption, ComponentSortControl, ComponentPaginationItem } from '@/ds';
 import { PageHead, KIcon } from './Shared';
 import { Link } from '@tanstack/react-router';
-import { DueDiligenceSteps, SelectionDock } from './product/Discovery';
+import { DueDiligenceSteps } from './product/Discovery';
 import { useCatalog } from '@/api/client';
 import { filterPlatforms } from '@/api/rules';
 import type { Category } from '@/api/types';
@@ -26,6 +26,6 @@ export function ListingScreen({ go, compare, toggleCompare, title = 'بروکر�
     {pages > 1 && <nav className="nt-pager" aria-label="صفحه‌بندی"><ComponentPaginationItem label="قبلی" disabled={page === 1} onClick={() => setPage(page - 1)}/>{Array.from({ length: pages }, (_, i) => <ComponentPaginationItem key={i} label={(i+1).toLocaleString('fa-IR')} state={page === i+1 ? 'current' : 'default'} onClick={() => setPage(i+1)}/>)}<ComponentPaginationItem label="بعدی" disabled={page === pages} onClick={() => setPage(page+1)}/></nav>}
     <div className="nt-note"><ComponentButton type="tertiary" onClick={() => go('method')}>معیارهای ارزیابی این دسته</ComponentButton><ComponentButton type="tertiary" onClick={() => go('compare')}>مقایسهٔ انتخاب‌ها</ComponentButton></div></div></div></div>
     {sheet && <div className="nt-scrim" role="dialog" aria-modal="true" aria-label="فیلترهای فهرست" onClick={e => { if (e.target === e.currentTarget) setSheet(false); }}><ComponentFilterPanel device="mobile" active={[]} state="default" resultCount={results.length.toLocaleString('fa-IR')} onClose={() => setSheet(false)} onApply={() => setSheet(false)} onClear={clear}>{groups}</ComponentFilterPanel></div>}
-    <section className="nt-container nt-section"><h2 className="nt-h3">پیش از انتخاب، این موارد را بررسی کنید</h2><DueDiligenceSteps/></section><SelectionDock compare={compare} go={go}/>
+    <section className="nt-container nt-section"><h2 className="nt-h3">پیش از انتخاب، این موارد را بررسی کنید</h2><DueDiligenceSteps/></section>
   </main>;
 }
