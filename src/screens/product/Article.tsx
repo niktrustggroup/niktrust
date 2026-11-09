@@ -8,6 +8,8 @@ import { persianDate } from '@/api/format';
 import { RelatedArticles } from './ContentParts';
 import { usePublicPlatforms } from '@/api/client';
 import { PlatformRow } from './Discovery';
+import { ArticleLink } from './ContentParts';
+import { usePublicContent } from '@/api/content-client';
 export function ArticleScreen({article:a,go}:{article:ArticleRecord;go:(id:string,arg?:string)=>void}) {
   const [share,setShare]=useState(''); const {platforms}=usePublicPlatforms();
   const url=canonicalUrl(articlePath(a));
@@ -21,4 +23,4 @@ export function ArticleScreen({article:a,go}:{article:ArticleRecord;go:(id:strin
     <ComponentButton type="secondary" iconLeading="ComponentIconCopy" onClick={copy}>اشتراک‌گذاری</ComponentButton>{share&&<p role="status">{share}</p>}
     <RelatedArticles topic={a.topic} exclude={a.slug}/>{platforms.filter(p=>a.platform_ids.includes(p.id)).map(p=><PlatformRow platform={p} go={go} key={p.id}/>)}</article><aside className="nt-review-toc"><h2>در این مطلب</h2>{a.sections.map(s=><a key={s.id} href={'#'+s.id}>{s.title}</a>)}<Link to="/editorial-policy">سیاست تحریریه</Link></aside></div></main>;
 }
-export function TermScreen({term:t,go}:{term:TermRecord;go:(id:string)=>void}) {return <main><PageHead go={go} crumbs={[{label:'نیک‌تراست',id:'home'},{label:'واژه‌نامه',id:'glossary'},t.title]} title={t.title} desc={t.definition}/><div className="nt-container nt-section nt-stack"><p className="nt-body-lg">{t.definition}</p><h2 className="nt-h3">واژه‌های مرتبط</h2>{terms.filter(x=>t.related_terms.includes(x.slug)).map(x=><Link to="/glossary/$term" params={{term:x.slug}} key={x.slug}>{x.title}</Link>)}<RelatedArticles/><Link to="/glossary">همهٔ واژه‌ها</Link></div></main>;}
+export function TermScreen({term:t,go}:{term:TermRecord;go:(id:string)=>void}) {const {terms,articles}=usePublicContent();return <main><PageHead go={go} crumbs={[{label:'نیک‌تراست',id:'home'},{label:'واژه‌نامه',id:'glossary'},t.title]} title={t.title} desc={t.definition}/><div className="nt-container nt-section nt-stack"><p className="nt-body-lg">{t.definition}</p><h2 className="nt-h3">واژه‌های مرتبط</h2>{terms.filter(x=>t.related_terms.includes(x.slug)).map(x=><Link to="/glossary/$term" params={{term:x.slug}} key={x.slug}>{x.title}</Link>)}{articles.filter(a=>t.article_slugs.includes(a.slug)).map(a=><ArticleLink article={a} key={a.slug}/>)}<Link to="/glossary">همهٔ واژه‌ها</Link></div></main>;}
