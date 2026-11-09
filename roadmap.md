@@ -1,5 +1,13 @@
 # NikTrust MVP
 
+## Day 06-B — Public completion
+- [ ] Public-only category landings, verified-data directory filters and connected comparison.
+- [ ] Source-led review template, change timeline and honest unavailable user submissions.
+- [ ] Shared editorial listings/articles, topics and glossary without invented content.
+- [ ] Updates, report validation and public platform check.
+- [ ] Crawl policy, public route validation, responsive checks and Persian status report.
+- [ ] Published platform/content records and submission services — blocked by approved source data and existing service contracts; no new backend in this package.
+
 ## Header, markets and night mode update
 - [x] Add official symbol and logotype; simplify the homepage hero.
 - [x] Replace comparison picks with a real market widget and add a moving price strip above the header.
