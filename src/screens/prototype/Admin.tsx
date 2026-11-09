@@ -32,7 +32,7 @@ function PlatformEditor({record}:{record?:PlatformDetail}) {
  <ComponentButton onClick={()=>setMessage(!name.trim()||!slug.trim()?'نام و شناسهٔ مسیر را وارد کنید.':!/^[a-z0-9-]+$/.test(slug)?'شناسهٔ مسیر باید حروف کوچک لاتین، عدد یا خط تیره باشد.':'فرم نمونه بررسی شد؛ رکوردی ذخیره یا منتشر نشده است.')}>بررسی و ذخیرهٔ نمونه</ComponentButton><ComponentButton disabled>امتیاز عددی تا تصویب روش مسدود است</ComponentButton></form>{message&&<p role="status" className="nt-dash-status">{message}</p>}{archive&&<Confirm title="بایگانی — نمونه" onClose={()=>setArchive(false)} onConfirm={()=>{setStatus('بایگانی — نمونه');setMessage('وضعیت نمایشی تغییر کرد؛ رکورد واقعی بایگانی نشده است.');setArchive(false);}}>هیچ رکورد یا نشانی عمومی تغییر نمی‌کند.</Confirm>}</>;
 }
 function AdminModule({section}:{section:string}) {
- const module=MODULES[section]??MODULES.settings;const {articles,terms,changes}=usePublicContent();
+ const module=MODULES[section]??MODULES['settings'];const {articles,terms,changes}=usePublicContent();
  const [editor,setEditor]=useState(false),[status,setStatus]=useState(module?.statuses[0]??''),[message,setMessage]=useState(''),[type,setType]=useState('blog'),[form,setForm]=useState<Record<string,string>>({});
  if(!module)return null;
  const rows=section==='content'?articles.map(a=>[a.title,a.kind,a.topic,'منتشرشده',a.author??'اعلام نشده',a.published_at]):section==='alerts'?changes.map(c=>[c.platform_id,c.title,c.evidence.source_name,c.changed_at,c.verified_at??'نامشخص','رکورد موجود']):[];

@@ -21,11 +21,11 @@ export function savedPlatforms(input: unknown, platforms: PlatformDetail[]): str
   return Array.isArray(input) ? [...new Set(input.filter((v): v is string => typeof v === 'string' && platforms.some(p => p.id === v)))] : [];
 }
 export function authValidation(mode: string, values: Record<string, string>, accepted: boolean): string | null {
-  if (mode !== 'reset' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email ?? '')) return 'ایمیل معتبر وارد کنید.';
-  if (mode !== 'recover' && (values.password ?? '').length < 10) return 'رمز عبور باید حداقل ۱۰ نویسه داشته باشد.';
-  if (['register', 'reset'].includes(mode) && values.password !== values.confirm) return 'تکرار رمز عبور یکسان نیست.';
+  if (mode !== 'reset' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values['email'] ?? '')) return 'ایمیل معتبر وارد کنید.';
+  if (mode !== 'recover' && (values['password'] ?? '').length < 10) return 'رمز عبور باید حداقل ۱۰ نویسه داشته باشد.';
+  if (['register', 'reset'].includes(mode) && values['password'] !== values['confirm']) return 'تکرار رمز عبور یکسان نیست.';
   if (mode === 'register' && !accepted) return 'پذیرش شرایط و سیاست حریم خصوصی لازم است.';
-  if (mode === 'admin' && !/^\d{6}$/.test(values.mfa ?? '')) return 'کد شش‌رقمی مرحلهٔ دوم وارد کنید.';
+  if (mode === 'admin' && !/^\d{6}$/.test(values['mfa'] ?? '')) return 'کد شش‌رقمی مرحلهٔ دوم وارد کنید.';
   return null;
 }
 export const prototypeActions = { authentication: false, payments: false, referralAttribution: false, commissions: false, scoring: false } as const;
