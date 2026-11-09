@@ -23,6 +23,7 @@ import logoBlue from "@/assets/logotype-blue.svg.asset.json";
 import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
 import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
 import { catalogQuery } from '@/api/client';
+import { canonicalUrl, isPrivatePath } from '@/lib/seo-policy';
 import { ComponentButton, ComponentDataCard } from '@/ds';
 
 function NotFoundComponent() {
@@ -88,8 +89,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   loader: ({ context }) => context.queryClient.ensureQueryData(catalogQuery),
   pendingComponent: () => <div className="nt-container nt-section"><ComponentDataCard state="loading"/></div>,
-  head: () => ({
+  head: ({ matches }) => {
+    const leaf = matches.at(-1);
+    const path = leaf?.pathname ?? '/';
+    const hidden = isPrivatePath(path) || matches.some(m => m.status === 'notFound' || (m as { globalNotFound?: boolean }).globalNotFound) || leaf?.routeId === '__root__' || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
+    return {
     meta: [
+      ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : [{ property: "og:url", content: canonicalUrl(path) }]),
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "نیک‌تراست — ارزیابی و مقایسهٔ مستقل پلتفرم‌های مالی" },
@@ -100,10 +106,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      ...(hidden ? [] : [{ rel: "canonical", href: canonicalUrl(path) }]),
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       ...[fontRegular, fontBold].map((f) => ({ rel: "preload", href: f.url, as: "font", type: "font/woff2", crossOrigin: "anonymous" as const })),
     ],
-  }),
+  };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

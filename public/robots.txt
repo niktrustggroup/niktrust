@@ -12,9 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
-Disallow: /account
-Disallow: /partners/dashboard
-Disallow: /partners/ledger
-Disallow: /partners/payouts
-Disallow: /membership/checkout
 Sitemap: https://niktrust.lovable.app/sitemap.xml
