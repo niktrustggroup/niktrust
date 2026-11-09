@@ -124,7 +124,7 @@ export function ResearchEducation() {
 /* 10 */
 export function TrustMethodology() {
   const dims = [[Landmark, 'مجوز و شخص حقوقی', 'شخص حقوقی، اطلاعات مجوز و طرف قرارداد را بررسی می‌کنیم.'], [Receipt, 'هزینه‌های واقعی', 'کارمزد، اسپرد، هزینهٔ برداشت و سایر هزینه‌های مرتبط را می‌سنجیم.'], [Globe2, 'دسترسی از ایران', 'محدودیت‌های دسترسی، روش‌های پرداخت و ارائهٔ خدمات به کاربران ایرانی را مرور می‌کنیم.'], [FileSearch, 'منبع و بازبینی', 'منبع اطلاعات، وضعیت تأیید و سابقهٔ بازبینی را نمایش می‌دهیم.']] as const;
-  const links = [['/methodology', 'روش ارزیابی'], ['/editorial-policy', 'سیاست تحریریه'], ['/disclosure', 'افشای روابط تجاری'], ['/corrections', 'سیاست اصلاحات'], ['/how-we-make-money', 'منابع درآمد و اطلاعات'], ['/about', 'دربارهٔ نیک‌تراست']] as const;
+  const links = [['/methodology', 'روش ارزیابی'], ['/editorial-policy', 'سیاست تحریریه'], ['/disclosure', 'افشای روابط تجاری'], ['/corrections', 'سیاست اصلاحات'], ['/how-we-make-money', 'مدل درآمد'], ['/about', 'دربارهٔ نیک‌تراست']] as const;
   return <HomeSection id="trust" title="پیش از انتخاب پلتفرم، چه چیزهایی را بررسی می‌کنیم؟" desc="چهار محور ثابت ارزیابی؛ جزئیات هر محور در مستندات روش ارزیابی آمده است.">
     <div className="nt-trust-dims">{dims.map(([I, t, d]) => <article key={t}><I aria-hidden="true"/><h3>{t}</h3><p>{d}</p><Link to="/methodology">مستندات روش ←</Link></article>)}</div>
     <nav className="nt-trust-links" aria-label="شفافیت">{links.map(([to, t]) => <Link key={to} to={to}>{t}</Link>)}</nav>
