@@ -6,7 +6,11 @@ export const CATEGORY_INFO: Record<Category, { topic: string; intro: string; cri
   exchanges: { topic: 'cryptocurrency', intro: 'شرکت و حوزهٔ قضایی، امنیت نگهداری دارایی، کارمزد و شرایط احراز هویت را بررسی کنید. امکان دسترسی با مجاز بودن ثبت‌نام یا برداشت یکسان نیست.', criteria: ['شخص حقوقی', 'حوزهٔ قضایی', 'رمزارز', 'کارمزد', 'واریز', 'برداشت', 'امنیت', 'احراز هویت', 'پشتیبانی فیات', 'دسترسی ایران'] },
   prop: { topic: 'prop-trading', intro: 'قوانین چالش، حدود زیان و شرایط پرداخت سود را پیش از پرداخت هزینه بخوانید. هزینهٔ چالش با سپردهٔ معاملاتی بروکر یکسان نیست.', criteria: ['نوع چالش', 'قوانین ارزیابی', 'هدف سود', 'افت سرمایه', 'زیان روزانه', 'تقسیم سود', 'شرایط پرداخت', 'کشورهای محدود', 'دسترسی ایران'] },
 };
-export const isVerifiedAttribute = (a: AttributeValueView) => a.value_status === 'known' && a.value !== null && a.evidence.claim_origin === 'independent' && !!a.evidence.source_url && !!a.evidence.verified_at && !a.evidence.is_stale;
+export const isVerifiedAttribute = (a: AttributeValueView) => a.value_status === 'known' && a.value !== null && a.evidence.claim_origin === 'independent' && !!a.evidence.source_url?.match(/^https?:\/\//) && !!a.evidence.verified_at && !Number.isNaN(Date.parse(a.evidence.verified_at)) && !a.evidence.is_stale;
+export function canSortNumerically(values:string[]) {
+  const units=values.map(v=>v.match(/^\s*([$€]?)\s*[\d.,٬]+\s*(%|USD|دلار)?\s*$/));
+  return units.length>0 && units.every(Boolean) && new Set(units.map(m=>m ? `${m[1]??''}:${m[2]??''}` : '')).size===1;
+}
 export function verifiedDate(p: PlatformDetail): string | null {
   const dates = p.key_attributes.filter(isVerifiedAttribute).map(a => a.evidence.verified_at).filter((d): d is string => !!d && !Number.isNaN(Date.parse(d)));
   return dates.sort().at(-1) ?? null;
@@ -25,6 +29,8 @@ export function directoryResults(platforms: PlatformDetail[], q: string, coverag
   if (sort === 'updated') return filtered.sort((a,b) => b.updated_at.localeCompare(a.updated_at));
   if (sort.startsWith('numeric:')) {
     const label = sort.slice(8);
+    const values=filterOptions(platforms).find(o=>o.label===label)?.values??[];
+    if(!canSortNumerically(values))return filtered;
     const n = (p: PlatformDetail) => { const a = p.key_attributes.find(a => a.label === label && isVerifiedAttribute(a)); const value = a?.value?.replace(/[,٬]/g,'').match(/[\d.]+/); return value ? Number(value[0]) : Infinity; };
     return filtered.sort((a,b) => n(a)-n(b) || a.name_fa.localeCompare(b.name_fa,'fa'));
   }

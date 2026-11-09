@@ -4,7 +4,7 @@ import { PageHead, KIcon } from './Shared';
 import { Link } from '@tanstack/react-router';
 import { DueDiligenceSteps } from './product/Discovery';
 import { usePublicPlatforms } from '@/api/client';
-import { CATEGORY_INFO, directoryResults, filterOptions, parseFilters, verifiedDate } from '@/api/discovery';
+import { CATEGORY_INFO, directoryResults, filterOptions, parseFilters, verifiedDate, canSortNumerically } from '@/api/discovery';
 import { usePublicSearch } from '@/lib/public-search';
 import type { Category } from '@/api/types';
 import { EmptyState, PlatformCard } from './product/Primitives';

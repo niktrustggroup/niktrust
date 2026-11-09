@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { ComponentButton } from '@/ds';
 import { PageHead } from '../Shared';
-import { articles, terms, articlePath, topicTitle, type ArticleRecord, type TermRecord } from '@/api/public-content';
+import { terms, articlePath, topicTitle, type ArticleRecord, type TermRecord } from '@/api/public-content';
 import { canonicalUrl } from '@/lib/seo-policy';
 import { persianDate } from '@/api/format';
 import { RelatedArticles } from './ContentParts';
