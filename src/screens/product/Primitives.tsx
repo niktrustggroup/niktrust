@@ -19,7 +19,7 @@ export function Attribute({ attribute }: { attribute: AttributeValueView }) {
 export function PlatformCard({ platform, compare, toggleCompare, go }: { platform: PlatformDetail; compare: string[]; toggleCompare: (id: string) => void; go: (id: string, arg?: string) => void }) {
   const p = platform;
   if (!isPublicRecord(p)) return null;
-  return <ComponentDataCard name={p.name_fa} category={p.category_fa} icon1={p.name_fa.slice(0,1)} score={visibleScore(p.score)} scoreState={visibleScore(p.score) === null ? 'empty' : 'default'} trustState={p.key_attributes.some(a => a.evidence.is_stale) ? 'stale' : 'inreview'} date={persianDate(p.updated_at)} commercialCTA={false}
+  return <ComponentDataCard name={p.name_fa} category={p.category_fa} icon1={p.name_fa.slice(0,1)} score={visibleScore(p.score)} scoreState="empty" trustState={p.key_attributes.some(a => a.evidence.is_stale) ? 'stale' : 'inreview'} date={persianDate(verifiedDate(p))} commercialCTA={false}
     badges={[{ tone: 'neutral', label: p.coverage_level==='full_review'?'بررسی کامل':p.coverage_level==='basic_profile'?'پروفایل پایه':'اطلاعات محدود' }, { tone: 'unknown', label: 'دسترسی ایران: نامشخص · اطمینان نامشخص' }, {tone:'neutral',label:verifiedDate(p)?`آخرین تأیید مشخصات: ${persianDate(verifiedDate(p))}`:'تأیید مستقل: اعلام نشده'}]}
     metrics={p.key_attributes.map(a => ({ label: a.label, value: a.value_status==='known' && a.value!==null ? persianValue(a.value) : undefined, state: a.value_status === 'known' ? 'default' : 'notdeclared' }))}
     href={`/${p.category === 'brokers' ? 'forex-brokers' : p.category === 'exchanges' ? 'crypto-exchanges' : 'prop-firms'}/${p.slug}`}

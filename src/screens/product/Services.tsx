@@ -7,6 +7,7 @@ import { changes } from '@/api/public-content';
 import { usePublicSearch } from '@/lib/public-search';
 import { ChangeTimeline } from './ReviewParts';
 import { persianDate } from '@/api/format';
+import { usePublicContent } from '@/api/content-client';
 import { filterPlatforms, validateReport } from '@/api/rules';
 import { PageHead } from '../Shared';
 import { PlatformFinderWizard } from '../home/Sections';
@@ -37,6 +38,7 @@ export function ReportScreen({ go }: Pick<Props,'go'>) {
   return <main><PageHead go={go} crumbs={[{label:'نیک‌تراست',id:'home'},{label:'تغییرات و هشدارها',id:'alerts'},'گزارش پلتفرم']} title="گزارش یک پلتفرم" desc="گزارش کاربر، ادعاست و پس از بررسی شواهد می‌تواند منتشر شود."/><div className="nt-container nt-section nt-stack"><div className="nt-note nt-note--caution">هیچ گزارشی ارسال یا ذخیره نمی‌شود؛ سرویس دریافت گزارش متصل نیست.</div><form className="nt-form" onSubmit={e=>{e.preventDefault();validate();}}><label>نام پلتفرم<input className="nt-input" value={name} onChange={e=>setName(e.target.value)} maxLength={200}/></label><label>نوع گزارش<select className="nt-input" value={kind} onChange={e=>setKind(e.target.value)}>{REPORT_TYPES.map(t=><option key={t}>{t}</option>)}</select></label><label>شرح گزارش<textarea className="nt-input" value={body} onChange={e=>setBody(e.target.value)} maxLength={3000}/></label><label>نشانی منبع (اختیاری)<input className="nt-input" dir="ltr" value={source} onChange={e=>setSource(e.target.value)} placeholder="https://"/></label><label>ایمیل (اختیاری)<input className="nt-input" dir="ltr" value={email} onChange={e=>setEmail(e.target.value)}/></label><p className="nt-caption">اطلاعات حساب مالی، رمز یا مدارک هویتی وارد نکنید.</p><ComponentButton onClick={validate}>بررسی اعتبار فرم</ComponentButton><ComponentButton disabled>ارسال گزارش در دسترس نیست</ComponentButton>{message&&<p className="nt-report-status" role="status">{message}</p>}</form></div></main>;
 }
 export function AlertsScreen({go,detail=false,slug}:{go:Props['go'];detail?:boolean;slug?:string}) {
+  const {changes}=usePublicContent();
   const {search,update}=usePublicSearch();const type=search.type??'';const {platforms}=usePublicPlatforms();
   const valid=changes.filter(c=>platforms.some(p=>p.id===c.platform_id));
   const found=valid.filter(c=>!type||c.type===type).sort((a,b)=>b.changed_at.localeCompare(a.changed_at));

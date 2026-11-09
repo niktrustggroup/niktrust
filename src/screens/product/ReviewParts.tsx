@@ -5,6 +5,7 @@ import { changes, type ChangeRecord } from '@/api/public-content';
 import type { AttributeValueView } from '@/api/types';
 import { persianDate } from '@/api/format';
 import { Attribute, EmptyState } from './Primitives';
+import { usePublicContent } from '@/api/content-client';
 export function SpecificationTable({ attributes }: { attributes:AttributeValueView[] }) {
   return attributes.length?<dl className="nt-spec-table">{attributes.map(a=><div key={a.label}><dt>{a.label}</dt><dd><Attribute attribute={a}/></dd></div>)}</dl>:<EmptyState title="مشخصات این بخش منتشر نشده است"/>;
 }
@@ -12,7 +13,7 @@ export function ChangeTimeline({ records }: { records:ChangeRecord[] }) {
   if (!records.length) return <EmptyState title="تغییر تأییدشده‌ای ثبت نشده است"/>;
   return <ol className="nt-change-timeline">{[...records].sort((a,b)=>b.changed_at.localeCompare(a.changed_at)).map(c=><li key={c.slug}><p className="nt-caption">{persianDate(c.changed_at)} · تأیید: {persianDate(c.verified_at)}</p><h3>{c.attribute}</h3><dl className="nt-change-values"><div><dt>مقدار پیشین</dt><dd>{c.previous??'اعلام نشده'}</dd></div><div><dt>مقدار جدید</dt><dd>{c.current??'اعلام نشده'}</dd></div></dl><p>{c.evidence.source_name} · {c.evidence.is_stale?'نیازمند بازبینی':c.evidence.claim_origin==='independent'?'تأیید مستقل':'اعلامی پلتفرم'}</p>{c.evidence.source_url&&<a href={c.evidence.source_url} rel="noopener noreferrer" target="_blank">منبع</a>}<Link to="/alerts/$slug" params={{slug:c.slug}}>جزئیات تغییر</Link></li>)}</ol>;
 }
-export function PlatformHistory({ platformId }: { platformId:string }) { return <ChangeTimeline records={changes.filter(c=>c.platform_id===platformId)}/>; }
+export function PlatformHistory({ platformId }: { platformId:string }) { const {changes}=usePublicContent(); return <ChangeTimeline records={changes.filter(c=>c.platform_id===platformId)}/>; }
 export function UserReviewPanel() {
   const [feedback,setFeedback] = useState('');
   return <section className="nt-stack"><ComponentBadgeStatus tone="neutral" label="نظر کاربران، جدا از ارزیابی تحریریه"/><EmptyState title="تجربهٔ تأییدشده‌ای منتشر نشده است"/>

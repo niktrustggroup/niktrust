@@ -6,7 +6,9 @@ import { ResearchAside } from './Discovery';
 import { articles, terms, LEARN_TOPICS, topicTitle } from '@/api/public-content';
 import { usePublicSearch } from '@/lib/public-search';
 import { ArticleLink } from './ContentParts';
+import { usePublicContent } from '@/api/content-client';
 export function PublicationScreen({go,title,kind,topic}:{go:(id:string)=>void;title:string;kind:string;topic?:string}) {
+  const {articles,terms}=usePublicContent();
   const {search,update}=usePublicSearch(); const q=search.q??'', filter=topic??search.topic??'';
   const glossary=kind==='glossary';
   const found=articles.filter(a=>(kind==='topic'||kind==='learn'?a.kind==='learn':a.kind===kind)&&(!filter||a.topic===filter)&&(!q||`${a.title} ${a.summary}`.includes(q))).sort((a,b)=>b.published_at.localeCompare(a.published_at));
