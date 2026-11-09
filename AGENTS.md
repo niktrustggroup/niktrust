@@ -23,3 +23,4 @@
 - Header brand assets render as CSS masks with a dedicated semantic logo token so original SVG fills cannot override the shared appearance role.
 - Public market displays use client-mounted TradingView embeds with provider attribution and failure states; never substitute fabricated prices.
 - Crawl policy (canonical, noindex, sitemap) lives in src/lib/seo-policy.ts and is applied once in the root head; keeps one canonical per page and one private-path list.
+- Homepage modules live in src/screens/home/; public recommendation surfaces read usePublicPlatforms() (rules.publicPlatforms), which excludes demonstration records so sample data never appears as a recommendation.
