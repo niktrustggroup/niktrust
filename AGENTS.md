@@ -28,3 +28,6 @@
 - Public directories, profile loaders, search and comparison share the configured catalog/publicPlatforms boundary; comparison never validates against mock fixtures, so changing data clients preserves eligibility.
 - Editorial, glossary and change-history presentation records use the static public-content adapter/query until approved source companions arrive; empty collections are intentional, not fabricated API responses.
 - Directory and publication filter state belongs in validated URL search parameters; verified-attribute facets derive from independently sourced, dated, non-stale data, never invented filter options.
+- Day07 prototype screens share src/screens/prototype and DashboardShell; root omits public chrome on account/partner/admin and auth surfaces to keep product areas independent without a new router.
+- PrototypeProvider contains explicit in-memory preview access and session-only watchlists, not authentication; never persist passwords, account identities, financial events or production mutations in it.
+- Admin previews are noindex and require explicit preview entry, contain no private data, and must gain server-side auth/RBAC before production use; no roles or API endpoints are invented without the Day04 contract.

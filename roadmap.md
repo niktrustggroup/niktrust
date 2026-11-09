@@ -1,5 +1,14 @@
 # NikTrust MVP
 
+## Day 07 — Full product prototype and design freeze
+- [ ] Shared dashboard shell, prototype access and user account flows.
+- [ ] Partner application, referrals, commissions and payouts interfaces.
+- [ ] Membership plans, checkout, result and subscription scenarios.
+- [ ] Shared market hub, terminal and frontend watchlists.
+- [ ] Independent admin prototype, management forms and operational states.
+- [ ] Six journeys, four widths, regression tests and Persian design-freeze handoff.
+- [ ] Production activation — outside Day07; requires approved contracts, auth, business rules and services.
+
 ## Day 06-B — Public completion
 - [x] Public-only category landings, verified-data directory filters and connected comparison.
 - [x] Source-led review template, change timeline and honest unavailable user submissions.

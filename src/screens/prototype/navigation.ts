@@ -1,0 +1,5 @@
+export const DASHBOARD_NAV = {
+  user: [ ['/account','نمای کلی'], ['/account/profile','پروفایل'], ['/account/watchlist','واچ‌لیست'], ['/account/reviews','نظرهای من'], ['/account/membership','عضویت'], ['/account/notifications','اعلان‌ها'], ['/account/security','امنیت'], ['/account/settings','تنظیمات'] ],
+  partner: [ ['/partner/dashboard','نمای کلی'], ['/partner/referrals','ارجاع‌ها و لینک‌ها'], ['/partner/leads','سرنخ‌ها'], ['/partner/commissions','دفتر کمیسیون'], ['/partner/payouts','تسویه‌ها'], ['/partner/settings','تنظیمات همکاری'] ],
+  admin: [ ['/admin','مرکز عملیات'], ['/admin/platforms','پلتفرم‌ها'], ['/admin/reviews','بررسی و ارزیابی'], ['/admin/sources','منابع'], ['/admin/verification','تأیید شواهد'], ['/admin/users','کاربران'], ['/admin/roles','نقش و دسترسی'], ['/admin/partners','همکاران'], ['/admin/commissions','کمیسیون و تسویه'], ['/admin/memberships','عضویت‌ها'], ['/admin/market-data','دادهٔ بازار'], ['/admin/content','تحریریه'], ['/admin/alerts','هشدارها'], ['/admin/logs','رویدادها'], ['/admin/settings','تنظیمات'] ],
+} as const;

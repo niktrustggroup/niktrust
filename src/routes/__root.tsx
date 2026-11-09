@@ -26,6 +26,7 @@ import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
 import { catalogQuery } from '@/api/client';
 import { canonicalUrl, isPrivatePath, isIncompletePath, CATEGORY_BASE } from '@/lib/seo-policy';
 import { ComponentButton, ComponentDataCard } from '@/ds';
+import { PrototypeProvider } from '@/lib/prototype';
 
 function NotFoundComponent() {
   return (
@@ -150,6 +151,8 @@ function Chrome() {
   const { go, compare } = useScreenProps();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const current = path.startsWith("/review") ? "brokers" : Object.entries(CURRENT).find(([url])=>path===url||path.startsWith(url+'/'))?.[1];
+  const productShell = /^\/(account|partner|admin)(\/|$)/.test(path) || ['/login','/register','/forgot-password','/reset-password'].includes(path) || /^\/partners\/(dashboard|links|leads|ledger|payouts)$/.test(path);
+  if (productShell) return <Outlet />;
   return (
     <>
       <a href="#main" className="nt-skip">پرش به محتوا</a>
@@ -177,9 +180,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider><CompareProvider>
+      <ThemeProvider><CompareProvider><PrototypeProvider>
         <Chrome />
-      </CompareProvider></ThemeProvider>
+      </PrototypeProvider></CompareProvider></ThemeProvider>
     </QueryClientProvider>
   );
 }

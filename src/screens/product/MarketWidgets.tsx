@@ -4,7 +4,7 @@ import { ComponentButton } from '@/ds';
 import { useTheme } from '@/lib/theme';
 import { SectionHead } from '../Shared';
 /** Public provider embeds: no invented prices or private credentials. */
-function MarketEmbed({ kind, widget: widgetName, config, label }: { kind: 'chart' | 'ticker' | 'mini'; widget?: string; config?: Record<string, unknown>; label?: string }) {
+export function MarketEmbed({ kind, widget: widgetName, config, label }: { kind: 'chart' | 'ticker' | 'mini'; widget?: string; config?: Record<string, unknown>; label?: string }) {
   const host = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
