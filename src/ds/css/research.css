@@ -46,7 +46,7 @@
 @media(prefers-reduced-motion:no-preference){.nt-mega{animation:nt-reveal 140ms ease-out}@keyframes nt-reveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}/* Homepage hero */
 .nt-hero{border-bottom:1px solid var(--border-subtle);overflow:hidden}
 .nt-hero-inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:48px}
-.nt-hero-eyebrow{display:inline-flex;margin:0 0 12px;padding:4px 12px;border-radius:999px;background:var(--brand-accent-muted);color:var(--brand-primary);font-size:13px;font-weight:700}
+.nt-hero-eyebrow{display:inline-flex;margin:0 0 12px;padding:4px 12px;border-radius:999px;background:var(--brand-accent-muted);color:var(--text-on-brand);font-size:13px;font-weight:700}
 .nt-hero-copy h1{font-size:44px;line-height:1.45;font-weight:800;margin:0 0 14px;color:var(--text-primary)}
 .nt-hero-desc{font-size:17px;line-height:2;color:var(--text-secondary);margin:0 0 26px;max-width:52ch}
 .nt-hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
