@@ -5,7 +5,7 @@ import { useScreenProps } from '@/lib/site';
 import { EditorialScreen } from '@/screens/product/Editorial';
 export const Route = createFileRoute('/news')({
   validateSearch: validatePublicSearch,
-  head: () => seo("اخبار پلتفرم و رگولاتوری", "اخبار پلتفرم و رگولاتوری — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("اخبار پلتفرم و رگولاتوری", "خبرهای منتشرشده دربارهٔ تغییرات پلتفرم‌ها و رگولاتوری؛ همراه منبع اصلی، تاریخ و وضعیت به‌روزرسانی."),
   
   component: Page,
 });

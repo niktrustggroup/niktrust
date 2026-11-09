@@ -5,7 +5,7 @@ import { useScreenProps } from '@/lib/site';
 import { AlertsScreen } from '@/screens/product/Services';
 export const Route = createFileRoute('/alerts')({
   validateSearch: validatePublicSearch,
-  head: () => seo("هشدارها", "هشدارها — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("هشدارها", "تغییرات و هشدارهای منبع‌دار پلتفرم‌ها با تاریخ رویداد، بررسی و شواهد."),
   
   component: Page,
 });

@@ -5,7 +5,7 @@ import { useScreenProps } from '@/lib/site';
 import { SearchScreen } from '@/screens/product/Services';
 export const Route = createFileRoute('/check')({
   validateSearch: validatePublicSearch,
-  head: () => seo("استعلام پلتفرم", "استعلام پلتفرم — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("استعلام پلتفرم", "جستجوی اطلاعات عمومی پلتفرم در نیک‌تراست؛ بدون تضمین هویت، مجوز یا امنیت."),
   
   component: Page,
 });

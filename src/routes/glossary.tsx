@@ -5,7 +5,7 @@ import { useScreenProps } from '@/lib/site';
 import { EditorialScreen } from '@/screens/product/Editorial';
 export const Route = createFileRoute('/glossary')({
   validateSearch: validatePublicSearch,
-  head: () => seo("واژه‌نامهٔ مالی", "واژه‌نامهٔ مالی — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("واژه‌نامهٔ مالی", "واژه‌نامهٔ مفاهیم مالی با جستجو، مرور الفبایی و پیوند به آموزش مرتبط؛ تعریف‌های تأییدشده."),
   
   component: Page,
 });

@@ -5,7 +5,7 @@ import { useScreenProps } from '@/lib/site';
 import { EditorialScreen } from '@/screens/product/Editorial';
 export const Route = createFileRoute('/learn')({
   validateSearch: validatePublicSearch,
-  head: () => seo("مرکز آموزش", "مرکز آموزش — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("مرکز آموزش", "موضوعات آموزش مالی از فارکس و رمزارز تا ریسک، هزینه‌ها، ابزارها و مبانی بازار؛ فقط مطالب منتشرشده."),
   
   component: Page,
 });
