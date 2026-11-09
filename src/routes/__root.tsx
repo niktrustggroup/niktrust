@@ -1,3 +1,4 @@
+import { contentQuery } from '@/api/content-client';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -23,7 +24,7 @@ import logoBlue from "@/assets/logotype-blue.svg.asset.json";
 import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
 import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
 import { catalogQuery } from '@/api/client';
-import { canonicalUrl, isPrivatePath } from '@/lib/seo-policy';
+import { canonicalUrl, isPrivatePath, isIncompletePath } from '@/lib/seo-policy';
 import { ComponentButton, ComponentDataCard } from '@/ds';
 
 function NotFoundComponent() {
@@ -87,12 +88,12 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  loader: ({ context }) => context.queryClient.ensureQueryData(catalogQuery),
+  loader: async ({ context }) => { await Promise.all([context.queryClient.ensureQueryData(catalogQuery),context.queryClient.ensureQueryData(contentQuery)]); },
   pendingComponent: () => <div className="nt-container nt-section"><ComponentDataCard state="loading"/></div>,
   head: ({ matches }) => {
     const leaf = matches.at(-1);
     const path = leaf?.pathname ?? '/';
-    const hidden = isPrivatePath(path) || matches.some(m => m.status === 'notFound' || (m as { globalNotFound?: boolean }).globalNotFound) || leaf?.routeId === '__root__' || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
+    const hidden = isPrivatePath(path) || isIncompletePath(path) || matches.some(m => m.status === 'notFound' || (m as { globalNotFound?: boolean }).globalNotFound) || leaf?.routeId === '__root__' || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
     return {
     meta: [
       ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : [{ property: "og:url", content: canonicalUrl(path) }]),
