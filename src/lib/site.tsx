@@ -2,7 +2,7 @@ import type React from "react";
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { PATHS } from "@/ds/paths";
-import { mockCatalog } from '@/api/mockClient';
+import { usePublicPlatforms } from '@/api/client';
 import { sanitizeSelection } from '@/api/rules';
 
 export const MAX_COMPARE = 4;
@@ -26,26 +26,28 @@ const Ctx = (g.__ntCompareCtx ??= createContext<CompareCtx | null>(null));
 const KEY = "nt-compare";
 
 export function CompareProvider({ children }: { children: ReactNode }) {
+  const { platforms } = usePublicPlatforms();
   const [compare, setCompareState] = useState<string[]>([]);
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setCompareState(sanitizeSelection(JSON.parse(raw), mockCatalog.platforms));
+      if (raw) setCompareState(sanitizeSelection(JSON.parse(raw), platforms));
     } catch {
       /* ignore */
     }
-  }, []);
+  }, [platforms]);
   const setCompare = useCallback((ids: string[]) => {
-    const safe = sanitizeSelection(ids, mockCatalog.platforms);
+    const safe = sanitizeSelection(ids, platforms);
     setCompareState(safe);
     try {
       localStorage.setItem(KEY, JSON.stringify(safe));
     } catch {
       /* ignore */
     }
-  }, []);
+  }, [platforms]);
   const toggleCompare = useCallback((id: string) => {
     setCompareState((prev) => {
+      if (!platforms.some(p=>p.id===id) || (prev.length && platforms.find(p=>p.id===prev[0])?.category !== platforms.find(p=>p.id===id)?.category)) return prev;
       const next = toggleInList(prev, id);
       try {
         localStorage.setItem(KEY, JSON.stringify(next));
@@ -54,7 +56,7 @@ export function CompareProvider({ children }: { children: ReactNode }) {
       }
       return next;
     });
-  }, []);
+  }, [platforms]);
   return <Ctx.Provider value={{ compare, setCompare, toggleCompare }}>{children}</Ctx.Provider>;
 }
 
@@ -67,15 +69,18 @@ export function useCompare() {
 /** Navigation helper used by the design-system screens: go("brokers"), go("review", "a"). */
 export function useGo() {
   const navigate = useNavigate();
+  const { platforms } = usePublicPlatforms();
   return useCallback(
     (id: string, arg?: string) => {
-      const platform = mockCatalog.platforms.find(p => p.id === arg);
-      const categoryPath = platform ? PATHS[platform.category] : undefined;
-      const to = id === "review" ? (platform && categoryPath ? `${categoryPath}/${platform.slug}` : `/review/${arg ?? "a"}`) : (PATHS[id] ?? "/");
-      void navigate({ to });
+      const platform = platforms.find(p => p.id === arg);
+      if (id === 'review') {
+        if (!platform) { void navigate({to:'/review/$id',params:{id:arg??'unknown'}}); return; }
+        const to = platform.category==='brokers'?'/forex-brokers/$slug':platform.category==='exchanges'?'/crypto-exchanges/$slug':'/prop-firms/$slug';
+        void navigate({to,params:{slug:platform.slug}});
+      } else void navigate({ to: PATHS[id] ?? '/' });
       if (typeof window !== "undefined") window.scrollTo(0, 0);
     },
-    [navigate],
+    [navigate, platforms],
   );
 }
 
