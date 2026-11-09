@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
 import { ListingScreen } from "@/screens/Listing";
-import { Link } from '@tanstack/react-router';
 
 export const Route = createFileRoute("/crypto-exchanges")({
   head: () => seo("صرافی‌های ارز دیجیتال", "فهرست صرافی‌های ارز دیجیتال بررسی‌شده با کارمزد، تعداد رمزارز و وضعیت ثبت نزد نهاد ناظر."),
