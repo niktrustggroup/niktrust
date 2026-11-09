@@ -57,7 +57,7 @@
 .nt-hero-trust svg{width:17px;height:17px;stroke-width:1.75;color:var(--brand-primary)}
 .nt-hero-visual{display:flex;justify-content:center}
 .nt-hero-art{width:100%;max-width:520px;height:auto;aspect-ratio:560/440;animation:hi-in .7s ease-out both}
-.nt-hero-art .hi-halo{fill:var(--brand-accent-muted);opacity:.55}
+.nt-hero-art .hi-halo{fill:var(--brand-accent-muted);opacity:.35}
 .nt-hero-art .hi-ring{fill:none;stroke:var(--brand-primary);stroke-opacity:.14;stroke-dasharray:4 7}
 .nt-hero-art .hi-grid,.nt-hero-art .hi-src{fill:var(--brand-primary);opacity:.22}
 .nt-hero-art .hi-link{fill:none;stroke:var(--brand-primary);stroke-opacity:.35;stroke-width:1.5;stroke-dasharray:3 6}
