@@ -1,11 +1,11 @@
 # NikTrust MVP
 
 ## Day 06-B — Public completion
-- [ ] Public-only category landings, verified-data directory filters and connected comparison.
-- [ ] Source-led review template, change timeline and honest unavailable user submissions.
-- [ ] Shared editorial listings/articles, topics and glossary without invented content.
-- [ ] Updates, report validation and public platform check.
-- [ ] Crawl policy, public route validation, responsive checks and Persian status report.
+- [x] Public-only category landings, verified-data directory filters and connected comparison.
+- [x] Source-led review template, change timeline and honest unavailable user submissions.
+- [x] Shared editorial listings/articles, topics and glossary without invented content.
+- [x] Updates, report validation and public platform check.
+- [x] Crawl policy, public route validation, responsive checks and Persian status report (DAY06B_REPORT.md).
 - [ ] Published platform/content records and submission services — blocked by approved source data and existing service contracts; no new backend in this package.
 
 ## Header, markets and night mode update

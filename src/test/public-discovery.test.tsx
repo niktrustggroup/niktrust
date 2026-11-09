@@ -1,7 +1,8 @@
 import { describe,expect,it } from 'vitest';
 import { QueryClient } from '@tanstack/react-query';
 import { mockCatalog } from '@/api/mockClient';
-import { directoryResults,filterOptions,verifiedDate } from '@/api/discovery';
+import { directoryResults,filterOptions,verifiedDate,canSortNumerically } from '@/api/discovery';
+import { contentQuery } from '@/api/content-client';
 import { publicPlatforms,visibleScore } from '@/api/rules';
 import { loadPublicPlatform,loadArticle,loadChange,loadPair } from '@/lib/public-loaders';
 import { catalogQuery } from '@/api/client';
@@ -16,6 +17,8 @@ function record(id:string,min:string,date:string):PlatformDetail {
  return {...base,id,slug:id,name_fa:id,updated_at:date,iran_access:{...base.iran_access,evidence:{...base.iran_access.evidence,claim_origin:'independent'}},key_attributes:[{label:'حداقل واریز',value:min,value_status:'known',evidence:{source_name:'Test source',source_url:'https://example.com/evidence',verified_at:date,claim_origin:'independent',is_stale:false}},{label:'نوع حساب',value:'ECN',value_status:'known',evidence:{source_name:'Test source',source_url:'https://example.com/evidence',verified_at:date,claim_origin:'independent',is_stale:false}}]};
 }
 describe('Day06-B public integrity',()=>{
+ it('never sorts amounts with mixed currencies as one numeric scale',()=>{expect(canSortNumerically(['$100','€50'])).toBe(false);expect(canSortNumerically(['$100','$50'])).toBe(true);});
+ it('returns only an actual recorded change tied to a public platform',async()=>{const q=new QueryClient(),p=record('a','100','2026-11-08');q.setQueryData(catalogQuery.queryKey,{data:{platforms:[p]},meta:{data_mode:'production',total:1},request_id:'test'});const c={slug:'change',platform_id:'a',type:'fee',title:'Test-only change',explanation:'Test',changed_at:'2026-11-08',verified_at:'2026-11-08',attribute:'حداقل واریز',previous:'200',current:'100',evidence:p.iran_access.evidence};q.setQueryData(contentQuery.queryKey,{articles:[],terms:[],changes:[c]});expect((await loadChange(q,'change')).previous).toBe('200');await expect(loadChange(q,'missing')).rejects.toBeDefined();});
  it('no numerical score is published before approval, even if flag is true',()=>expect(visibleScore({is_published:true,value:'9.9'})).toBeNull());
  it('fails closed for unknown catalog modes',()=>expect(publicPlatforms([record('test','100','2026-11-08')],'draft')).toEqual([]));
  it('excludes demo records from all category sources',()=>{for(const category of ['brokers','exchanges','prop'])expect(publicPlatforms(mockCatalog.platforms,'production').filter(p=>p.category===category)).toEqual([]);});
