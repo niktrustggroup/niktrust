@@ -1,25 +1,22 @@
-import { useState } from 'react';
-import { ComponentButton } from '@/ds';
-import { useCatalog } from '@/api/client';
-import { KIcon, SectionHead } from './Shared';
-import { PlatformCard, SampleNotice } from './product/Primitives';
 import { Link } from '@tanstack/react-router';
-import type { Category } from '@/api/types';
-import { CategoryDirectory, DueDiligenceSteps, PlatformRow, ResearchAside } from './product/Discovery';
-import { MarketChart } from './product/MarketWidgets';
 import { ListChecks, CalendarCheck, Scale } from 'lucide-react';
 import { HeroIllustration } from './product/HeroIllustration';
-import researchDesk from '@/assets/research-desk.jpg';
-export function HomeScreen({ go, compare, toggleCompare }: { go: (id: string, arg?: string) => void; compare: string[]; toggleCompare: (id: string) => void }) {
-  const { platforms } = useCatalog(); const [category,setCategory]=useState<Category>('brokers');
-
+import { MarketOverview } from './product/MarketWidgets';
+import { ExplorePlatforms, PlatformFinderWizard, QuickComparison, ReturnUserPanel, PlatformUpdates, FeaturedReviews, ResearchEducation, TrustMethodology } from './home/Sections';
+import { CalculatorsSection } from './home/Calculators';
+export function HomeScreen({ compare, toggleCompare }: { go: (id: string, arg?: string) => void; compare: string[]; toggleCompare: (id: string) => void }) {
+  const p = { compare, toggleCompare };
   return <main>
     <section className="nt-hero" aria-labelledby="hero-title"><div className="nt-container nt-hero-inner"><div className="nt-hero-copy"><p className="nt-hero-eyebrow">بررسی مستقل پلتفرم‌های مالی</p><h1 id="hero-title">قبل از انتخاب، دقیق‌تر بررسی کن.</h1><p className="nt-hero-desc">بروکرها، صرافی‌ها و پراپ‌فرم‌ها را از نظر اعتبار، هزینه‌ها، خدمات و محدودیت‌ها بررسی و مقایسه کن.</p><div className="nt-hero-ctas"><Link to="/forex-brokers" className="nt-btn nt-btn--primary nt-btn--lg">بررسی پلتفرم‌ها</Link><Link to="/methodology" className="nt-btn nt-btn--secondary nt-btn--lg">روش ارزیابی ما</Link></div><ul className="nt-hero-trust"><li><ListChecks aria-hidden="true"/>معیارهای شفاف و قابل بررسی</li><li><CalendarCheck aria-hidden="true"/>منبع و تاریخ کنترل اطلاعات</li><li><Scale aria-hidden="true"/>استقلال ارزیابی از روابط تجاری</li></ul></div><div className="nt-hero-visual"><HeroIllustration/></div></div></section>
-    <div className="nt-container"><CategoryDirectory/></div>
-    <section className="nt-section nt-discovery-main"><div className="nt-container"><SectionHead title="پلتفرم‌ها را بشناسید" desc="پروفایل‌ها بر اساس دسته؛ نه رتبه‌بندی تجاری یا توصیهٔ سرمایه‌گذاری." action={<ComponentButton type="tertiary" iconTrailing onClick={()=>go(category)}>مشاهدهٔ فهرست</ComponentButton>}/><div className="nt-discovery-tabs" role="group" aria-label="دستهٔ پلتفرم">{([['brokers','بروکرهای فارکس'],['exchanges','صرافی‌های رمزارز'],['prop','پراپ‌فرم‌ها']] as const).map(([id,title])=><ComponentButton key={id} type="tertiary" aria-pressed={category===id} onClick={()=>setCategory(id)}>{title}</ComponentButton>)}</div><div className="nt-featured-layout"><div className="nt-stack"><SampleNotice/><div className="nt-cards">{platforms.filter(p=>p.category===category).slice(0,3).map(p=><PlatformCard key={p.id} platform={p} compare={compare} toggleCompare={toggleCompare} go={go}/>)}</div></div><ResearchAside/></div></div></section>
-    <MarketChart/>
-    <div className="nt-container nt-section nt-two-sections"><section><SectionHead title="صرافی‌های رمزارز" desc="کارمزد، برداشت و دسترسی از ایران" action={<ComponentButton type="tertiary" iconTrailing onClick={()=>go('exchanges')}>همهٔ صرافی‌ها</ComponentButton>}/>{platforms.filter(p=>p.category==='exchanges').map(p=><PlatformRow key={p.id} platform={p} go={go}/>)}</section><section><SectionHead title="پراپ‌فرم‌ها" desc="قواعد چالش و شواهد پرداخت" action={<ComponentButton type="tertiary" iconTrailing onClick={()=>go('prop')}>همهٔ پراپ‌فرم‌ها</ComponentButton>}/>{platforms.filter(p=>p.category==='prop').map(p=><PlatformRow key={p.id} platform={p} go={go}/>)}</section></div>
-    <section className="nt-section nt-editorial-band"><div className="nt-container"><SectionHead title="پژوهش، آموزش و تحلیل" desc="از شناخت مفاهیم تا بررسی شواهد؛ با مرز روشن میان خبر، تحلیل و ارزیابی."/><div className="nt-editorial-grid"><article className="nt-editorial-feature"><img src={researchDesk} loading="lazy" width={1200} height={768} alt="میز پژوهش با گزارش مقایسه و دفتر یادداشت"/><h3>اعتماد چگونه ارزیابی می‌شود؟</h3><p>معیارها، منابع و محدودیت‌ها را در چارچوب ارزیابی نیک‌تراست ببینید.</p><Link to="/methodology">مطالعهٔ روش ارزیابی ←</Link></article><section className="nt-editorial-column"><h3>اخبار و تحلیل بازار</h3><div className="nt-editorial-status">خبر یا تحلیل تأییدشده‌ای هنوز منتشر نشده است. دادهٔ قیمت و زمان انتشار فرض نمی‌شود.</div><Link to="/news">اتاق خبر<KIcon name="ArrowStart" size={16}/></Link><Link to="/markets">نمای کلی بازار<KIcon name="ArrowStart" size={16}/></Link><Link to="/alerts">هشدارهای پلتفرم‌ها<KIcon name="ArrowStart" size={16}/></Link></section><section className="nt-editorial-column"><h3>دانش پیش از تصمیم</h3><Link to="/learn">مرکز آموزش مالی<KIcon name="ArrowStart" size={16}/></Link><Link to="/glossary">واژه‌نامهٔ مالی<KIcon name="ArrowStart" size={16}/></Link><Link to="/tools">ابزارها و ماشین‌حساب‌ها<KIcon name="ArrowStart" size={16}/></Link><Link to="/editorial-policy">سیاست تحریریه<KIcon name="ArrowStart" size={16}/></Link><div className="nt-editorial-status">محتوای آموزشی نهایی در انتظار تأیید تحریریه است.</div></section></div></div></section>
-    <section className="nt-section"><div className="nt-container"><SectionHead title="چهار بررسی پیش از انتخاب پلتفرم" action={<ComponentButton type="tertiary" onClick={()=>go('method')} iconTrailing>روش ارزیابی ما</ComponentButton>}/><DueDiligenceSteps/><div className="nt-page-category-links"><Link to="/about">دربارهٔ نیک‌تراست</Link><Link to="/about/team">تیم و بررسی‌کنندگان</Link><Link to="/how-we-make-money">مدل درآمد</Link><Link to="/corrections">اصلاح اطلاعات</Link></div></div></section>
+    <ExplorePlatforms {...p}/>
+    <PlatformFinderWizard {...p}/>
+    <QuickComparison {...p}/>
+    <ReturnUserPanel/>
+    <MarketOverview/>
+    <PlatformUpdates/>
+    <FeaturedReviews/>
+    <CalculatorsSection/>
+    <ResearchEducation/>
+    <TrustMethodology/>
   </main>;
 }
