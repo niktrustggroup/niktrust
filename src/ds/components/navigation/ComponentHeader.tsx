@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { PATHS } from '../../paths';
 import { RESEARCH_NAV } from '../../navigation';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { Icon } from '../icons/Icon';
 import { ComponentButton } from '../core/ComponentButton';
 import { Moon, Sun } from 'lucide-react';
@@ -14,9 +14,8 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 export function ComponentHeader(p: any = {}){
   const {device='desktop',logoSrc,logoSymbolSrc,logoDarkSrc,current,onNavigate,onCompare,compareCount=0,className,style}=p;
   const {theme,toggleTheme}=useTheme();
-  const [open,setOpen]=useState(false),[active,setActive]=useState(null),[q,setQ]=useState('');
+  const [open,setOpen]=useState(false),[active,setActive]=useState(null);
   const ref=useRef(null), trigger=useRef(null);
-  const navigate=useNavigate();
   const close=()=>{setActive(null);setOpen(false)};
   useEffect(()=>{
     const outside=e=>{if(ref.current&&!ref.current.contains(e.target))close()};
