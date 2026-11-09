@@ -1,3 +1,4 @@
+import type React from "react";
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { PATHS } from "@/ds/paths";
@@ -19,7 +20,9 @@ type CompareCtx = {
   toggleCompare: (id: string) => void;
 };
 
-const Ctx = createContext<CompareCtx | null>(null);
+// Kept on globalThis so a hot reload of this module reuses the same context instead of orphaning the provider.
+const g = globalThis as { __ntCompareCtx?: React.Context<CompareCtx | null> };
+const Ctx = (g.__ntCompareCtx ??= createContext<CompareCtx | null>(null));
 const KEY = "nt-compare";
 
 export function CompareProvider({ children }: { children: ReactNode }) {
