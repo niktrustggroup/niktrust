@@ -19,7 +19,7 @@ export const CATEGORY_BASE = { brokers: '/forex-brokers', exchanges: '/crypto-ex
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 export function buildSitemap(platforms: { slug: string; category: keyof typeof CATEGORY_BASE; updated_at?: string | null }[]) {
-  const entries: { loc: string; lastmod?: string | undefined }[] = STATIC_PUBLIC_PATHS.filter(p => !isPrivatePath(p)).map(p => ({ loc: canonicalUrl(p) }));
+  const entries: { loc: string; lastmod?: string | undefined }[] = STATIC_PUBLIC_PATHS.filter(p => !isPrivatePath(p)).map((p): { loc: string; lastmod?: string | undefined } => ({ loc: canonicalUrl(p) }));
   const seen = new Set(entries.map(e => e.loc));
   for (const p of platforms) {
     const base = CATEGORY_BASE[p.category];
