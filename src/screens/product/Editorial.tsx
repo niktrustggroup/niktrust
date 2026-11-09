@@ -3,7 +3,11 @@ import { PageHead } from '../Shared';
 import { EmptyState } from './Primitives';
 import { ComponentButton } from '@/ds';
 import { PublicationScreen } from './Publication';
+import { PartnerLanding } from '@/screens/prototype/Partner';
+import { MembershipScreen } from '@/screens/prototype/Membership';
 export function EditorialScreen({ go, title, kind }: { go: (id: string) => void; title: string; kind: string }) {
+  if (kind === 'partners') return <PartnerLanding/>;
+  if (kind === 'membership' || kind === 'checkout' || kind === 'payment') return <MembershipScreen section={kind === 'checkout' ? 'checkout' : kind === 'payment' ? 'result' : 'landing'}/>;
   if(['learn','glossary','news','article','topic','term','blog'].includes(kind))return <PublicationScreen go={go} title={title} kind={kind}/>;
   const sections: Record<string,{ title: string; body: string }[]> = {
     revenue:[{title:'منابع درآمد و استقلال',body:'همکاری IB، لینک‌های همکاری و عضویت در دامنهٔ محصول قرار دارند؛ نرخ، قرارداد و قیمت تأییدشده‌ای برای این نسخه ارائه نشده است.'},{title:'افشای لینک همکاری',body:'هر لینک همکاری باید کنار اقدام خروجی برچسب «لینک همکاری» داشته باشد. رابطهٔ تجاری وارد امتیاز یا ترتیب فهرست نمی‌شود.'},{title:'اطلاعات اعتماد عمومی',body:'مجوز، امتیاز منتشرشده، هشدار و وضعیت دسترسی ایران پشت قفل عضویت قرار نمی‌گیرند.'}],

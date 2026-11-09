@@ -7,7 +7,7 @@ const pick=(...v)=>v.find(x=>x!==undefined&&x!==null&&x!=='');
 /** Button — primary (one dominant action per view), secondary (supporting), tertiary (low-emphasis/inline). */
 export function ComponentButton(p: any = {}){
   const {type='primary',state='default',size='md',block,iconLeading,iconTrailing,href,onClick,children,className,style,disabled,ariaLabel,...rest}=p;
-  const a11y=Object.fromEntries(Object.entries(rest).filter(([key])=>key.startsWith('aria-')||key.startsWith('data-')||['onKeyDown','onFocus','onBlur','onMouseEnter','title','id'].includes(key)));
+  const a11y=Object.fromEntries(Object.entries(rest).filter(([key])=>key.startsWith('aria-')||key.startsWith('data-')||['role','onKeyDown','onFocus','onBlur','onMouseEnter','title','id'].includes(key)));
   const text=pick(children,p.label,p.text1,'مشاهده بررسی');
   const isDis=disabled||state==='disabled', isLoad=state==='loading';
   const cls=cx('nt-btn','nt-btn--'+type,size!=='md'&&'nt-btn--'+size,block&&'nt-btn--block',state==='hover'&&'is-hover',state==='active'&&'is-active',state==='focus'&&'is-focus',isDis&&'is-disabled',isLoad&&'is-loading',className);

@@ -5,7 +5,7 @@ import { articles, changes, terms, articlePath } from '@/api/public-content';
 export const SITE_URL = (import.meta.env['VITE_SITE_URL'] as string | undefined)?.replace(/\/+$/, '') || 'https://niktrust.lovable.app';
 
 /** Personal, authentication, partner-finance and payment pages: never indexed. */
-const PRIVATE = [/^\/account(\/|$)/, /^\/partners\/(dashboard|leads|ledger|payouts|links)(\/|$)/, /^\/membership\/(checkout|result)(\/|$)/, /^\/search(\/|$)/];
+const PRIVATE = [/^\/account(\/|$)/, /^\/(admin|partner)(\/|$)/, /^\/(login|register|forgot-password|reset-password)(\/|$)/, /^\/partners\/(dashboard|leads|ledger|payouts|links)(\/|$)/, /^\/membership\/(checkout|result|payment-result)(\/|$)/, /^\/terminal(\/|$)/, /^\/search(\/|$)/];
 
 export function normalizePath(pathname: string) {
   const p = pathname.split(/[?#]/)[0] || '/';
@@ -21,7 +21,7 @@ export const STATIC_PUBLIC_PATHS = ['/', '/forex-brokers', '/crypto-exchanges', 
 /** Empty/utility pages are crawlable so crawlers can see noindex, but not listed. */
 export function isIncompletePath(pathname: string) {
   const path = normalizePath(pathname);
-  if (['/about/team','/terminal','/partners/apply','/partners/guide','/partners/rules','/membership/terms','/privacy','/terms','/alerts/report'].includes(path)) return true;
+  if (['/about/team','/terminal','/partners/apply','/partners/guide','/partners/rules','/membership/terms','/membership/plans','/membership','/partners','/privacy','/terms','/alerts/report'].includes(path)) return true;
   if (['/blog','/news','/learn','/glossary','/alerts'].includes(path)) return path==='/glossary'?terms.length===0:path==='/alerts'?changes.length===0:!articles.some(a=>a.kind===path.slice(1));
   if (path.startsWith('/learn/')) return !articles.some(a=>articlePath(a)===path||`/learn/${a.topic}`===path);
   if (path.startsWith('/blog/')||path.startsWith('/news/')) return !articles.some(a=>articlePath(a)===path);

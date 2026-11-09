@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
-import { MarketScreen } from '@/screens/product/Services';
+import { MarketHub } from '@/screens/prototype/Markets';
 
 export const Route = createFileRoute("/markets")({
   head: () => seo("نمای کلی بازار", "وضعیت دادهٔ بازار، آخرین قیمت، منبع و زمان دریافت اطلاعات در نیک‌تراست."),
@@ -9,6 +9,5 @@ export const Route = createFileRoute("/markets")({
 });
 
 function Page() {
-  const { go } = useScreenProps();
-  return <MarketScreen go={go}/>;
+  return <MarketHub/>;
 }

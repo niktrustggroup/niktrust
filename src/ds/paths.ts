@@ -6,7 +6,7 @@ export const PATHS: Record<string, string> = {
   search: '/search', check: '/check', alerts: '/alerts', report: '/alerts/report',
   finder: '/finder', terminal: '/terminal', learn: '/learn', glossary: '/glossary',
   team: '/about/team', revenue: '/how-we-make-money', editorial: '/editorial-policy', corrections: '/corrections',
-  account: '/account', login: '/account/login', signup: '/account/signup', recover: '/account/recover',
+  account: '/account', login: '/login', signup: '/register', recover: '/forgot-password',
   partners: '/partners', membership: '/membership',
   news: '/news', iranian:'/crypto-exchanges/iranian', international:'/crypto-exchanges/international',
   profitLoss:'/tools/profit-loss', margin:'/tools/margin', swap:'/tools/swap', watchlist:'/account/watchlist',
