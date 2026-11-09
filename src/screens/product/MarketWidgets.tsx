@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { ComponentButton } from '@/ds';
 import { useTheme } from '@/lib/theme';
@@ -87,7 +88,7 @@ export function MarketOverview() {
   const [chart, setChart] = useState('BITSTAMP:BTCUSD');
   const all = Object.values(SNAP).flat();
   return <section id="markets" aria-labelledby="markets-t" className="nt-home-sec nt-home-sec--alt"><div className="nt-container">
-    <header className="nt-home-head"><div><h2 id="markets-t">نبض بازار</h2><p>نمایی از وضعیت بازارهای مالی، رمزارزها، ارزها و طلا.</p></div><a className="nt-home-more" href="/markets">نمای کامل بازار ←</a></header>
+    <header className="nt-home-head"><div><h2 id="markets-t">نبض بازار</h2><p>نمایی از وضعیت بازارهای مالی، رمزارزها، ارزها و طلا.</p></div><Link className="nt-home-more" to="/markets">نمای کامل بازار ←</Link></header>
     <div className="nt-home-tabs" role="tablist" aria-label="دستهٔ بازار">{SNAP_TABS.map(([id, t]) => <button key={id} type="button" role="tab" aria-selected={tab === id} className={tab === id ? 'is-on' : ''} onClick={() => setTab(id)}>{t}</button>)}</div>
     <div className="nt-snap-grid">{SNAP[tab].map(([s, t]) => <MarketSnapshotCard key={s} symbol={s} title={t}/>)}</div>
     <div className="nt-chart-box"><div className="nt-chart-bar"><label>نماد نمودار <select className="nt-input" value={chart} onChange={e => setChart(e.target.value)}>{all.map(([s, t]) => <option key={s} value={s}>{t}</option>)}</select></label></div>
