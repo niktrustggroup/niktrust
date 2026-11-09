@@ -21,7 +21,7 @@ export function isPublicRecord(p: PlatformDetail): boolean {
   return !ev.some(e => e.claim_origin === 'demonstration') && !p.name_fa.includes('ساختگی');
 }
 export function publicPlatforms(platforms: PlatformDetail[], mode: string): PlatformDetail[] {
-  return mode === 'demonstration' || mode === 'unavailable' ? [] : platforms.filter(isPublicRecord);
+  return mode === 'production' ? platforms.filter(isPublicRecord) : [];
 }
 
 export type FinderAnswers = { category: Category | ''; experience: string; capitalUsd: number | null; methods: string[]; priorities: string[] };
