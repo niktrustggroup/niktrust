@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { ComponentButton } from '@/ds';
 import { useCatalog } from '@/api/client';
 import { KIcon, SectionHead } from './Shared';
-import { PlatformCard, PlatformSearch, SampleNotice } from './product/Primitives';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { PlatformCard, SampleNotice } from './product/Primitives';
+import { Link } from '@tanstack/react-router';
 import type { Category } from '@/api/types';
 import { CategoryDirectory, DueDiligenceSteps, PlatformRow, ResearchAside } from './product/Discovery';
 import { MarketChart } from './product/MarketWidgets';
+import { ListChecks, CalendarCheck, Scale } from 'lucide-react';
+import { HeroIllustration } from './product/HeroIllustration';
 import researchDesk from '@/assets/research-desk.jpg';
 export function HomeScreen({ go, compare, toggleCompare }: { go: (id: string, arg?: string) => void; compare: string[]; toggleCompare: (id: string) => void }) {
-  const { platforms } = useCatalog(); const [query, setQuery] = useState(''); const [category,setCategory]=useState<Category>('brokers');
+  const { platforms } = useCatalog(); const [category,setCategory]=useState<Category>('brokers');
 
-  const navigate=useNavigate();
   return <main>
-    <section className="nt-discovery-hero"><div className="nt-container nt-discovery-inner"><div className="nt-discovery-copy"><h1>بررسی و مقایسهٔ پلتفرم‌های مالی</h1><p>پیش از انتخاب، دقیق‌تر بررسی کنید.<br/>بروکر، صرافی و پراپ‌فرم را با شواهد، هزینه‌ها و محدودیت‌هایشان بشناسید.</p><form className="nt-discovery-search" onSubmit={e=>{e.preventDefault();void navigate({to:'/search',search:query.trim()?{q:query.trim()}:{}})}}><KIcon name="Search" size={22}/><label htmlFor="hero-q" className="nt-visually-hidden">جستجوی بروکر، صرافی یا پراپ‌فرم</label><input id="hero-q" value={query} onChange={e=>setQuery(e.target.value)} placeholder="نام بروکر، صرافی یا پراپ‌فرم…"/><ComponentButton onClick={()=>void navigate({to:'/search',search:query.trim()?{q:query.trim()}:{}})}>جستجو</ComponentButton></form>{query.trim().length>=2&&<div className="nt-discovery-results"><PlatformSearch query={query} go={go}/></div>}<div className="nt-discovery-popular"><span>از کجا شروع کنم؟</span><Link to="/finder">انتخاب هدایت‌شده</Link><Link to="/compare">مقایسهٔ پلتفرم‌ها</Link><Link to="/check">استعلام اعتبار</Link></div></div></div></section>
-    <div className="nt-trust-strip"><div className="nt-container"><span><KIcon name="Check" size={17}/>معیارهای شفاف و قابل بررسی</span><span><KIcon name="Check" size={17}/>منبع و تاریخ کنار اطلاعات</span><span><KIcon name="Check" size={17}/>استقلال ارزیابی از روابط تجاری</span></div></div>
+    <section className="nt-hero" aria-labelledby="hero-title"><div className="nt-container nt-hero-inner"><div className="nt-hero-copy"><p className="nt-hero-eyebrow">بررسی مستقل پلتفرم‌های مالی</p><h1 id="hero-title">قبل از انتخاب، دقیق‌تر بررسی کن.</h1><p className="nt-hero-desc">بروکرها، صرافی‌ها و پراپ‌فرم‌ها را از نظر اعتبار، هزینه‌ها، خدمات و محدودیت‌ها بررسی و مقایسه کن.</p><div className="nt-hero-ctas"><Link to="/forex-brokers" className="nt-btn nt-btn--primary nt-btn--lg">بررسی پلتفرم‌ها</Link><Link to="/methodology" className="nt-btn nt-btn--secondary nt-btn--lg">روش ارزیابی ما</Link></div><ul className="nt-hero-trust"><li><ListChecks aria-hidden="true"/>معیارهای شفاف و قابل بررسی</li><li><CalendarCheck aria-hidden="true"/>منبع و تاریخ کنترل اطلاعات</li><li><Scale aria-hidden="true"/>استقلال ارزیابی از روابط تجاری</li></ul></div><div className="nt-hero-visual"><HeroIllustration/></div></div></section>
     <div className="nt-container"><CategoryDirectory/></div>
     <section className="nt-section nt-discovery-main"><div className="nt-container"><SectionHead title="پلتفرم‌ها را بشناسید" desc="پروفایل‌ها بر اساس دسته؛ نه رتبه‌بندی تجاری یا توصیهٔ سرمایه‌گذاری." action={<ComponentButton type="tertiary" iconTrailing onClick={()=>go(category)}>مشاهدهٔ فهرست</ComponentButton>}/><div className="nt-discovery-tabs" role="group" aria-label="دستهٔ پلتفرم">{([['brokers','بروکرهای فارکس'],['exchanges','صرافی‌های رمزارز'],['prop','پراپ‌فرم‌ها']] as const).map(([id,title])=><ComponentButton key={id} type="tertiary" aria-pressed={category===id} onClick={()=>setCategory(id)}>{title}</ComponentButton>)}</div><div className="nt-featured-layout"><div className="nt-stack"><SampleNotice/><div className="nt-cards">{platforms.filter(p=>p.category===category).slice(0,3).map(p=><PlatformCard key={p.id} platform={p} compare={compare} toggleCompare={toggleCompare} go={go}/>)}</div></div><ResearchAside/></div></div></section>
     <MarketChart/>
