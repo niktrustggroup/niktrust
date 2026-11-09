@@ -4,7 +4,7 @@ import { useScreenProps } from "@/lib/site";
 import { CalculatorsScreen } from '@/screens/product/Services';
 
 export const Route = createFileRoute("/tools")({
-  head: () => seo("ابزارهای رایگان", "ابزارهای محاسباتی نیک‌تراست. هنوز فعال نشده‌اند و تاریخ انتشار در نقشهٔ راه مشخص می‌شود."),
+  head: () => seo("ابزارهای رایگان", "ماشین‌حساب‌های حجم پوزیشن، ارزش پیپ، مارجین، سود و زیان، اهرم و سواپ با فرمول و فرض‌های اعلام‌شده."),
   component: Page,
 });
 

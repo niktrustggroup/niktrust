@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 import { useScreenProps } from '@/lib/site';
 import { CalculatorsScreen } from '@/screens/product/Services';
 export const Route = createFileRoute('/tools_/$calculator')({
-  head: () => seo("ماشین‌حساب", "ماشین‌حساب — اطلاعات شفاف و وضعیت داده در نیک‌تراست."),
+  head: () => seo("ماشین‌حساب", "ماشین‌حساب آموزشی نیک‌تراست با فرمول، فرض‌ها و مثال اعلام‌شده."),
   
   component: Page,
 });
