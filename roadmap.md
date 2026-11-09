@@ -1,12 +1,13 @@
 # NikTrust MVP
 
 ## Day 07 — Full product prototype and design freeze
-- [ ] Shared dashboard shell, prototype access and user account flows.
-- [ ] Partner application, referrals, commissions and payouts interfaces.
-- [ ] Membership plans, checkout, result and subscription scenarios.
-- [ ] Shared market hub, terminal and frontend watchlists.
-- [ ] Independent admin prototype, management forms and operational states.
-- [ ] Six journeys, four widths, regression tests and Persian design-freeze handoff.
+- [x] Shared dashboard shell, prototype access and user account flows.
+- [x] Partner application, referrals, commissions and payouts interfaces.
+- [x] Membership plans, checkout, result and subscription scenarios.
+- [x] Shared market hub, terminal and frontend watchlists.
+- [x] Independent admin prototype, management forms and operational states.
+- [x] Persian design-freeze candidate and route inventory; 48 tests pass.
+- [ ] Final browser sign-off — preview runtime preamble error after sandbox interruption; full responsive interactions and external chart teardown remain unverified.
 - [ ] Production activation — outside Day07; requires approved contracts, auth, business rules and services.
 
 ## Day 06-B — Public completion
