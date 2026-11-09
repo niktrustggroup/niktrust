@@ -55,6 +55,7 @@ import { Route as AccountSignupRouteImport } from './routes/account_.signup'
 import { Route as AccountWatchlistRouteImport } from './routes/account_.watchlist'
 import { Route as AlertsSlugRouteImport } from './routes/alerts_.$slug'
 import { Route as AlertsReportRouteImport } from './routes/alerts_.report'
+import { Route as BlogSlugRouteImport } from './routes/blog_.$slug'
 import { Route as ComparePairRouteImport } from './routes/compare_.$pair'
 import { Route as CryptoExchangesSlugRouteImport } from './routes/crypto-exchanges_.$slug'
 import { Route as CryptoExchangesBestForFeatureRouteImport } from './routes/crypto-exchanges_.best-for-$feature'
@@ -69,6 +70,7 @@ import { Route as MembershipCheckoutRouteImport } from './routes/membership_.che
 import { Route as MembershipResultRouteImport } from './routes/membership_.result'
 import { Route as MembershipTermsRouteImport } from './routes/membership_.terms'
 import { Route as MethodologyCategoryRouteImport } from './routes/methodology_.$category'
+import { Route as NewsSlugRouteImport } from './routes/news_.$slug'
 import { Route as PartnersApplyRouteImport } from './routes/partners_.apply'
 import { Route as PartnersDashboardRouteImport } from './routes/partners_.dashboard'
 import { Route as PartnersGuideRouteImport } from './routes/partners_.guide'
@@ -313,6 +315,11 @@ const AlertsReportRoute = AlertsReportRouteImport.update({
   path: '/alerts/report',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog_/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComparePairRoute = ComparePairRouteImport.update({
   id: '/compare_/$pair',
   path: '/compare/$pair',
@@ -384,6 +391,11 @@ const MembershipTermsRoute = MembershipTermsRouteImport.update({
 const MethodologyCategoryRoute = MethodologyCategoryRouteImport.update({
   id: '/methodology_/$category',
   path: '/methodology/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news_/$slug',
+  path: '/news/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnersApplyRoute = PartnersApplyRouteImport.update({
@@ -499,6 +511,7 @@ export interface FileRoutesByFullPath {
   '/account/watchlist': typeof AccountWatchlistRoute
   '/alerts/$slug': typeof AlertsSlugRoute
   '/alerts/report': typeof AlertsReportRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/compare/$pair': typeof ComparePairRoute
   '/crypto-exchanges/$slug': typeof CryptoExchangesSlugRoute
   '/crypto-exchanges/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
@@ -513,6 +526,7 @@ export interface FileRoutesByFullPath {
   '/membership/result': typeof MembershipResultRoute
   '/membership/terms': typeof MembershipTermsRoute
   '/methodology/$category': typeof MethodologyCategoryRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/partners/apply': typeof PartnersApplyRoute
   '/partners/dashboard': typeof PartnersDashboardRoute
   '/partners/guide': typeof PartnersGuideRoute
@@ -574,6 +588,7 @@ export interface FileRoutesByTo {
   '/account/watchlist': typeof AccountWatchlistRoute
   '/alerts/$slug': typeof AlertsSlugRoute
   '/alerts/report': typeof AlertsReportRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/compare/$pair': typeof ComparePairRoute
   '/crypto-exchanges/$slug': typeof CryptoExchangesSlugRoute
   '/crypto-exchanges/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
@@ -588,6 +603,7 @@ export interface FileRoutesByTo {
   '/membership/result': typeof MembershipResultRoute
   '/membership/terms': typeof MembershipTermsRoute
   '/methodology/$category': typeof MethodologyCategoryRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/partners/apply': typeof PartnersApplyRoute
   '/partners/dashboard': typeof PartnersDashboardRoute
   '/partners/guide': typeof PartnersGuideRoute
@@ -650,6 +666,7 @@ export interface FileRoutesById {
   '/account_/watchlist': typeof AccountWatchlistRoute
   '/alerts_/$slug': typeof AlertsSlugRoute
   '/alerts_/report': typeof AlertsReportRoute
+  '/blog_/$slug': typeof BlogSlugRoute
   '/compare_/$pair': typeof ComparePairRoute
   '/crypto-exchanges_/$slug': typeof CryptoExchangesSlugRoute
   '/crypto-exchanges_/best-for-$feature': typeof CryptoExchangesBestForFeatureRoute
@@ -664,6 +681,7 @@ export interface FileRoutesById {
   '/membership_/result': typeof MembershipResultRoute
   '/membership_/terms': typeof MembershipTermsRoute
   '/methodology_/$category': typeof MethodologyCategoryRoute
+  '/news_/$slug': typeof NewsSlugRoute
   '/partners_/apply': typeof PartnersApplyRoute
   '/partners_/dashboard': typeof PartnersDashboardRoute
   '/partners_/guide': typeof PartnersGuideRoute
@@ -727,6 +745,7 @@ export interface FileRouteTypes {
     | '/account/watchlist'
     | '/alerts/$slug'
     | '/alerts/report'
+    | '/blog/$slug'
     | '/compare/$pair'
     | '/crypto-exchanges/$slug'
     | '/crypto-exchanges/best-for-$feature'
@@ -741,6 +760,7 @@ export interface FileRouteTypes {
     | '/membership/result'
     | '/membership/terms'
     | '/methodology/$category'
+    | '/news/$slug'
     | '/partners/apply'
     | '/partners/dashboard'
     | '/partners/guide'
@@ -802,6 +822,7 @@ export interface FileRouteTypes {
     | '/account/watchlist'
     | '/alerts/$slug'
     | '/alerts/report'
+    | '/blog/$slug'
     | '/compare/$pair'
     | '/crypto-exchanges/$slug'
     | '/crypto-exchanges/best-for-$feature'
@@ -816,6 +837,7 @@ export interface FileRouteTypes {
     | '/membership/result'
     | '/membership/terms'
     | '/methodology/$category'
+    | '/news/$slug'
     | '/partners/apply'
     | '/partners/dashboard'
     | '/partners/guide'
@@ -877,6 +899,7 @@ export interface FileRouteTypes {
     | '/account_/watchlist'
     | '/alerts_/$slug'
     | '/alerts_/report'
+    | '/blog_/$slug'
     | '/compare_/$pair'
     | '/crypto-exchanges_/$slug'
     | '/crypto-exchanges_/best-for-$feature'
@@ -891,6 +914,7 @@ export interface FileRouteTypes {
     | '/membership_/result'
     | '/membership_/terms'
     | '/methodology_/$category'
+    | '/news_/$slug'
     | '/partners_/apply'
     | '/partners_/dashboard'
     | '/partners_/guide'
@@ -953,6 +977,7 @@ export interface RootRouteChildren {
   AccountWatchlistRoute: typeof AccountWatchlistRoute
   AlertsSlugRoute: typeof AlertsSlugRoute
   AlertsReportRoute: typeof AlertsReportRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ComparePairRoute: typeof ComparePairRoute
   CryptoExchangesSlugRoute: typeof CryptoExchangesSlugRoute
   CryptoExchangesBestForFeatureRoute: typeof CryptoExchangesBestForFeatureRoute
@@ -967,6 +992,7 @@ export interface RootRouteChildren {
   MembershipResultRoute: typeof MembershipResultRoute
   MembershipTermsRoute: typeof MembershipTermsRoute
   MethodologyCategoryRoute: typeof MethodologyCategoryRoute
+  NewsSlugRoute: typeof NewsSlugRoute
   PartnersApplyRoute: typeof PartnersApplyRoute
   PartnersDashboardRoute: typeof PartnersDashboardRoute
   PartnersGuideRoute: typeof PartnersGuideRoute
@@ -1305,6 +1331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsReportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog_/$slug': {
+      id: '/blog_/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare_/$pair': {
       id: '/compare_/$pair'
       path: '/compare/$pair'
@@ -1401,6 +1434,13 @@ declare module '@tanstack/react-router' {
       path: '/methodology/$category'
       fullPath: '/methodology/$category'
       preLoaderRoute: typeof MethodologyCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news_/$slug': {
+      id: '/news_/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partners_/apply': {
@@ -1556,6 +1596,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountWatchlistRoute: AccountWatchlistRoute,
   AlertsSlugRoute: AlertsSlugRoute,
   AlertsReportRoute: AlertsReportRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ComparePairRoute: ComparePairRoute,
   CryptoExchangesSlugRoute: CryptoExchangesSlugRoute,
   CryptoExchangesBestForFeatureRoute: CryptoExchangesBestForFeatureRoute,
@@ -1570,6 +1611,7 @@ const rootRouteChildren: RootRouteChildren = {
   MembershipResultRoute: MembershipResultRoute,
   MembershipTermsRoute: MembershipTermsRoute,
   MethodologyCategoryRoute: MethodologyCategoryRoute,
+  NewsSlugRoute: NewsSlugRoute,
   PartnersApplyRoute: PartnersApplyRoute,
   PartnersDashboardRoute: PartnersDashboardRoute,
   PartnersGuideRoute: PartnersGuideRoute,

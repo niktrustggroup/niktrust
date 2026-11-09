@@ -1,6 +1,7 @@
 import type { Category } from './types';
 import type { PlatformDetail } from './types';
-export function visibleScore(score: PlatformDetail['score']) { return score.is_published ? score.value : null; }
+/** Official scoring methodology and weights are not approved yet. */
+export function visibleScore(_score: PlatformDetail['score']) { return null; }
 export function sanitizeSelection(ids: unknown, platforms: PlatformDetail[]): string[] {
   if (!Array.isArray(ids)) return [];
   return [...new Set(ids.filter((id): id is string => typeof id === 'string' && platforms.some(p => p.id === id)))].slice(0, 4);
@@ -10,7 +11,7 @@ export function canCompare(platforms: PlatformDetail[]): boolean {
 }
 export function filterPlatforms(platforms: PlatformDetail[], query = '', coverage = '', sort = 'name') {
   const q = query.trim().replace(/ي/g, 'ی').replace(/ك/g, 'ک');
-  return platforms.filter(p => (!q || p.name_fa.includes(q)) && (!coverage || p.coverage_level === coverage))
+  return platforms.filter(p => (!q || [p.name_fa, ...p.key_attributes.flatMap(a => [a.label, a.value ?? ''])].some(v => v.replace(/ي/g, 'ی').replace(/ك/g, 'ک').includes(q))) && (!coverage || p.coverage_level === coverage))
     .sort((a, b) => sort === 'date' ? b.updated_at.localeCompare(a.updated_at) : a.name_fa.localeCompare(b.name_fa, 'fa'));
 }
 export function validateReport(description: string) { return description.trim().length >= 40 && description.trim().length <= 3000; }
@@ -20,7 +21,7 @@ export function isPublicRecord(p: PlatformDetail): boolean {
   return !ev.some(e => e.claim_origin === 'demonstration') && !p.name_fa.includes('ساختگی');
 }
 export function publicPlatforms(platforms: PlatformDetail[], mode: string): PlatformDetail[] {
-  return mode === 'demonstration' || mode === 'unavailable' ? [] : platforms.filter(isPublicRecord);
+  return mode === 'production' ? platforms.filter(isPublicRecord) : [];
 }
 
 export type FinderAnswers = { category: Category | ''; experience: string; capitalUsd: number | null; methods: string[]; priorities: string[] };

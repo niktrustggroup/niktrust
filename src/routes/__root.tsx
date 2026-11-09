@@ -1,3 +1,4 @@
+import { contentQuery } from '@/api/content-client';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -23,7 +24,7 @@ import logoBlue from "@/assets/logotype-blue.svg.asset.json";
 import fontRegular from "@/assets/Vazirmatn-Regular.woff2.asset.json";
 import fontBold from "@/assets/Vazirmatn-Bold.woff2.asset.json";
 import { catalogQuery } from '@/api/client';
-import { canonicalUrl, isPrivatePath } from '@/lib/seo-policy';
+import { canonicalUrl, isPrivatePath, isIncompletePath, CATEGORY_BASE } from '@/lib/seo-policy';
 import { ComponentButton, ComponentDataCard } from '@/ds';
 
 function NotFoundComponent() {
@@ -87,15 +88,17 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  loader: ({ context }) => context.queryClient.ensureQueryData(catalogQuery),
+  loader: async ({ context }) => { await Promise.all([context.queryClient.ensureQueryData(catalogQuery),context.queryClient.ensureQueryData(contentQuery)]); },
   pendingComponent: () => <div className="nt-container nt-section"><ComponentDataCard state="loading"/></div>,
   head: ({ matches }) => {
     const leaf = matches.at(-1);
     const path = leaf?.pathname ?? '/';
-    const hidden = isPrivatePath(path) || matches.some(m => m.status === 'notFound' || (m as { globalNotFound?: boolean }).globalNotFound) || leaf?.routeId === '__root__' || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
+    const profile = path.startsWith('/review/') ? leaf?.loaderData as {category?: keyof typeof CATEGORY_BASE;slug?:string}|undefined : undefined;
+    const canonicalPath = profile?.category && profile.slug ? `${CATEGORY_BASE[profile.category]}/${profile.slug}` : path;
+    const hidden = isPrivatePath(path) || isIncompletePath(path) || matches.some(m => m.status === 'notFound' || (m as { globalNotFound?: boolean }).globalNotFound) || leaf?.routeId === '__root__' || (!!leaf && /\/\$slug$/.test(leaf.routeId) && !leaf.loaderData);
     return {
     meta: [
-      ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : [{ property: "og:url", content: canonicalUrl(path) }]),
+      ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : [{ property: "og:url", content: canonicalUrl(canonicalPath) }]),
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "نیک‌تراست — ارزیابی و مقایسهٔ مستقل پلتفرم‌های مالی" },
@@ -106,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      ...(hidden ? [] : [{ rel: "canonical", href: canonicalUrl(path) }]),
+      ...(hidden ? [] : [{ rel: "canonical", href: canonicalUrl(canonicalPath) }]),
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       ...[fontRegular, fontBold].map((f) => ({ rel: "preload", href: f.url, as: "font", type: "font/woff2", crossOrigin: "anonymous" as const })),
     ],

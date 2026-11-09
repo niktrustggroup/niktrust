@@ -1,9 +1,11 @@
+import { validatePublicSearch } from '@/lib/public-search';
 import { createFileRoute } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { useScreenProps } from "@/lib/site";
 import { ListingScreen } from "@/screens/Listing";
 
 export const Route = createFileRoute("/forex-brokers")({
+  validateSearch: validatePublicSearch,
   head: () => seo("بروکرهای فارکس", "فهرست بروکرهای فارکس بررسی‌شده بر اساس معیارهای نیک‌تراست. ترتیب فهرست از لینک‌های همکاری اثر نمی‌گیرد."),
   component: Page,
 });
