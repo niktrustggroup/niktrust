@@ -91,7 +91,7 @@
 @media(max-width:767px){.nt-criteria-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}.nt-criteria-grid li{font-size:12px}.nt-spec-table>div{grid-template-columns:1fr;gap:8px}.nt-change-values{grid-template-columns:1fr}.nt-content-item h3{font-size:19px}#directory,#category-faq,.nt-article-layout section{scroll-margin-top:90px}}
 .nt-article-layout{align-items:start}.nt-publication-layout>div,.nt-article-layout>article{min-width:0}.nt-article-layout>.nt-review-toc{position:sticky;top:145px}.nt-spec-table dt,.nt-spec-table dd{overflow-wrap:anywhere}
 
-.nt-header-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:var(--nt-radius-md,8px);background:var(--nt-brand-primary,#454ADE);color:var(--nt-text-on-brand,#fff);font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+.nt-header-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:4px;background:var(--brand-primary);color:var(--text-on-brand);font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
 .nt-header-cta:hover{filter:brightness(.92)}
-.nt-header-cta:focus-visible{outline:2px solid var(--nt-brand-primary,#454ADE);outline-offset:2px}
+.nt-header-cta:focus-visible{outline:2px solid var(--brand-primary);outline-offset:2px}
 @media (max-width:1024px){.nt-header-cta{display:none}}
