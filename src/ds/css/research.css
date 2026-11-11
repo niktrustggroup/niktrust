@@ -95,3 +95,4 @@
 .nt-header-cta:hover{filter:brightness(.92)}
 .nt-header-cta:focus-visible{outline:2px solid var(--brand-primary);outline-offset:2px}
 @media (max-width:1024px){.nt-header-cta{display:none}}
+.nt-ctable-wrap{overflow-x:auto}.nt-comparison th:first-child,.nt-comparison td:first-child{position:sticky;inset-inline-start:0;z-index:1;background:var(--surface-card)}
