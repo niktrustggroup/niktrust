@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { ComponentButton } from '@/ds';
 import { KIcon } from '../Shared';
-import { RESEARCH_NAV } from '@/ds/navigation';
+import { CATEGORY_NAV as RESEARCH_NAV } from '@/ds/navigation';
 import { PATHS } from '@/ds/paths';
 import type { PlatformDetail } from '@/api/types';
 export function CategoryDirectory() {

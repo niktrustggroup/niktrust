@@ -10,4 +10,6 @@ export const PATHS: Record<string, string> = {
   partners: '/partners', membership: '/membership',
   news: '/news', iranian:'/crypto-exchanges/iranian', international:'/crypto-exchanges/international',
   profitLoss:'/tools/profit-loss', margin:'/tools/margin', swap:'/tools/swap', watchlist:'/account/watchlist',
+  platforms:'/forex-brokers', best:'/forex-brokers/best-for-beginners', compareTools:'/compare', learnNews:'/learn', aboutGroup:'/about',
+  bestBrokerBeginners:'/forex-brokers/best-for-beginners', bestBrokerLowSpread:'/forex-brokers/best-for-low-spread', bestExchangeLowFee:'/crypto-exchanges/best-for-low-fees', bestPropBeginners:'/prop-firms/best-for-beginners',
 };

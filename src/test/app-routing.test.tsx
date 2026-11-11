@@ -24,7 +24,7 @@ describe("App routing", () => {
   });
   it('maps the seven research categories and every navigation destination to existing pages', () => {
     const router=createRouter({routeTree,context:{queryClient:new QueryClient()}});
-    expect(RESEARCH_NAV.map(n=>n.id)).toEqual(['brokers','exchanges','prop','markets','tools','learn','news']);
+    expect(RESEARCH_NAV.map(n=>n.id)).toEqual(['platforms','best','compareTools','learnNews','aboutGroup']);
     const ids=RESEARCH_NAV.flatMap(n=>[n.id,...n.groups.flatMap(g=>g.links.map(([,id])=>id))]);
     for(const id of ids){
       if(!id)throw new Error('Navigation destination is missing');
